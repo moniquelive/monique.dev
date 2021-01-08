@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>oneliner on monique.dev</title><link>https://monique.dev/tags/oneliner/</link><description>Recent content in oneliner on monique.dev</description><generator>Hugo -- gohugo.io</generator><language>pt-br</language><lastBuildDate>Fri, 08 Jan 2021 12:00:00 -0300</lastBuildDate><atom:link href="https://monique.dev/tags/oneliner/index.xml" rel="self" type="application/rss+xml"/><item><title>How to parse a key-value pair list with AWK</title><link>https://monique.dev/posts/awk/</link><pubDate>Fri, 08 Jan 2021 12:00:00 -0300</pubDate><guid>https://monique.dev/posts/awk/</guid><description>A simple example, using env as input:
+$ env | grep EDITOR EDITOR=vim $ env | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;EDITOR&amp;#34;])}&amp;#39; vim It&amp;rsquo;s way easier to just do echo $EDITOR though.
+But sometimes it&amp;rsquo;s not so easy:
+$ xdotool getactivewindow getwindowgeometry --shell | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;WIDTH&amp;#34;])}&amp;#39; 1430 If you want to get the current window&amp;rsquo;s width.
+_
+= M =</description></item></channel></rss>
