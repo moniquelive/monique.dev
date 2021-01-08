@@ -1,0 +1,29 @@
+baseURL: https://monique.dev/
+languageCode: pt-br
+title: monique.dev
+
+theme: m10c
+
+params:
+  author: Cyber
+  description: Traduções das minhas postagens do site dev.to
+  avatar: logo.jpg
+  favicon: logo.jpg
+
+  # Green theme
+  style:
+    darkestColor: "#24232B" # "#315659"
+    darkColor: "#373945" # "#253031"
+    primaryColor: "#826190" # "#dad865"
+    lightColor:  "#ddd"
+    lightestColor: "#fff" # "#fff"
+
+  social:
+    - name: github
+      url: https://github.com/lccro
+    - name: twitter
+      url: https://twitter.com/moniquelive
+    - name: instagram
+      url: https://www.instagram.com/moniquelive.dev/
+    - name: layers
+      url: https://stackoverflow.com/users/9793/cyber-oliveira
