@@ -1,6 +1,8 @@
 baseURL: https://monique.dev/
 languageCode: pt-br
 title: monique.dev
+googleAnalytics: UA-129884631-3
+disqusShortname: monique-dev
 
 theme: m10c
 
