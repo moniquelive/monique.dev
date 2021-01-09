@@ -1,21 +1,21 @@
 ---
-title: OBS Studio as a Virtual Webcam
-date: 2021-01-08T17:23:30-03:00
+title: OBS Studio como uma webcam virtual
+date: 2020-12-22T12:00:00-03:00
 tags: [obs,virtual cam,linux]
 cover_image: https://obsproject.com/assets/images/new_icon_small-r.png
 ---
 
-In the year 2020 video conferencing exploded worldwide. It became a necessity for many (now) remote workers.
+No ano de 2020 as video conferências explodiram pelo globo. Se tornaram uma necessidade para vários trabalhadores remotos.
 
-If you happen to be a lucky (debian-based) Linux user, this set of steps will show you how to use OBS Studio as a video source in any conferencing software (Google Meet, Zoom.us, Discord, etc.). Here we go:
+Se você tiver a sorte de usar Linux (baseado em Debian), esse passo-a-passo vai te mostrar como usar o OBS Studio como uma fonte de vídeo em qualquer programa de conferência (Google Meet, Zoom, Discord, etc). Vamos lá:
 
-## Install OBS, libOBS, v4l loopback, qt-dev
+## Instalar OBS, libOBS, v4l loopback, qt-dev
 
 ```shell
 sudo apt-get install obs-studio libobs-dev v4l2loopback-dkms qtbase5-dev
 ```
 
-## Configure the kernel module (v4l2loopback)
+## Configurar o módulo de kernel `v4l2loopback`
 
 ```shell
 sudo echo v4l2loopback > /etc/modules-load.d/v4l2loopback.conf
@@ -24,13 +24,13 @@ sudo depmod -a
 sudo modprobe v4l2loopback
 ```
 
-Parameters:
-- `video_nr` device number that will be created `/dev/video10`
-- `card_label` camera name that will show up on Meet/Zoom/Discord/etc
-- `exclusive_caps` to work with Google Chrome
+Parâmetros:
+- `video_nr` número do dispositivo que será criado `/dev/video10`
+- `card_label` nome da câmera virtual que vai aparecer no Meet/Zoom/Discord/etc
+- `exclusive_caps` pra funcionar com o Google Chrome 🤷
 
 
-## Install the OBS plugin (v4l2sink)
+## Instalar o plugin de OBS `v4l2sink`
 
 ```shell
 git clone --recursive https://github.com/obsproject/obs-studio.git # OBS
@@ -44,9 +44,7 @@ sudo make install
 ```
 
 
-_(edit: I just found out how to install plugins on your home dir instead of messing around your system's filesystem)_
-
-It'll be installed in `/usr/lib/obs-plugins`, but let's install it on our home directory:
+O plugin vai ser instalado em `/usr/lib/obs-plugins`, mas vamos colocar na nossa pasta home:
 
 ```shell
 mkdir -p ~/.config/obs-studio/plugins/v4l2sink/{data,bin/64bit}
@@ -54,8 +52,12 @@ ln -sf /usr/lib/obs-plugins/v4l2sink.so ~/.config/obs-studio/plugins/v4l2sink/bi
 ln -sf /usr/share/obs-plugins/v4l2sink/locale ~/.config/obs-studio/plugins/v4l2sink/data/
 ```
 
-If all worked, on the `Tools` menu there'll be an item `V4L2 Video Output`.
-Set the device to `/dev/video10`, the video format to `YUY2`. Click on `Auto-Start`, `Start` and create a scene...
+Caso tenha funcionado, vai no menu `Tools`. Vai ter a opção `V4L2 Video Output`. Defina o dispositivo (device) como `/dev/video10`, o formato para `YUY2`, clique em `Auto-Start` e em `Start`. Aí é só criar uma cena no seu OBS e abrir sua câmera em outro programa!
 
-Happy conferencing!
+Boas conferências ;)
+
+
+_
+
+= M =
 

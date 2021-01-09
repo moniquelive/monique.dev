@@ -1,21 +1,25 @@
 ---
-title: Memory efficient parsing in GO
-date: 2021-01-08T12:01:00-03:00
+title: Parsing em GO com uso eficiente da memória
+date: 2020-10-21T12:00:00-03:00
 description:
 tags: [go,golang,json,xml,stream]
 cover_image: https://miro.medium.com/max/4800/1*xGNVMFqXXTeK7ZyK2eN21Q.jpeg
 ---
 
-Instead of greedily reading the whole stream in memory and passing it to `json.Unmarshal`:
+Ao invés de ler todo o fluxo gulosamente em memória e passá-lo para `json.Unmarshal`:
 
 ```go
-json.Unmarshal(bigBlobOfData, &myStruct)
+json.Unmarshal(umMonteDeBytes, &minhaStruct)
 ```
 
-We can delegate the stream reading to our dear masters of golang:
+Nós podemos delegar a leitura do fluxo para os nossos queridos mestres da golang:
 
 ```go
-json.NewDecoder(myIOReader).Decode(&myStruct)
+json.NewDecoder(meuIOReader).Decode(&minhaStruct)
 ```
 
-And read multi giga(tera?)bytes files with no sweat. Also works with `xml.NewDecoder`.
+E ler arquivos de multi-giga(tera?)bytes sem suor. Também funciona com `xml.NewDecoder`.
+
+_
+
+= M =

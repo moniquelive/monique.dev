@@ -1,28 +1,28 @@
 ---
-title: "Haskell LSP (bonus: for Vim)"
-date: 2021-01-08T17:22:20-03:00
+title: "LSP de Haskell (bonus: com Vim)"
+date: 2020-10-26T12:00:00-03:00
 tags: [haskell,vim,lsp]
 cover_image: https://www.techort.com/wp-content/uploads/2019/01/applicative-parsers-on-haskell-habr.png
 ---
 
-So you enjoy coding in Haskell. And you heard kids nowadays code using this [LSP][lsp] thingy.
+Então você curte codar em Haskell. E você ouviu dizer que os jovens hoje em dia usam esse negócio chamado [LSP][lsp].
 
-Let's cut to the chase: LSP is a spec that standardizes auto-completion, code navigation, linting, and all good stuff usually found in modern IDE's. In order to use LSP with your favorite language you'll need a language server to communicate with your editor of choice.
+Direto ao ponto: `LSP` é uma especificação que padroniza o auto-complete, navegação no código, linting, essas facilidades normalmente encontradas somente em IDE's. E pra usar o tal do `LSP` é preciso ter um _servidor de linguagem_ que se comunica com o seu editor preferido.
 
-In this article we'll focus on [haskell's language server][hls]. Not long ago the language server of choice used to be `hie` but now it's deprecated.
+Neste artigo vamos focar no `LSP` de Haskell ([haskell's language server][hls]). Há um tempo atrás o `LSP` padrão de Haskell era o `HIE`, mas foi descontinuado.
 
-So let's get started! Assuming you have Haskell Stack up and running:
+Vamos começar então! Assumindo que você tem o [Haskell Stack][stack] instalado:
 
 ```bash
-$ stack install ghcid hspec-discover # optional but great
+$ stack install ghcid hspec-discover # opcional mas recomendado
 $ git clone https://github.com/haskell/haskell-language-server --recurse-submodules
 $ cd haskell-language-server
 $ stack ./install.hs help
 $ stack ./install.hs hls
 ```
-The binaries we'll be at the usual place: `~/.local/bin`
+Os binários são instalados em `~/.local/bin`
 
-Right, but how do I use it? Well it depends on your editor. Let me show you how I do it in my `.vimrc`:
+Certo, mas como usá-lo agora? Bem, depende do seu editor. Vou mostrar como faço no meu `.vimrc`:
 
 ```VimL
 Plug 'prabirshrestha/vim-lsp'
@@ -31,10 +31,10 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
 ```
 
-Please read their documentation!
+Leia a documentação destes plugins para tirar melhor proveito deles!
 
 ```VimL
-" vim-lsp-settings won't detect hls automatically as of today (2020-10-26). Let's teach it:
+" o plugin vim-lsp-settings não detecta o hls automaticamente. Vamos ensinar pra ele:
 if (executable('haskell-language-server-wrapper'))
   au User lsp_setup call lsp#register_server({
       \ 'name': 'haskell-language-server-wrapper',
@@ -43,7 +43,7 @@ if (executable('haskell-language-server-wrapper'))
       \ })
 endif
 
-" My Mappings
+" Meus atalhos
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -60,18 +60,18 @@ function! s:on_lsp_buffer_enabled() abort
     xmap <buffer> f <plug>(lsp-document-range-format)
     nmap <buffer> <F5> <plug>(lsp-code-lens)
 
-    " buffer format on save
+    " reformatar sempre ao gravar (as vezes irritante)
     " autocmd BufWritePre <buffer> LspDocumentFormatSync
 endfunction
 
-" Decorations
+" Decorações
 augroup lsp_install
     au!
-    let g:lsp_signs_enabled = 1         " enable signs
-    let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+    let g:lsp_signs_enabled = 1                                             " liga signs
+    let g:lsp_diagnostics_echo_cursor = 1                                   " liga ecoar sob o cursor no modo normal
     let g:lsp_signs_error = {'text': '✗'}
-    " let g:lsp_signs_warning = {'text': '‼', 'icon': '/path/to/some/icon'} " icons require GUI
-    " let g:lsp_signs_hint = {'icon': '/path/to/some/other/icon'} " icons require GUI
+    " let g:lsp_signs_warning = {'text': '‼', 'icon': '/path/to/some/icon'} " ícones só na versão gráfica
+    " let g:lsp_signs_hint = {'icon': '/path/to/some/other/icon'}           " ícones só na versão gráfica
     let g:lsp_signs_warning = {'text': '‼'}
     let g:lsp_highlight_references_enabled = 1
     highlight link LspErrorText GruvboxRedSign " requires gruvbox
@@ -79,14 +79,14 @@ augroup lsp_install
     " highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
     highlight lspReference guibg=#303010
 
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    " chama s:on_lsp_buffer_enabled somente para linguagens cadastradas no LSP
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 ```
 
-The first time you start vim with a Haskell file it'll take a while (you can check vim-lsp's status with `:LspStatus`). As soon as a left margin (1 character wide) shows up, you're good to go!
+A primeira vez que iniciar o vim com um arquivo Haskell vai levar um tempinho pra carregar (verifique o status com `:LspStatus`). Assim que a margem esquerda do editor ficar com um espaço de 1 letra quer dizer que funcionou!
 
-Now your Vim is an LSP powerhouse:
+Agora seu Vim fala `LSP`:
 
 * Hover:
 
@@ -98,7 +98,10 @@ Now your Vim is an LSP powerhouse:
 
 etc. etc. etc.
 
-Enjoy!
+_
+
+= M =
 
 [lsp]: https://microsoft.github.io/language-server-protocol/ "Language Server Protocol"
 [hls]: https://github.com/haskell/haskell-language-server "Haskell Language Server"
+[stack]: https://docs.haskellstack.org/en/stable/README/ "Haskell Stack"
