@@ -6,9 +6,9 @@ Install OBS, libOBS, v4l loopback, qt-dev sudo apt-get install obs-studio libobs
 Let&amp;rsquo;s cut to the chase: LSP is a spec that standardizes auto-completion, code navigation, linting, and all good stuff usually found in modern IDE&amp;rsquo;s. In order to use LSP with your favorite language you&amp;rsquo;ll need a language server to communicate with your editor of choice.
 In this article we&amp;rsquo;ll focus on haskell&amp;rsquo;s language server. Not long ago the language server of choice used to be hie but now it&amp;rsquo;s deprecated.</description></item><item><title>Memory efficient parsing in GO</title><link>https://monique.dev/posts/go-parsing/</link><pubDate>Fri, 08 Jan 2021 12:01:00 -0300</pubDate><guid>https://monique.dev/posts/go-parsing/</guid><description>Instead of greedily reading the whole stream in memory and passing it to json.Unmarshal:
 json.Unmarshal(bigBlobOfData, &amp;amp;myStruct) We can delegate the stream reading to our dear masters of golang:
-json.NewDecoder(myIOReader).Decode(&amp;amp;myStruct) And read multi giga(tera?)bytes files with no sweat. Also works with xml.NewDecoder.</description></item><item><title>How to parse a key-value pair list with AWK</title><link>https://monique.dev/posts/awk/</link><pubDate>Fri, 08 Jan 2021 12:00:00 -0300</pubDate><guid>https://monique.dev/posts/awk/</guid><description>A simple example, using env as input:
-$ env | grep EDITOR EDITOR=vim $ env | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;EDITOR&amp;#34;])}&amp;#39; vim It&amp;rsquo;s way easier to just do echo $EDITOR though.
-But sometimes it&amp;rsquo;s not so easy:
-$ xdotool getactivewindow getwindowgeometry --shell | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;WIDTH&amp;#34;])}&amp;#39; 1430 If you want to get the current window&amp;rsquo;s width.
+json.NewDecoder(myIOReader).Decode(&amp;amp;myStruct) And read multi giga(tera?)bytes files with no sweat. Also works with xml.NewDecoder.</description></item><item><title>Como interpretar uma lista de pares chave-valor com AWK</title><link>https://monique.dev/posts/awk/</link><pubDate>Mon, 07 Sep 2020 12:00:00 -0300</pubDate><guid>https://monique.dev/posts/awk/</guid><description>Um exemplo simples, usando env como entrada:
+$ env | grep EDITOR EDITOR=vim $ env | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;EDITOR&amp;#34;])}&amp;#39; vim Entretanto, é muito mais fácil fazer echo $EDITOR.
+Mas as vezes não é tão fácil:
+$ xdotool getactivewindow getwindowgeometry --shell | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;WIDTH&amp;#34;])}&amp;#39; 1430 Caso queira pegar a largura da janela ativa.
 _
 = M =</description></item></channel></rss>
