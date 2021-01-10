@@ -1,31 +1,38 @@
 baseURL: https://monique.dev/
-languageCode: pt-br
 title: monique.dev
+theme: hugo-notepadium #m10c
+copyright: "©2021 MoniqueLive."
+
+languageCode: pt-br
+defaultContentLanguage: pt-br
+
 googleAnalytics: UA-129884631-3
 disqusShortname: monique-dev
-
-theme: m10c
+enableRobotsTXT: true
 
 params:
   author: Cyber
-  description: Traduções das minhas postagens do site dev.to
-  avatar: logo.jpg
   favicon: logo.jpg
+  style: dark
+  logo: logo.jpg
+  slogan: Traduções das minhas postagens do site dev.to
+  nav:
+    showCategories: true
+    showTags: true
+    custom:
+      - title: Sobre
+        url: /about
+      - title: RSS
+        url: /index.xml
+  comments:
+    enable: true
 
-  # Green theme
-  style:
-    darkestColor: "#24232B" # "#315659"
-    darkColor: "#373945" # "#253031"
-    primaryColor: "#826190" # "#dad865"
-    lightColor:  "#ddd"
-    lightestColor: "#fff" # "#fff"
-
-  social:
-    - name: github
-      url: https://github.com/lccro
-    - name: twitter
-      url: https://twitter.com/moniquelive
-    - name: instagram
-      url: https://www.instagram.com/moniquelive.dev/
-    - name: layers
-      url: https://stackoverflow.com/users/9793/cyber-oliveira
+  profile:
+    enable: true
+    avatar: logo.jpg
+    name: monique.dev
+    bio: ""
+    twitter: moniquelive
+    github: lccro
+    instagram: moniquelive.dev
+    stack-overflow: https://stackoverflow.com/users/9793/cyber-oliveira
