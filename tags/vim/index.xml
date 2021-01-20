@@ -1,4 +1,30 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vim on monique.dev</title><link>https://monique.dev/tags/vim/</link><description>Recent content in vim on monique.dev</description><generator>Hugo -- gohugo.io</generator><language>pt-br</language><copyright>©2021 MoniqueLive.</copyright><lastBuildDate>Mon, 26 Oct 2020 12:00:00 -0300</lastBuildDate><atom:link href="https://monique.dev/tags/vim/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://monique.dev/archives/</link><pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate><guid>https://monique.dev/archives/</guid><description/></item><item><title>OpenCV instalado globalmente com autocomplete no PyCharm</title><link>https://monique.dev/posts/opencv-autocomplete-pycharm/</link><pubDate>Mon, 28 Dec 2020 12:00:00 -0300</pubDate><guid>https://monique.dev/posts/opencv-autocomplete-pycharm/</guid><description>&lt;h2 id="intro">Intro&lt;/h2>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vim on monique.dev</title><link>https://monique.dev/tags/vim/</link><description>Recent content in vim on monique.dev</description><generator>Hugo -- gohugo.io</generator><language>pt-br</language><copyright>©2021 MoniqueLive.</copyright><lastBuildDate>Mon, 26 Oct 2020 12:00:00 -0300</lastBuildDate><atom:link href="https://monique.dev/tags/vim/index.xml" rel="self" type="application/rss+xml"/><item><title>Pre-compiled pytorch versions</title><link>https://monique.dev/posts/pre-compiled-pytorch/</link><pubDate>Wed, 20 Jan 2021 15:00:00 -0300</pubDate><guid>https://monique.dev/posts/pre-compiled-pytorch/</guid><description>&lt;p>Acabo de descobrir um repositório que salvou minha pele, então resolvi vir aqui compartilhar com vocês.&lt;/p>
+&lt;p>Se você abrir o site do &lt;code>pytorch&lt;/code>, ele te apresenta algumas opções de instalação:&lt;/p>
+&lt;p>&lt;img src="https://dev-to-uploads.s3.amazonaws.com/i/oixb0x4hndw3ddm10gub.png"
+alt="Alt Text"/>&lt;/p>
+&lt;p>A questão é que, se você quiser instalar uma versão diferente da apresentada (hoje é a 1.7.1), vai começar uma caça ao tesouro bem chatinha&amp;hellip;&lt;/p>
+&lt;p>Existe uma página - que sei lá o porquê me levou um tempo pra achar - aqui:&lt;/p>
+&lt;pre>&lt;code class="language-console" data-lang="console">https://download.pytorch.org/whl/torch_stable.html
+&lt;/code>&lt;/pre>&lt;p>Mas não é necessário abrir esse link! Você pode pedir ao &lt;code>pip&lt;/code> pra buscar pra você:&lt;/p>
+&lt;pre>&lt;code class="language-console" data-lang="console">pip[3] install pytorch==1.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+&lt;/code>&lt;/pre>&lt;p>E voilá, seu pacote vai ser instalado automagicamente ;)&lt;/p>
+&lt;p>Algumas dicas extras:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Algumas versões de &lt;code>cuda&lt;/code> são consideradas &amp;ldquo;default&amp;rdquo;. Por exemplo, se você procurar por &lt;code>1.6.0+cu102&lt;/code> não vai ter lá, porque &lt;code>pip install cuda==1.6.0&lt;/code> vai buscar automaticamente a versão com cuda &lt;code>10.2&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Se for masoquista e quiser instalar uma versão CPU-only: &lt;code>pip install 1.6.0+cpu&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Para salvar esse repositório no seu &lt;code>requirements.txt&lt;/code>, basta adicionar como primeira linha:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-console" data-lang="console">-f https://download.pytorch.org/whl/torch_stable.html
+...
+torch==1.6.0+cu110
+...
+&lt;/code>&lt;/pre>&lt;p>Happy torching!&lt;/p></description></item><item><title/><link>https://monique.dev/archives/</link><pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate><guid>https://monique.dev/archives/</guid><description/></item><item><title>OpenCV instalado globalmente com autocomplete no PyCharm</title><link>https://monique.dev/posts/opencv-autocomplete-pycharm/</link><pubDate>Mon, 28 Dec 2020 12:00:00 -0300</pubDate><guid>https://monique.dev/posts/opencv-autocomplete-pycharm/</guid><description>&lt;h2 id="intro">Intro&lt;/h2>
 &lt;p>Por um bom tempo utilizei o módulo &lt;a href="https://virtualenv.pypa.io/en/latest/"title="Virtual Env"target="_blank">virtualenv&lt;/a>. Mas desde que aprendi sobre o módulo padrão de python &lt;a href="https://docs.python.org/3/tutorial/venv.html"title="venv"target="_blank">venv&lt;/a> nunca mais voltei.&lt;/p>
 &lt;p>Pra começar ele já vem instalado com o python (se não veio, basta instalar o pacote &lt;code>python3-venv&lt;/code>). Ele também é mais previsível do que o &lt;code>virtualenv&lt;/code>, já que não é necessário mexer nos seus arquivos de login &lt;code>.{bash/zsh/fish}rc&lt;/code> e o uso padrão é instalá-lo na raíz do seu projeto.&lt;/p>
 &lt;p>Mas esse isolamento tem uma excessão, que são os módulos que precisam ser compilados na sua máquina. O &lt;code>OpenCV&lt;/code> é um deles. Você pode usar o pacote pronto &lt;code>opencv-python-contrib&lt;/code> mas não vai tirar vantagem da sua GPU reluzente, por exemplo.&lt;/p>
@@ -146,32 +172,6 @@ vim
 &lt;span style="color:#ae81ff">1430&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Caso queira pegar a largura da janela ativa.&lt;/p>
 &lt;p>_&lt;/p>
-&lt;p>= M =&lt;/p></description></item><item><title>Pre-compiled pytorch versions</title><link>https://monique.dev/posts/pre-compiled-pytorch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/posts/pre-compiled-pytorch/</guid><description>&lt;p>Acabo de descobrir um repositório que salvou minha pele, então resolvi vir aqui compartilhar com vocês.&lt;/p>
-&lt;p>Se você abrir o site do &lt;code>pytorch&lt;/code>, ele te apresenta algumas opções de instalação:&lt;/p>
-&lt;p>&lt;img src="https://dev-to-uploads.s3.amazonaws.com/i/oixb0x4hndw3ddm10gub.png"
-alt="Alt Text"/>&lt;/p>
-&lt;p>A questão é que, se você quiser instalar uma versão diferente da apresentada (hoje é a 1.7.1), vai começar uma caça ao tesouro bem chatinha&amp;hellip;&lt;/p>
-&lt;p>Existe uma página - que sei lá o porquê me levou um tempo pra achar - aqui:&lt;/p>
-&lt;pre>&lt;code class="language-console" data-lang="console">https://download.pytorch.org/whl/torch_stable.html
-&lt;/code>&lt;/pre>&lt;p>Mas não é necessário abrir esse link! Você pode pedir ao &lt;code>pip&lt;/code> pra buscar pra você:&lt;/p>
-&lt;pre>&lt;code class="language-console" data-lang="console">pip[3] install pytorch==1.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
-&lt;/code>&lt;/pre>&lt;p>E voilá, seu pacote vai ser instalado automagicamente ;)&lt;/p>
-&lt;p>Algumas dicas extras:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>Algumas versões de &lt;code>cuda&lt;/code> são consideradas &amp;ldquo;default&amp;rdquo;. Por exemplo, se você procurar por &lt;code>1.6.0+cu102&lt;/code> não vai ter lá, porque &lt;code>pip install cuda==1.6.0&lt;/code> vai buscar automaticamente a versão com cuda &lt;code>10.2&lt;/code>.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Se for masoquista e quiser instalar uma versão CPU-only: &lt;code>pip install 1.6.0+cpu&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Para salvar esse repositório no seu &lt;code>requirements.txt&lt;/code>, basta adicionar como primeira linha:&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;pre>&lt;code class="language-console" data-lang="console">-f https://download.pytorch.org/whl/torch_stable.html
-...
-torch==1.6.0+cu110
-...
-&lt;/code>&lt;/pre>&lt;p>Happy torching!&lt;/p></description></item><item><title>Sobre</title><link>https://monique.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/about/</guid><description>&lt;h1 id="lorem-ipsum">lorem ipsum&lt;/h1>
+&lt;p>= M =&lt;/p></description></item><item><title>Sobre</title><link>https://monique.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/about/</guid><description>&lt;h1 id="lorem-ipsum">lorem ipsum&lt;/h1>
 &lt;p>button: Sobre
 weight: 2&lt;/p></description></item></channel></rss>
