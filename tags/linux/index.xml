@@ -146,6 +146,32 @@ vim
 &lt;span style="color:#ae81ff">1430&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Caso queira pegar a largura da janela ativa.&lt;/p>
 &lt;p>_&lt;/p>
-&lt;p>= M =&lt;/p></description></item><item><title>Sobre</title><link>https://monique.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/about/</guid><description>&lt;h1 id="lorem-ipsum">lorem ipsum&lt;/h1>
+&lt;p>= M =&lt;/p></description></item><item><title>Pre-compiled pytorch versions</title><link>https://monique.dev/posts/pre-compiled-pytorch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/posts/pre-compiled-pytorch/</guid><description>&lt;p>Acabo de descobrir um repositório que salvou minha pele, então resolvi vir aqui compartilhar com vocês.&lt;/p>
+&lt;p>Se você abrir o site do &lt;code>pytorch&lt;/code>, ele te apresenta algumas opções de instalação:&lt;/p>
+&lt;p>&lt;img src="https://dev-to-uploads.s3.amazonaws.com/i/oixb0x4hndw3ddm10gub.png"
+alt="Alt Text"/>&lt;/p>
+&lt;p>A questão é que, se você quiser instalar uma versão diferente da apresentada (hoje é a 1.7.1), vai começar uma caça ao tesouro bem chatinha&amp;hellip;&lt;/p>
+&lt;p>Existe uma página - que sei lá o porquê me levou um tempo pra achar - aqui:&lt;/p>
+&lt;pre>&lt;code class="language-console" data-lang="console">https://download.pytorch.org/whl/torch_stable.html
+&lt;/code>&lt;/pre>&lt;p>Mas não é necessário abrir esse link! Você pode pedir ao &lt;code>pip&lt;/code> pra buscar pra você:&lt;/p>
+&lt;pre>&lt;code class="language-console" data-lang="console">pip[3] install pytorch==1.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+&lt;/code>&lt;/pre>&lt;p>E voilá, seu pacote vai ser instalado automagicamente ;)&lt;/p>
+&lt;p>Algumas dicas extras:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Algumas versões de &lt;code>cuda&lt;/code> são consideradas &amp;ldquo;default&amp;rdquo;. Por exemplo, se você procurar por &lt;code>1.6.0+cu102&lt;/code> não vai ter lá, porque &lt;code>pip install cuda==1.6.0&lt;/code> vai buscar automaticamente a versão com cuda &lt;code>10.2&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Se for masoquista e quiser instalar uma versão CPU-only: &lt;code>pip install 1.6.0+cpu&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Para salvar esse repositório no seu &lt;code>requirements.txt&lt;/code>, basta adicionar como primeira linha:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-console" data-lang="console">-f https://download.pytorch.org/whl/torch_stable.html
+...
+torch==1.6.0+cu110
+...
+&lt;/code>&lt;/pre>&lt;p>Happy torching!&lt;/p></description></item><item><title>Sobre</title><link>https://monique.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/about/</guid><description>&lt;h1 id="lorem-ipsum">lorem ipsum&lt;/h1>
 &lt;p>button: Sobre
 weight: 2&lt;/p></description></item></channel></rss>
