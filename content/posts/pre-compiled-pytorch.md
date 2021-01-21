@@ -1,5 +1,5 @@
 ---
-title: Pre-compiled pytorch versions
+title: Versões pré-compiladas de Pytorch
 date: 2021-01-20T15:00:00-03:00
 tags: [python, pytorch, cuda, gpu]
 cover_image: https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png
