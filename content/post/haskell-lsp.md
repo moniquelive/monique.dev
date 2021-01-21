@@ -13,12 +13,12 @@ Neste artigo vamos focar no `LSP` de Haskell ([haskell's language server][hls]).
 
 Vamos começar então! Assumindo que você tem o [Haskell Stack][stack] instalado:
 
-```bash
-$ stack install ghcid hspec-discover # opcional mas recomendado
-$ git clone https://github.com/haskell/haskell-language-server --recurse-submodules
-$ cd haskell-language-server
-$ stack ./install.hs help
-$ stack ./install.hs hls
+```shell
+stack install ghcid hspec-discover # opcional mas recomendado
+git clone https://github.com/haskell/haskell-language-server --recurse-submodules
+cd haskell-language-server
+stack ./install.hs help
+stack ./install.hs hls
 ```
 Os binários são instalados em `~/.local/bin`
 

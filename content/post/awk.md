@@ -8,12 +8,12 @@ cover_image: https://logodownload.org/wp-content/uploads/2017/11/gnu-logo.png
 Um exemplo simples, usando `env` como entrada:
 
 ```bash
-$ env | grep EDITOR
+env | grep EDITOR
 EDITOR=vim
 ```
 
 ```bash
-$ env | awk -F= '{a[$1]=$2} END {print(a["EDITOR"])}'
+env | awk -F= '{a[$1]=$2} END {print(a["EDITOR"])}'
 vim
 ```
 
@@ -22,7 +22,7 @@ Entretanto, é muito mais fácil fazer `echo $EDITOR`.
 Mas as vezes não é tão fácil:
 
 ```bash
-$ xdotool getactivewindow getwindowgeometry --shell | awk -F= '{a[$1]=$2} END {print(a["WIDTH"])}'
+xdotool getactivewindow getwindowgeometry --shell | awk -F= '{a[$1]=$2} END {print(a["WIDTH"])}'
 1430
 ```
 

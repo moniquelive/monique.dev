@@ -15,13 +15,13 @@ A questão é que, se você quiser instalar uma versão diferente da apresentada
 
 Existe uma página - que sei lá o porquê me levou um tempo pra achar - aqui:
 
-```console
+```shell
 https://download.pytorch.org/whl/torch_stable.html
 ```
 
 Mas não é necessário abrir esse link! Você pode pedir ao `pip` pra buscar pra você:
 
-```console
+```shell
 pip[3] install pytorch==1.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
@@ -35,7 +35,7 @@ Algumas dicas extras:
 
 3. Para salvar esse repositório no seu `requirements.txt`, basta adicionar como primeira linha:
 
-```console
+```shell
 -f https://download.pytorch.org/whl/torch_stable.html
 
 ...

@@ -1,0 +1,102 @@
+# ===== title =====
+archive:
+  other: "Arquivo"
+
+tags:
+  other: "Tags"
+
+categories:
+  other: "Categorias"
+
+# ===== footer =====
+powered:
+  other: "Powered by %s"
+
+theme:
+  other: "Tema"
+
+siteUV:
+  other: "%s usuários"
+
+sitePV:
+  other: "%s visualizações"
+
+pagePV:
+  other: "lido %s vezes"
+
+# ===== post =====
+prevPage:
+  other: "Anterior"
+
+nextPage:
+  other: "Próxima"
+
+prevPost:
+  other: "Anterior"
+
+nextPost:
+  other: "Próximo"
+
+toc:
+  other: "Conteúdo"
+
+readMore:
+  other: "Continua..."
+
+reward:
+  other: "Reward"
+
+rewardAlipay:
+  other: "alipay"
+
+rewardWechat:
+  other: "wechat"
+
+wordCount:
+  one: "{{ .Count }} palavra"
+  other: "{{ .Count }} palavras"
+
+readingTime:
+  one: "{{ .Count }} min."
+  other: "{{ .Count }} mins."
+
+outdatedInfoWarningBefore:
+  other: "[NOTE] Atualizado "
+
+outdatedInfoWarningAfter:
+  other: ". This article may have outdated content or subject matter."
+
+# ===== content license =====
+author:
+  other: "Autor"
+
+lastMod:
+  other: "Modif."
+
+markdown:
+  other: "Markdown"
+
+seeMarkDown:
+  other: "The Markdown version »"
+
+license:
+  other: "Licença"
+
+# ===== counter =====
+archiveCounter:
+  one: "{{ .Count }} Post"
+  other: "{{ .Count }} Posts"
+
+tagCounter:
+  one: "{{ .Count }} Tag"
+  other: "{{ .Count }} Tags"
+
+zeroTagCounter:
+  other: "Sem tags"
+
+categoryCounter:
+  one: "{{ .Count }} Categoria"
+  other: "{{ .Count }} Categorias"
+
+zeroCategoryCounter:
+  other: "Sem categorias"

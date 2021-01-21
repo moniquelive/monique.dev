@@ -1,38 +1,73 @@
 baseURL: https://monique.dev/
 title: monique.dev
-theme: hugo-notepadium #m10c
-copyright: "©2021 MoniqueLive."
+theme: even
 
 languageCode: pt-br
 defaultContentLanguage: pt-br
 
+paginate: 5
+copyright: "MoniqueLive"
 googleAnalytics: UA-129884631-3
 disqusShortname: monique-dev
 enableRobotsTXT: true
+enableEmoji: true
+
+author:
+  name: Cyber
+
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+  filename: sitemap.xml
+
+menu:
+  main:
+    - name: Arquivo
+      url: /post/
+      identifier: archives
+      weight: 10
+    - name: Tags
+      url: /tags/
+      identifier: tags
+      weight: 20
+    - name: Sobre
+      url: /about
+      identifier: about
+      weight: 999
+#    - name: Categorias
+#      url: /categories/
+#      identifier: categories
+#      weight: 10
+
+pygmentsOptions: linenos=table
+pygmentsCodefences: true
+pygmentsUseClasses: true
+pygmentsCodefencesGuessSyntax: true
 
 params:
-  author: Cyber
-  favicon: logo.jpg
-  style: dark
-  logo: logo.jpg
-  slogan: Traduções das minhas postagens do site dev.to
-  nav:
-    showCategories: true
-    showTags: true
-    custom:
-      - title: Sobre
-        url: /about
-      - title: RSS
-        url: /index.xml
-  comments:
-    enable: true
+  version: 4.x           # Used to give a friendly message when you have an incompatible update
+  debug: false           # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
+  since: 2021
 
-  profile:
-    enable: true
-    avatar: logo.jpg
-    name: monique.dev
-    bio: ""
-    twitter: moniquelive
-    github: lccro
-    instagram: moniquelive.dev
-    stack-overflow: https://stackoverflow.com/users/9793/cyber-oliveira
+  logo: logo.jpg
+  logoTitle: Traduções dos meus posts do dev.to
+  description: Traduções das minhas postagens do site dev.to
+
+  archivePaginate: 50
+  showArchiveCount: true
+  dateFormatToUse: "2006-01-02"
+  moreMeta: true
+
+  toc: true
+  autoCollapseToc: false
+  fancybox: true
+
+  postMetaInFooter: false
+  contentCopyright: '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">'
+
+  social:
+    a-twitter: https://twitter.com/moniquelive
+    b-github: https://github.com/lccro
+    c-instagram: https://instagram.com/moniquelive.dev
+    d-stack-overflow: https://stackoverflow.com/users/9793/cyber-oliveira
+
