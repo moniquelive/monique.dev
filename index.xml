@@ -16,4 +16,4 @@ _
 1 2 env | grep EDITOR EDITOR=vim 1 2 env | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;EDITOR&amp;#34;])}&amp;#39; vim Entretanto, é muito mais fácil fazer echo $EDITOR.
 Mas as vezes não é tão fácil:
 1 2 xdotool getactivewindow getwindowgeometry --shell | awk -F= &amp;#39;{a[$1]=$2} END {print(a[&amp;#34;WIDTH&amp;#34;])}&amp;#39; 1430 Caso queira pegar a largura da janela ativa.
-_</description></item><item><title>Sobre</title><link>https://monique.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/about/</guid><description>lorem ipsum button: Sobre weight: 2</description></item></channel></rss>
+_</description></item><item><title>Sobre</title><link>https://monique.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://monique.dev/about/</guid><description>Links https://twitter.com/moniquelive https://github.com/lccro https://instagram.com/moniquelive.dev https://stackoverflow.com/users/9793/cyber-oliveira</description></item></channel></rss>
