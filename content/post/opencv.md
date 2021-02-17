@@ -158,7 +158,7 @@ Compare essa saída com a do cmake. Verifique as dependencias e a data. Se nao b
 
 # Usar
 
-Para usar o OpenCV em um venv (leia mais sobre venv's [aqui](https://dev.to/moniquelive/autocompletion-globally-installed-opencv-with-pycharm-308a)) use as flags:
+Para usar o OpenCV em um venv (leia mais sobre venv's [aqui](/post/opencv-autocomplete-pycharm/)) use as flags:
 
 ```bash
 python -mvenv --system-site-packages venv 
