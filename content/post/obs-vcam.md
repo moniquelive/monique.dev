@@ -18,6 +18,7 @@ sudo apt-get install obs-studio libobs-dev v4l2loopback-dkms qtbase5-dev
 ## Configurar o módulo de kernel `v4l2loopback`
 
 ```shell
+sudo touch /etc/modules-load.d/v4l2loopback.conf
 sudo echo v4l2loopback > /etc/modules-load.d/v4l2loopback.conf
 sudo echo 'options v4l2loopback card_label="OBS Video Source" video_nr=10 exclusive_caps=1' > /etc/modprobe.d/v4l2-obs-studio.conf
 sudo depmod -a
