@@ -1,4 +1,4 @@
-![Publish Site](https://github.com/lccro/monique.dev/workflows/Publish%20Site/badge.svg)
+![Publish Site](https://github.com/moniquelive/monique.dev/workflows/Publish%20Site/badge.svg)
 
 # monique.dev
 

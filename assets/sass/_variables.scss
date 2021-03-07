@@ -78,25 +78,14 @@ $global-headings: (
 // Padding of the site header.
 $header-padding: 20px 20px !default;
 
-// Font family: Chancery
-@font-face {
-  font-family: 'Chancery';
-  src: url('../fonts/chancery/apple-chancery-webfont.eot');
-  src: local('Apple Chancery'), url('../fonts/chancery/apple-chancery-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/chancery/apple-chancery-webfont.woff2') format('woff2'),
-  url('../fonts/chancery/apple-chancery-webfont.woff') format('woff'),
-  url('../fonts/chancery/apple-chancery-webfont.ttf') format('truetype'),
-  url('../fonts/chancery/apple-chancery-webfont.svg#apple-chancery') format('svg');
-  font-weight: lighter;
-  font-style: normal;
-  font-display: swap;
-}
+// Logo font - Alegreya
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
 
 // Font size of the logo.
 $logo-font-size: 48px !default;
 
 // Font family of the logo.
-$logo-font-family: 'Chancery', cursive, LiSu, sans-serif !default;
+$logo-font-family: Alegreya, sans-serif !default;
 
 // Margin of menu item.
 $menu-item-margin-left: 10px !default;
