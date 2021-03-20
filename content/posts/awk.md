@@ -2,7 +2,7 @@
 title: Como interpretar uma lista de pares chave-valor com AWK
 date: 2020-09-07T12:00:00-03:00
 tags: [awk, parse, shell, oneliner]
-cover_image: https://logodownload.org/wp-content/uploads/2017/11/gnu-logo.png
+#featuredImage: https://logodownload.org/wp-content/uploads/2017/11/gnu-logo.png
 ---
 
 Um exemplo simples, usando `env` como entrada:
