@@ -1,18 +1,20 @@
 baseURL: https://monique.dev/
+title: monique.dev
+theme: coder
 defaultContentLanguage: pt-br
 languageCode: pt-br
-title: monique.dev
 
-theme: LoveIt
+paginate: 20
 
-#paginate: 5
-#copyright: "MoniqueLive"
+pygmentscodefences: true
+pygmentscodefencesguesssyntax: true
+
+disqusShortname: monique-dev
+googleAnalytics: UA-129884631-3
+
 enableRobotsTXT: true
 enableEmoji: true
 enableGitInfo: true
-
-author:
-  name: Cyber
 
 sitemap:
   changefreq: weekly
@@ -21,96 +23,63 @@ sitemap:
 
 menu:
   main:
-    - name: Arquivo
-      url: /posts/
+    - name: Blog
+      url: /posts
       identifier: archives
       weight: 10
     - name: Tags
-      url: /tags/
+      url: /tags
       identifier: tags
       weight: 20
-    - name: Categorias
-      url: /categories/
-      identifier: categories
-      weight: 30
     - name: Sobre
       url: /about
       identifier: about
       weight: 999
 
-languages:
-  pt-br:
-    params:
-      home:
-        profile:
-          enable: true
-          avatarURL: logo.jpg
-          title: Monique.dev
-          subtitle: Traduções das minhas postagens do site dev.to
-          typeit: true
-          social: true
-
 params:
-  version: 0.2.X
-  defaultTheme: dark
+  author: moniquelive
+  info: Traduções das minhas postagens do site dev.to
+  avatarurl: /logo.jpg
+  colorScheme: dark
   gitRepo: https://github.com/moniquelive/monique.dev
   dateFormat: "2006-01-02"
-
-  app:
-    title: Monique.dev
-  search:
-    enable: true
-    type: lunr
-  header:
-    title:
-      logo: /logo.jpg
-      name: Monique.dev
-
-  footer:
-    hugo: true
-    copyright: true
-    author: true
-    since: 2020
-    license: '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+  enableTwemoji: true
+  since: 2020
+  footercontent: '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
 
   social:
-    twitter: moniquelive
-    github: moniquelive
-    instagram: moniquelive.dev
-    linkedin: moniquelive
-    youtubechannel: UCML4uqYh36vkI0UTTGBxByg
-    devto: moniquelive
-    whatsapp: 5521982820415?text=%23mandaaudios&lang=pt_br
-    RSS: true
-    stackoverflow:
-      id: 9793/cyber-oliveira
-      Icon:
-        Class: fab fa-stack-overflow fa-fw
-
-  page:
-    share:
-      enable: true
-      Twitter: true
-      Facebook: true
-      Linkedin: true
-
-    comment:
-      enable: true
-      disqus:
-        enable: true
-        shortname: monique-dev
-
-  analytics:
-    enable: true
-    google:
-      id: UA-129884631-3
-      anonymizeIP: true
+    - name: twitter
+      icon: fa fa-twitter fa-2x
+      url: https://twitter.com/moniquelive
+    - name: github
+      icon: fa fa-github fa-2x
+      url: https://github.com/moniquelive
+    - name: instagram
+      icon: fa fa-instagram fa-2x
+      url: https://instagram.com/moniquelive.dev
+    - name: linkedin
+      icon: fa fa-linkedin fa-2x
+      url: https://linkedin.com/in/moniquelive
+    - name: youtube
+      icon: fa fa-youtube fa-2x
+      url: https://youtube.com/channel/UCML4uqYh36vkI0UTTGBxByg
+#    - name: dev.to
+#      icon: fab fa-dev fa-2x
+#      url: https://devto.com/moniquelive
+    - name: whatsapp
+      icon: fa fa-whatsapp fa-2x
+      url: https://wa.me/5521982820415?text=%23mandaaudios&lang=pt_br
+    - name: stackoverflow
+      icon: fa fa-stack-overflow fa-2x
+      url: https://stackoverflow.com/users/9793/cyber-oliveira
+    - name: rss
+      icon: fa fa-rss fa-2x
+      url: /index.xml
 
 outputs:
   home:
     - HTML
     - RSS
-    - JSON
   page:
     - HTML
   section:

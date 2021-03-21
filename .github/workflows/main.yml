@@ -19,4 +19,3 @@ jobs:
         with:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
           cname: monique.dev
-          hugoVersion: 0.74.3
