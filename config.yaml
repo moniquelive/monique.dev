@@ -45,7 +45,7 @@ markup:
 
 params:
   author: moniquelive
-  title: moniquelive.dev
+  title: monique.dev
   description: Traduções das minhas postagens do site dev.to
   profilePicture: /logo.jpg
   images: ["/logo.jpg"]
