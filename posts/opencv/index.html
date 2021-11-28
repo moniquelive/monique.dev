@@ -4,7 +4,7 @@ moniquelive
 |
 Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)
 </title>
-<meta charset=utf-8><meta name=generator content="Hugo 0.87.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset=utf-8><meta name=generator content="Hugo 0.89.4"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name=description content="
       Traduções das minhas postagens do site dev.to
 
@@ -34,7 +34,7 @@ Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, Op
       
 
 
-    ","inLanguage":"pt-br","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/monique.dev\/posts\/opencv\/"},"author":{"@type":"Person","name":"moniquelive"},"creator":{"@type":"Person","name":"moniquelive"},"accountablePerson":{"@type":"Person","name":"moniquelive"},"copyrightHolder":{"@type":"Person","name":"moniquelive"},"copyrightYear":"2021","dateCreated":"2021-02-16T12:00:00.00Z","datePublished":"2021-02-16T12:00:00.00Z","dateModified":"2021-08-15T04:08:40.00Z","publisher":{"@type":"Organization","name":"moniquelive","url":"https://monique.dev/","logo":{"@type":"ImageObject","url":"https:\/\/monique.dev\/favicon-32x32.png","width":"32","height":"32"}},"image":["https://monique.dev/logo.jpg"],"url":"https:\/\/monique.dev\/posts\/opencv\/","wordCount":"991","genre":[],"keywords":["opencv","python","cuda"]}</script>
+    ","inLanguage":"pt-br","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/monique.dev\/posts\/opencv\/"},"author":{"@type":"Person","name":"moniquelive"},"creator":{"@type":"Person","name":"moniquelive"},"accountablePerson":{"@type":"Person","name":"moniquelive"},"copyrightHolder":{"@type":"Person","name":"moniquelive"},"copyrightYear":"2021","dateCreated":"2021-02-16T12:00:00.00Z","datePublished":"2021-02-16T12:00:00.00Z","dateModified":"2021-11-28T20:25:17.00Z","publisher":{"@type":"Organization","name":"moniquelive","url":"https://monique.dev/","logo":{"@type":"ImageObject","url":"https:\/\/monique.dev\/favicon-32x32.png","width":"32","height":"32"}},"image":["https://monique.dev/logo.jpg"],"url":"https:\/\/monique.dev\/posts\/opencv\/","wordCount":"991","genre":[],"keywords":["opencv","python","cuda"]}</script>
 </head>
 <body>
 <header><div class="page-top
@@ -151,12 +151,12 @@ animated fadeInDown">
 <p><img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9j200ku8p9m40i4yci2p.png alt="Alt Text"></p>
 <h1 id=dependências>Dependências</h1>
 <p>Se você instalar todas as dependências que eu apresentarei, você terá:</p>
-<pre><code class=language-console data-lang=console>--   OpenCV modules:
---     To be built:                 aruco bgsegm bioinspired calib3d ccalib core cudaarithm cudabgsegm cudacodec cudafeatures2d cudafilters cudaimgproc cudalegacy cudaobjdetect cudaoptflow cudastereo cudawarping cudev cvv datasets dnn dnn_objdetect dnn_superres dpm face features2d flann freetype fuzzy gapi hfs highgui img_hash imgcodecs imgproc intensity_transform line_descriptor mcc ml objdetect optflow phase_unwrapping photo plot python3 quality rapid reg rgbd saliency shape stereo stitching structured_light superres surface_matching text tracking video videoio videostab xfeatures2d ximgproc xobjdetect xphoto
---     Disabled:                    world
---     Disabled by dependency:      -
---     Unavailable:                 alphamat cnn_3dobj hdf java julia matlab ovis python2 sfm ts viz
-</code></pre><p>Instale:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=go>--   OpenCV modules:
+</span><span class=go>--     To be built:                 aruco bgsegm bioinspired calib3d ccalib core cudaarithm cudabgsegm cudacodec cudafeatures2d cudafilters cudaimgproc cudalegacy cudaobjdetect cudaoptflow cudastereo cudawarping cudev cvv datasets dnn dnn_objdetect dnn_superres dpm face features2d flann freetype fuzzy gapi hfs highgui img_hash imgcodecs imgproc intensity_transform line_descriptor mcc ml objdetect optflow phase_unwrapping photo plot python3 quality rapid reg rgbd saliency shape stereo stitching structured_light superres surface_matching text tracking video videoio videostab xfeatures2d ximgproc xobjdetect xphoto
+</span><span class=go>--     Disabled:                    world
+</span><span class=go>--     Disabled by dependency:      -
+</span><span class=go>--     Unavailable:                 alphamat cnn_3dobj hdf java julia matlab ovis python2 sfm ts viz
+</span></code></pre></div><p>Instale:</p>
 <ul>
 <li><code>python3 + numpy</code> - Eu normalmente instalo o OpenCV globalmente, por fora de qualquer ambiente virtual (venv/virtualenv). Dessa forma é possível reutiliza-lo depois adicionando ele nos seus ambientes virtuais. Essa é a saída esperada do cmake:
 <img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mkf4fj56cwg7joh5c0pj.png alt="Alt Text"></li>
@@ -238,10 +238,10 @@ animated fadeInDown">
 </code></pre></div><p>Essa é a única vez que precisamos evocar os super poderes do root, para poder copiar os arquivos para a pasta <code>/usr/local</code>.</p>
 <h1 id=validar>Validar</h1>
 <p>Para testar sua conquista:</p>
-<pre><code class=language-console data-lang=console>$ python3
-&gt;&gt;&gt; import cv2
-&gt;&gt;&gt; print(cv2.getBuildInformation())
-</code></pre><p>Compare essa saída com a do cmake. Verifique as dependencias e a data. Se nao baterem, desinstale o pip <code>opencv-contrib-python</code>.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=gp>$ </span>python3
+<span class=gp>&gt;</span>&gt;&gt; import cv2
+<span class=gp>&gt;</span>&gt;&gt; print<span class=o>(</span>cv2.getBuildInformation<span class=o>())</span>
+</code></pre></div><p>Compare essa saída com a do cmake. Verifique as dependencias e a data. Se nao baterem, desinstale o pip <code>opencv-contrib-python</code>.</p>
 <h1 id=usar>Usar</h1>
 <p>Para usar o OpenCV em um venv (leia mais sobre venv&rsquo;s <a href=/post/opencv-autocomplete-pycharm/>aqui</a>) use as flags:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>python -mvenv --system-site-packages venv
