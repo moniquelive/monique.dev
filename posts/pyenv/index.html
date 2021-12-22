@@ -2,7 +2,7 @@
 <title>
 moniquelive
 |
-Como interpretar uma lista de pares chave-valor com AWK
+Auto ativar e desativar python venv usando zsh
 </title>
 <meta charset=utf-8><meta name=generator content="Hugo 0.91.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name=description content="
@@ -19,23 +19,22 @@ Como interpretar uma lista de pares chave-valor com AWK
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=canonical href=/posts/awk/>
+<link rel=canonical href=/posts/pyenv/>
 <script type=text/javascript src=/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w=" crossorigin=anonymous></script>
 <script type=text/javascript src=/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus=" crossorigin=anonymous></script>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://monique.dev/logo.jpg">
-<meta name=twitter:title content="Como interpretar uma lista de pares chave-valor com AWK">
-<meta name=twitter:description content="Um exemplo simples, usando env como entrada:
-env | grep EDITOR EDITOR=vim env | awk -F= '{a[$1]=$2} END {print(a[&#34;EDITOR&#34;])}' vim Entretanto, é muito mais fácil fazer echo $EDITOR.">
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Como interpretar uma lista de pares chave-valor com AWK","headline":"Como interpretar uma lista de pares chave-valor com AWK","alternativeHeadline":"","description":"
+<meta name=twitter:title content="Auto ativar e desativar python venv usando zsh">
+<meta name=twitter:description content="Quando aprendi sobre o python venv (apt-get install python3-venv) me converti na hora.">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Auto ativar e desativar python venv usando zsh","headline":"Auto ativar e desativar python venv usando zsh","alternativeHeadline":"","description":"
       
-        Um exemplo simples, usando env como entrada:\nenv | grep EDITOR EDITOR=vim env | awk -F= \u0026#39;{a[$1]=$2} END {print(a[\u0026#34;EDITOR\u0026#34;])}\u0026#39; vim Entretanto, é muito mais fácil fazer echo $EDITOR.
+        Quando aprendi sobre o python venv (apt-get install python3-venv) me converti na hora.
 
 
       
 
 
-    ","inLanguage":"pt-br","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/monique.dev\/posts\/awk\/"},"author":{"@type":"Person","name":"moniquelive"},"creator":{"@type":"Person","name":"moniquelive"},"accountablePerson":{"@type":"Person","name":"moniquelive"},"copyrightHolder":{"@type":"Person","name":"moniquelive"},"copyrightYear":"2020","dateCreated":"2020-09-07T12:00:00.00Z","datePublished":"2020-09-07T12:00:00.00Z","dateModified":"2021-12-21T22:46:50.00Z","publisher":{"@type":"Organization","name":"moniquelive","url":"https://monique.dev/","logo":{"@type":"ImageObject","url":"https:\/\/monique.dev\/favicon-32x32.png","width":"32","height":"32"}},"image":["https://monique.dev/logo.jpg"],"url":"https:\/\/monique.dev\/posts\/awk\/","wordCount":"58","genre":[],"keywords":["awk","parse","shell","oneliner"]}</script>
+    ","inLanguage":"pt-br","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/monique.dev\/posts\/pyenv\/"},"author":{"@type":"Person","name":"moniquelive"},"creator":{"@type":"Person","name":"moniquelive"},"accountablePerson":{"@type":"Person","name":"moniquelive"},"copyrightHolder":{"@type":"Person","name":"moniquelive"},"copyrightYear":"2021","dateCreated":"2021-12-21T12:00:00.00Z","datePublished":"2021-12-21T12:00:00.00Z","dateModified":"2021-12-21T22:46:50.00Z","publisher":{"@type":"Organization","name":"moniquelive","url":"https://monique.dev/","logo":{"@type":"ImageObject","url":"https:\/\/monique.dev\/favicon-32x32.png","width":"32","height":"32"}},"image":["https://monique.dev/logo.jpg"],"url":"https:\/\/monique.dev\/posts\/pyenv\/","wordCount":"145","genre":[],"keywords":["python","venv","zsh","chpwd"]}</script>
 </head>
 <body>
 <header><div class="page-top
@@ -141,23 +140,35 @@ moniquelive
 animated fadeInDown">
 <div class=post-content>
 <div class=post-title>
-<h1>Como interpretar uma lista de pares chave-valor com AWK</h1>
-</div><p>Um exemplo simples, usando <code>env</code> como entrada:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>env <span class=p>|</span> grep EDITOR
-<span class=nv>EDITOR</span><span class=o>=</span>vim
-</code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>env <span class=p>|</span> awk -F<span class=o>=</span> <span class=s1>&#39;{a[$1]=$2} END {print(a[&#34;EDITOR&#34;])}&#39;</span>
-vim
-</code></pre></div><p>Entretanto, é muito mais fácil fazer <code>echo $EDITOR</code>.</p>
-<p>Mas as vezes não é tão fácil:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>xdotool getactivewindow getwindowgeometry --shell <span class=p>|</span> awk -F<span class=o>=</span> <span class=s1>&#39;{a[$1]=$2} END {print(a[&#34;WIDTH&#34;])}&#39;</span>
-<span class=m>1430</span>
-</code></pre></div><p>Caso queira pegar a largura da janela ativa.</p>
+<h1>Auto ativar e desativar python venv usando zsh</h1>
+</div><p>Quando aprendi sobre o python venv (<code>apt-get install python3-venv</code>) me
+converti na hora. É simples, padrão e explícito.</p>
+<p>Agora toda vez que crio um projeto automaticamente executo
+<code>python3 -mvenv venv && source ./venv/bin/activate</code>.</p>
+<p>Mas digitar <code>./venv/bin/activate</code> e depois <code>deactivate</code> é muito trabalho para
+meu cérebro preguiçoso de programadora.</p>
+<p>Então decidi investir finalmente 10 minutos para me liberar de ficar
+ativando e desativando esse negócio toda vez que eu entrasse ou saísse de uma
+pasta de projeto com minha pastinha padrão <code>./venv</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-zsh data-lang=zsh><span class=c1>#---------------------------------------------- chpwd pyvenv ---</span>
+python_venv<span class=o>()</span> <span class=o>{</span>
+  <span class=nv>MYVENV</span><span class=o>=</span>./venv
+  <span class=c1># when you cd into a folder that contains $MYVENV</span>
+  <span class=o>[[</span> -d <span class=nv>$MYVENV</span> <span class=o>]]</span> <span class=o>&amp;&amp;</span> <span class=nb>source</span> <span class=nv>$MYVENV</span>/bin/activate &gt; /dev/null 2&gt;<span class=p>&amp;</span><span class=m>1</span>
+  <span class=c1># when you cd into a folder that doesn&#39;t</span>
+  <span class=o>[[</span> ! -d <span class=nv>$MYVENV</span> <span class=o>]]</span> <span class=o>&amp;&amp;</span> deactivate &gt; /dev/null 2&gt;<span class=p>&amp;</span><span class=m>1</span>
+<span class=o>}</span>
+autoload -U add-zsh-hook
+add-zsh-hook chpwd python_venv
+
+python_venv
+</code></pre></div><p>Só colar isso no seu <code>~/.zshrc</code></p>
 <p>_</p>
 <p>= M =</p>
 </div>
 <div class=post-footer>
 <div class=info>
-<span class=separator><a class=tag href=/tags/awk/>awk</a><a class=tag href=/tags/parse/>parse</a><a class=tag href=/tags/shell/>shell</a><a class=tag href=/tags/oneliner/>oneliner</a></span>
+<span class=separator><a class=tag href=/tags/python/>python</a><a class=tag href=/tags/venv/>venv</a><a class=tag href=/tags/zsh/>zsh</a><a class=tag href=/tags/chpwd/>chpwd</a></span>
 </div>
 </div>
 </div>
