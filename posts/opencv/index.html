@@ -1,280 +1,69 @@
-<!doctype html><html dir=ltr lang=pt-br data-theme=dark><head>
-<title>
-moniquelive
-|
-Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)
-</title>
-<meta charset=utf-8><meta name=generator content="Hugo 0.91.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name=description content="
-      Traduções das minhas postagens do site dev.to
-
-
-    ">
-<link rel=stylesheet href=/css/main.min.51423ad97099a08f3a20e16d238c13adae76db7dd5e1913789bdc81143ff4cc6.css integrity="sha256-UUI62XCZoI86IOFtI4wTra52233V4ZE3ib3IEUP/TMY=" crossorigin=anonymous type=text/css>
-<link rel=stylesheet href=/css/markupHighlight.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css integrity="sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=" crossorigin=anonymous type=text/css>
-<link rel=stylesheet href=/css/custom.min.d827acdc2fb0193523d2c9f73e0b68591e5db636696873a370319dc8c6fe20a2.css integrity="sha256-2Ces3C+wGTUj0sn3PgtoWR5dtjZpaHOjcDGdyMb+IKI=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/css/syntax.min.dd17d6ee5bba73cc3f814469aae150232f0fc13a2038e79772f4d25565b5a23c.css integrity="sha256-3RfW7lu6c8w/gURpquFQIy8PwTogOOeXcvTSVWW1ojw=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous>
-<link rel="shortcut icon" href=/favicon.ico type=image/x-icon>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=canonical href=/posts/opencv/>
-<script type=text/javascript src=/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus=" crossorigin=anonymous></script>
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://monique.dev/logo.jpg">
-<meta name=twitter:title content="Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)">
-<meta name=twitter:description content="OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível.">
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)","headline":"Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)","alternativeHeadline":"","description":"
+<!doctype html><html dir=ltr lang=en data-theme class="html theme--light"><head><title>|
+Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)</title><meta charset=utf-8><meta name=generator content="Hugo 0.111.3"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=author content><meta name=description content><link rel=stylesheet href=/scss/main.min.1147aa5bacb4bce677a0e264073829caedb82fd18ea07a5f1d80521f539d1c45.css integrity="sha256-EUeqW6y0vOZ3oOJkBzgpyu24L9GOoHpfHYBSH1OdHEU=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/css/markupHighlight.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css integrity="sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc=" crossorigin=anonymous type=text/css><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=canonical href=/posts/opencv/><script type=text/javascript src=/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js integrity="sha256-+RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.d6d329d93844b162e8bed1e915619625ca91687952177552b9b3e211014a2957.js integrity="sha256-1tMp2ThEsWLovtHpFWGWJcqRaHlSF3VSubPiEQFKKVc=" crossorigin=anonymous></script><meta name=twitter:card content="summary"><meta name=twitter:title content="Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)"><meta name=twitter:description content="OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível. Você escolhe o que a sua versão vai ter através da instalação ou não no seu sistema de dependências opcionais.
+Neste artigo vou mostrar como eu faço para compilar o OpenCV com a maior linha de comando de cmake que já escrevi. Vou também adicionar comentários para que você entenda o que é necessário para compilar com sucesso.
+Vamos começar."><meta property="og:title" content="Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)"><meta property="og:description" content="OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível. Você escolhe o que a sua versão vai ter através da instalação ou não no seu sistema de dependências opcionais.
+Neste artigo vou mostrar como eu faço para compilar o OpenCV com a maior linha de comando de cmake que já escrevi. Vou também adicionar comentários para que você entenda o que é necessário para compilar com sucesso.
+Vamos começar."><meta property="og:type" content="article"><meta property="og:url" content="/posts/opencv/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-02-16T12:00:00-03:00"><meta property="article:modified_time" content="2021-02-16T12:00:00-03:00"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)","headline":"Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)","alternativeHeadline":"","description":"
       
-        OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível.
+        OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível. Você escolhe o que a sua versão vai ter através da instalação ou não no seu sistema de dependências opcionais.\nNeste artigo vou mostrar como eu faço para compilar o OpenCV com a maior linha de comando de cmake que já escrevi. Vou também adicionar comentários para que você entenda o que é necessário para compilar com sucesso.\nVamos começar.
 
 
       
 
 
-    ","inLanguage":"pt-br","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/monique.dev\/posts\/opencv\/"},"author":{"@type":"Person","name":"moniquelive"},"creator":{"@type":"Person","name":"moniquelive"},"accountablePerson":{"@type":"Person","name":"moniquelive"},"copyrightHolder":{"@type":"Person","name":"moniquelive"},"copyrightYear":"2021","dateCreated":"2021-02-16T12:00:00.00Z","datePublished":"2021-02-16T12:00:00.00Z","dateModified":"2021-12-21T22:46:50.00Z","publisher":{"@type":"Organization","name":"moniquelive","url":"https://monique.dev/","logo":{"@type":"ImageObject","url":"https:\/\/monique.dev\/favicon-32x32.png","width":"32","height":"32"}},"image":["https://monique.dev/logo.jpg"],"url":"https:\/\/monique.dev\/posts\/opencv\/","wordCount":"991","genre":[],"keywords":["opencv","python","cuda"]}</script>
-</head>
-<body>
-<header><div class="page-top
-animated fadeInDown">
-<a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false>
-<span aria-hidden=true></span>
-<span aria-hidden=true></span>
-<span aria-hidden=true></span>
-</a>
-<nav>
-<ul class=nav__list id=navMenu>
-<div class=nav__links>
-</div>
-<li>
-<a class=theme-switch title="Switch Theme">
-<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
-</a>
-</li>
-</ul>
-</nav>
-</div>
-</header>
-<div class=wrapper>
-<aside><div class="sidebar
-animated fadeInDown">
-<div class=sidebar__content>
-<div class=logo-title>
-<div class=title>
-<img src=/logo.jpg alt="profile picture">
-<h3 title><a href=/>monique.dev</a></h3>
-<div class=description>
-<p>Traduções das minhas postagens do site dev.to</p>
-</div>
-</div>
-</div>
-<ul class=social-links>
-<li>
-<a href=https://twitch.com/moniquelive rel=me aria-label=twitch.tv>
-<i class="fab fa-twitch fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href=https://twitter.com/moniquelive rel=me aria-label=twitter>
-<i class="fab fa-twitter fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href=https://github.com/moniquelive rel=me aria-label=github>
-<i class="fab fa-github fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href=https://instagram.com/moniquelive.dev rel=me aria-label=instagram>
-<i class="fab fa-instagram fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href=https://linkedin.com/in/moniquelive rel=me aria-label=linkedin>
-<i class="fab fa-linkedin fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href=https://youtube.com/moniquelive rel=me aria-label=youtube>
-<i class="fab fa-youtube fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href="https://wa.me/5521982820415?text=%23mandaaudios&lang=pt_br" rel=me aria-label=whatsapp>
-<i class="fab fa-whatsapp fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href=https://stackoverflow.com/users/9793/cyber-oliveira rel=me aria-label=stackoverflow>
-<i class="fab fa-stack-overflow fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a href=/index.xml rel=me aria-label=rss>
-<i class="fa fa-rss fa-2x fa-2x" aria-hidden=true></i>
-</a>
-</li>
-</ul>
-</div><footer class="footer footer--sidebar">
-<div class=by_farbox>
-<ul class=footer__list>
-<li class=footer__item>
-&copy;
-moniquelive
-2021
-</li>
-</ul>
-</div>
-</footer>
-<script type=text/javascript src=/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I=" crossorigin=anonymous></script>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-129884631-3','auto'),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-</div>
-</aside>
-<main>
-<div class=autopagerize_page_element>
-<div class=content>
-<div class="post
-animated fadeInDown">
-<div class=post-content>
-<div class=post-title>
-<h1>Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)</h1>
-</div><p>OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível. Você escolhe o que a sua versão vai ter através da instalação ou não no seu sistema de dependências opcionais.</p>
-<p>Neste artigo vou mostrar como eu faço para compilar o OpenCV com a maior linha de comando de cmake que já escrevi. Vou também adicionar comentários para que você entenda o que é necessário para compilar com sucesso.</p>
-<p>Vamos começar.</p>
-<h1 id=download>Download</h1>
-<p>Você vai precisar de dois projetos para compilar o OpenCV: o código fonte do <a href=https://github.com/opencv/opencv>OpenCV</a> e o OpenCV <a href=https://github.com/opencv/opencv_contrib>contrib</a>.</p>
-<p>Você pode tanto baixar as últimas versões como .zip ou .tar.gz ou clonar os repositórios e fazer checkout das últimas versões.</p>
-<p>Independente da forma que você escolheu baixar, extraia os projetos um ao lado do outro na mesma pasta:</p>
-<p><img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9j200ku8p9m40i4yci2p.png alt="Alt Text"></p>
-<h1 id=dependências>Dependências</h1>
-<p>Se você instalar todas as dependências que eu apresentarei, você terá:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=go>--   OpenCV modules:
-</span><span class=go>--     To be built:                 aruco bgsegm bioinspired calib3d ccalib core cudaarithm cudabgsegm cudacodec cudafeatures2d cudafilters cudaimgproc cudalegacy cudaobjdetect cudaoptflow cudastereo cudawarping cudev cvv datasets dnn dnn_objdetect dnn_superres dpm face features2d flann freetype fuzzy gapi hfs highgui img_hash imgcodecs imgproc intensity_transform line_descriptor mcc ml objdetect optflow phase_unwrapping photo plot python3 quality rapid reg rgbd saliency shape stereo stitching structured_light superres surface_matching text tracking video videoio videostab xfeatures2d ximgproc xobjdetect xphoto
-</span><span class=go>--     Disabled:                    world
-</span><span class=go>--     Disabled by dependency:      -
-</span><span class=go>--     Unavailable:                 alphamat cnn_3dobj hdf java julia matlab ovis python2 sfm ts viz
-</span></code></pre></div><p>Instale:</p>
-<ul>
-<li><code>python3 + numpy</code> - Eu normalmente instalo o OpenCV globalmente, por fora de qualquer ambiente virtual (venv/virtualenv). Dessa forma é possível reutiliza-lo depois adicionando ele nos seus ambientes virtuais. Essa é a saída esperada do cmake:
-<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mkf4fj56cwg7joh5c0pj.png alt="Alt Text"></li>
-<li><code>python3-pyqt5.qtopengl</code> - este pacote é o suficiente para instalar o Qt5 + OpenGL. Por que o OpenGL é tão importante? Pra ter um fps acelerado por hardware. Essa é a saída esperada do cmake:
-<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ri1jx1v2xq8c6aahwfw3.png alt="Alt Text"></li>
-<li><code>ffmpeg + gstreamer</code> - se precisa carregar videos em diferentes formatos (codecs):
-<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kv61j50z5xf9yp5zbuyy.png alt="Alt Text"></li>
-<li><code>libfreetype-dev + libharfbuzz-dev</code> - para usar fontes TrueType (.ttf)</li>
-<li><code>CUDA + CuDNN</code> - esses dois têm uma explicação a parte abaixo.</li>
-</ul>
-<h2 id=cuda--cudnn>CUDA + CuDNN</h2>
-<p>CUDA (e CuDNN) são normalmente instalados na mesma hierarquia de pastas. E a pasta raíz é tipicamente a <code>/usr/local/cuda-&lt;versao></code>. Mas não é uma obrigatoriedade. Eu uso o PopOS e ele instala na pasta <code>/usr/lib/cuda-&lt;versao></code>. Também é possível ter várias versões instaladas ao mesmo tempo:
-<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/61phl56afoj4ziabwrry.png alt=image></p>
-<p>Como visto acima, apesar da versão CUDA-11.2 ter sido instalada automaticamente (essa é a versão atual hoje), o CuDNN só está disponível até a versão 11.1, então tive que instalar em paralelo a versão CUDA-11.1 para ter ambos na mesma hierarquia de pastas.</p>
-<p>Pra fazer o cmake encontrar eles, basta ter a pasta <code>&lt;raiz do CUDA/bin</code> no seu <code>$PATH</code>.</p>
-<p>Verifique se está tudo ok:
-<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tdsyvs01m2wx9ad387an.png alt="Alt Text"></p>
-<p>Ufa! Moleza né?! 🤣</p>
-<p>Bora compilar esse negócio!</p>
-<h1 id=verificação-das-dependências>Verificação das dependências</h1>
-<p>Pra poder compilar, você precisa criar uma sub-pasta <code>build</code> dentro da pasta do opencv (<code>cd opencv; mkdir build; cd build</code>).</p>
-<p>Agora respira fundo e aprecia a maior linha de comando que já escrevi pra chamar um programa:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>cmake -D <span class=nv>CMAKE_CXX_COMPILER</span><span class=o>=</span>/usr/bin/g++ <span class=se>\
-</span><span class=se></span>-D CUDA_HOST_COMPILER:FILEPATH<span class=o>=</span>/usr/bin/gcc-9 <span class=se>\
-</span><span class=se></span>-D <span class=nv>CUDA_NVCC_FLAGS</span><span class=o>=</span>--expt-relaxed-constexpr <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_CUDA</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_CUDNN</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>CUDNN_INCLUDE_DIR</span><span class=o>=</span>/usr/lib/cuda-11.1/include <span class=se>\
-</span><span class=se></span>-D <span class=nv>OPENCV_DNN_CUDA</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>ENABLE_FAST_MATH</span><span class=o>=</span><span class=m>1</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>CUDA_FAST_MATH</span><span class=o>=</span><span class=m>1</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>CUDA_ARCH_BIN</span><span class=o>=</span>8.6 <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_CUBLAS</span><span class=o>=</span><span class=m>1</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_TBB</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_OPENMP</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_IPP</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>CMAKE_BUILD_TYPE</span><span class=o>=</span>RELEASE <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_CSTRIPES</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>OPENCV_EXTRA_MODULES_PATH</span><span class=o>=</span>../../opencv_contrib/modules <span class=se>\
-</span><span class=se></span>-D <span class=nv>CMAKE_INSTALL_PREFIX</span><span class=o>=</span>/usr/local/ <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_QT</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>WITH_OPENGL</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>BUILD_EXAMPLES</span><span class=o>=</span>OFF <span class=se>\
-</span><span class=se></span>-D <span class=nv>BUILD_DOCS</span><span class=o>=</span>OFF <span class=se>\
-</span><span class=se></span>-D <span class=nv>BUILD_PERF_TESTS</span><span class=o>=</span>OFF <span class=se>\
-</span><span class=se></span>-D <span class=nv>BUILD_TESTS</span><span class=o>=</span>OFF <span class=se>\
-</span><span class=se></span>-D <span class=nv>BUILD_opencv_python3</span><span class=o>=</span>ON <span class=se>\
-</span><span class=se></span>-D <span class=nv>PYTHON3_EXECUTABLE</span><span class=o>=</span><span class=k>$(</span>which python3<span class=k>)</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>PYTHON_INCLUDE_DIR</span><span class=o>=</span><span class=k>$(</span>python2 -c <span class=s2>&#34;from distutils.sysconfig import get_python_inc; print(get_python_inc())&#34;</span><span class=k>)</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>PYTHON3_INCLUDE_DIR</span><span class=o>=</span><span class=k>$(</span>python3 -c <span class=s2>&#34;from distutils.sysconfig import get_python_inc; print(get_python_inc())&#34;</span><span class=k>)</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>PYTHON3_LIBRARY</span><span class=o>=</span><span class=k>$(</span>python3 -c <span class=s2>&#34;from distutils.sysconfig import get_config_var;from os.path import dirname,join ; print(join(dirname(get_config_var(&#39;LIBPC&#39;)),get_config_var(&#39;LDLIBRARY&#39;)))&#34;</span><span class=k>)</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>PYTHON3_NUMPY_INCLUDE_DIRS</span><span class=o>=</span><span class=k>$(</span>python3 -c <span class=s2>&#34;import numpy; print(numpy.get_include())&#34;</span><span class=k>)</span> <span class=se>\
-</span><span class=se></span>-D <span class=nv>PYTHON3_PACKAGES_PATH</span><span class=o>=</span><span class=k>$(</span>python3 -c <span class=s2>&#34;from distutils.sysconfig import get_python_lib; print(get_python_lib())&#34;</span><span class=k>)</span> <span class=se>\
-</span><span class=se></span>..
-</code></pre></div><p>Os dois <code>..</code> no final são importantes!</p>
-<p>Explicando algumas configurações:</p>
-<ul>
-<li><code>CMAKE_CXX_COMPILER</code> - para compilar arquivos c++</li>
-<li><code>CUDA_HOST_COMPILER:FILEPATH</code> - para compilar arquivos cuda - Durante a instalação do pacote <code>system76-cudnn</code> reparei que ele instalva o <code>gcc-9</code>. Nada científico, eu sei.</li>
-<li><code>CUDA_NVCC_FLAGS</code> - precisei um dia, posso parar de usar eventualmente</li>
-<li><code>CUDNN_INCLUDE_DIR</code> - verifique sua pasta raiz do CUDA ai</li>
-<li><code>CUDA_ARCH_BIN</code> - a arquitetura da sua GPU. Verifique aqui: <a href=https://developer.nvidia.com/cuda-gpus>https://developer.nvidia.com/cuda-gpus</a></li>
-<li><code>OPENCV_EXTRA_MODULES_PATH</code> - caminho relativo ou absoluto da pasta raiz do projeto opencv_contrib</li>
-</ul>
-<p>Pra validar se ele encontrou todas as dependências, compare a linha <code>Unavailable: ...</code> no inicio da sessão anterior e procure por diferenças com a sua.</p>
-<p>Caso precise rodar o cmake novamente, saia da pasta <code>build</code>, apague ela, recrie, lembre de mudar pra ela e só então rode de novo o cmake. Não pule esta estapa!</p>
-<h1 id=compilar>Compilar</h1>
-<p>Essa é a parte mais fácil de todas. Dado que todas as dependências foram encontradas, basa rodar o comando <code>make</code>:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>make -j&lt;number of processes&gt;
-</code></pre></div><p>Recomendo fortemente utilizar a flag <code>-j</code> para diminuir o tempo de compilação. Caso queira continuar usando seu computador enquanto compila, recomendo usar um valor de <code>$(nproc)-2</code>.</p>
-<p>Para sua referência, usar <code>-j60</code> e um armazenamento nvme, levou mais um menos 5 minutos e meio aqui.</p>
-<p>Se algo der errado e o processo parar antes dos 100%, role pra cima (ou procure por <code>error:</code>) e verifique o que aconteceu.</p>
-<h1 id=instalar>Instalar</h1>
-<p>Se chegou até aqui:</p>
-<p><img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8dmme6y95n7525ca9qf8.png alt="Alt Text"></p>
-<p>💯% baby!</p>
-<p>Só precisa agora de:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo make install
-</code></pre></div><p>Essa é a única vez que precisamos evocar os super poderes do root, para poder copiar os arquivos para a pasta <code>/usr/local</code>.</p>
-<h1 id=validar>Validar</h1>
-<p>Para testar sua conquista:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=gp>$ </span>python3
-<span class=gp>&gt;</span>&gt;&gt; import cv2
-<span class=gp>&gt;</span>&gt;&gt; print<span class=o>(</span>cv2.getBuildInformation<span class=o>())</span>
-</code></pre></div><p>Compare essa saída com a do cmake. Verifique as dependencias e a data. Se nao baterem, desinstale o pip <code>opencv-contrib-python</code>.</p>
-<h1 id=usar>Usar</h1>
-<p>Para usar o OpenCV em um venv (leia mais sobre venv&rsquo;s <a href=/post/opencv-autocomplete-pycharm/>aqui</a>) use as flags:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>python -mvenv --system-site-packages venv
-</code></pre></div><p>Isso vai criar uma sub-pasta chamda <code>venv</code> com um ambiente virtual que inclui os pacotes globais do sistema, como o OpenCV.</p>
-<h1 id=conclusão>Conclusão</h1>
-<p>Se você chegou até aqui, parabéns! Você é uma pessoa muito determinada 🤣</p>
-<p>Se precisar de alguma ajuda, deixe um comentário abaixo.</p>
-<p>Boa sorte!</p>
-<p>_</p>
-<p>= M =</p>
-</div>
-<div class=post-footer>
-<div class=info>
-<span class=separator><a class=tag href=/tags/opencv/>opencv</a><a class=tag href=/tags/python/>python</a><a class=tag href=/tags/cuda/>cuda</a></span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div><footer class="footer footer--base">
-<div class=by_farbox>
-<ul class=footer__list>
-<li class=footer__item>
-&copy;
-moniquelive
-2021
-</li>
-</ul>
-</div>
-</footer>
-<script type=text/javascript src=/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I=" crossorigin=anonymous></script>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-129884631-3','auto'),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-</body>
-</html>
+    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"\/posts\/opencv\/"},"author":{"@type":"Person","name":""},"creator":{"@type":"Person","name":""},"accountablePerson":{"@type":"Person","name":""},"copyrightHolder":{"@type":"Person","name":""},"copyrightYear":"2021","dateCreated":"2021-02-16T12:00:00.00Z","datePublished":"2021-02-16T12:00:00.00Z","dateModified":"2021-02-16T12:00:00.00Z","publisher":{"@type":"Organization","name":null,"url":"","logo":{"@type":"ImageObject","url":"favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"\/posts\/opencv\/","wordCount":"991","genre":[],"keywords":["opencv","python","cuda"]}</script></head><body class=body><div class=wrapper><aside class=wrapper__sidebar><div class="sidebar
+animated fadeInDown"><div class=sidebar__content><div class=sidebar__introduction><img class=sidebar__introduction-profileimage src=/ alt="profile picture"><div class=sidebar__introduction-title><a href=/></a></div><div class=sidebar__introduction-description><p></p></div></div><ul class=sidebar__list></ul></div><footer class="footer footer__sidebar"><ul class=footer__list><li class=footer__item>&copy;
+2023</li></ul></footer><script type=text/javascript src=/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ=" crossorigin=anonymous></script></div></aside><main class=wrapper__main><header class=header><div class="animated fadeInDown"><a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false><span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span></a><nav class=nav><ul class=nav__list id=navMenu></ul><ul class="nav__list nav__list--end"><li class=nav__list-item><div class=themeswitch><a title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></li></ul></nav></div></header><div class="post
+animated fadeInDown"><div class=post__content><h1>Como Eu Compilo O OpenCV No Linux Com Um Monte De Penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs De Video)</h1><p>OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível. Você escolhe o que a sua versão vai ter através da instalação ou não no seu sistema de dependências opcionais.</p><p>Neste artigo vou mostrar como eu faço para compilar o OpenCV com a maior linha de comando de cmake que já escrevi. Vou também adicionar comentários para que você entenda o que é necessário para compilar com sucesso.</p><p>Vamos começar.</p><h1 id=download>Download</h1><p>Você vai precisar de dois projetos para compilar o OpenCV: o código fonte do <a href=https://github.com/opencv/opencv>OpenCV</a> e o OpenCV <a href=https://github.com/opencv/opencv_contrib>contrib</a>.</p><p>Você pode tanto baixar as últimas versões como .zip ou .tar.gz ou clonar os repositórios e fazer checkout das últimas versões.</p><p>Independente da forma que você escolheu baixar, extraia os projetos um ao lado do outro na mesma pasta:</p><p><img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9j200ku8p9m40i4yci2p.png alt="Alt Text"></p><h1 id=dependências>Dependências</h1><p>Se você instalar todas as dependências que eu apresentarei, você terá:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>--   OpenCV modules:
+</span></span><span style=display:flex><span>--     To be built:                 aruco bgsegm bioinspired calib3d ccalib core cudaarithm cudabgsegm cudacodec cudafeatures2d cudafilters cudaimgproc cudalegacy cudaobjdetect cudaoptflow cudastereo cudawarping cudev cvv datasets dnn dnn_objdetect dnn_superres dpm face features2d flann freetype fuzzy gapi hfs highgui img_hash imgcodecs imgproc intensity_transform line_descriptor mcc ml objdetect optflow phase_unwrapping photo plot python3 quality rapid reg rgbd saliency shape stereo stitching structured_light superres surface_matching text tracking video videoio videostab xfeatures2d ximgproc xobjdetect xphoto
+</span></span><span style=display:flex><span>--     Disabled:                    world
+</span></span><span style=display:flex><span>--     Disabled by dependency:      -
+</span></span><span style=display:flex><span>--     Unavailable:                 alphamat cnn_3dobj hdf java julia matlab ovis python2 sfm ts viz
+</span></span></code></pre></div><p>Instale:</p><ul><li><code>python3 + numpy</code> - Eu normalmente instalo o OpenCV globalmente, por fora de qualquer ambiente virtual (venv/virtualenv). Dessa forma é possível reutiliza-lo depois adicionando ele nos seus ambientes virtuais. Essa é a saída esperada do cmake:
+<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mkf4fj56cwg7joh5c0pj.png alt="Alt Text"></li><li><code>python3-pyqt5.qtopengl</code> - este pacote é o suficiente para instalar o Qt5 + OpenGL. Por que o OpenGL é tão importante? Pra ter um fps acelerado por hardware. Essa é a saída esperada do cmake:
+<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ri1jx1v2xq8c6aahwfw3.png alt="Alt Text"></li><li><code>ffmpeg + gstreamer</code> - se precisa carregar videos em diferentes formatos (codecs):
+<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kv61j50z5xf9yp5zbuyy.png alt="Alt Text"></li><li><code>libfreetype-dev + libharfbuzz-dev</code> - para usar fontes TrueType (.ttf)</li><li><code>CUDA + CuDNN</code> - esses dois têm uma explicação a parte abaixo.</li></ul><h2 id=cuda--cudnn>CUDA + CuDNN</h2><p>CUDA (e CuDNN) são normalmente instalados na mesma hierarquia de pastas. E a pasta raíz é tipicamente a <code>/usr/local/cuda-&lt;versao></code>. Mas não é uma obrigatoriedade. Eu uso o PopOS e ele instala na pasta <code>/usr/lib/cuda-&lt;versao></code>. Também é possível ter várias versões instaladas ao mesmo tempo:
+<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/61phl56afoj4ziabwrry.png alt=image></p><p>Como visto acima, apesar da versão CUDA-11.2 ter sido instalada automaticamente (essa é a versão atual hoje), o CuDNN só está disponível até a versão 11.1, então tive que instalar em paralelo a versão CUDA-11.1 para ter ambos na mesma hierarquia de pastas.</p><p>Pra fazer o cmake encontrar eles, basta ter a pasta <code>&lt;raiz do CUDA/bin</code> no seu <code>$PATH</code>.</p><p>Verifique se está tudo ok:
+<img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tdsyvs01m2wx9ad387an.png alt="Alt Text"></p><p>Ufa! Moleza né?! 🤣</p><p>Bora compilar esse negócio!</p><h1 id=verificação-das-dependências>Verificação das dependências</h1><p>Pra poder compilar, você precisa criar uma sub-pasta <code>build</code> dentro da pasta do opencv (<code>cd opencv; mkdir build; cd build</code>).</p><p>Agora respira fundo e aprecia a maior linha de comando que já escrevi pra chamar um programa:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cmake -D CMAKE_CXX_COMPILER<span style=color:#f92672>=</span>/usr/bin/g++ <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D CUDA_HOST_COMPILER:FILEPATH<span style=color:#f92672>=</span>/usr/bin/gcc-9 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D CUDA_NVCC_FLAGS<span style=color:#f92672>=</span>--expt-relaxed-constexpr <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_CUDA<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_CUDNN<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D CUDNN_INCLUDE_DIR<span style=color:#f92672>=</span>/usr/lib/cuda-11.1/include <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D OPENCV_DNN_CUDA<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D ENABLE_FAST_MATH<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D CUDA_FAST_MATH<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D CUDA_ARCH_BIN<span style=color:#f92672>=</span>8.6 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_CUBLAS<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_TBB<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_OPENMP<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_IPP<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D CMAKE_BUILD_TYPE<span style=color:#f92672>=</span>RELEASE <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_CSTRIPES<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D OPENCV_EXTRA_MODULES_PATH<span style=color:#f92672>=</span>../../opencv_contrib/modules <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D CMAKE_INSTALL_PREFIX<span style=color:#f92672>=</span>/usr/local/ <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_QT<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D WITH_OPENGL<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D BUILD_EXAMPLES<span style=color:#f92672>=</span>OFF <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D BUILD_DOCS<span style=color:#f92672>=</span>OFF <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D BUILD_PERF_TESTS<span style=color:#f92672>=</span>OFF <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D BUILD_TESTS<span style=color:#f92672>=</span>OFF <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D BUILD_opencv_python3<span style=color:#f92672>=</span>ON <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D PYTHON3_EXECUTABLE<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>which python3<span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D PYTHON_INCLUDE_DIR<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>python2 -c <span style=color:#e6db74>&#34;from distutils.sysconfig import get_python_inc; print(get_python_inc())&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D PYTHON3_INCLUDE_DIR<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>python3 -c <span style=color:#e6db74>&#34;from distutils.sysconfig import get_python_inc; print(get_python_inc())&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D PYTHON3_LIBRARY<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>python3 -c <span style=color:#e6db74>&#34;from distutils.sysconfig import get_config_var;from os.path import dirname,join ; print(join(dirname(get_config_var(&#39;LIBPC&#39;)),get_config_var(&#39;LDLIBRARY&#39;)))&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D PYTHON3_NUMPY_INCLUDE_DIRS<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>python3 -c <span style=color:#e6db74>&#34;import numpy; print(numpy.get_include())&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-D PYTHON3_PACKAGES_PATH<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>python3 -c <span style=color:#e6db74>&#34;from distutils.sysconfig import get_python_lib; print(get_python_lib())&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>..
+</span></span></code></pre></div><p>Os dois <code>..</code> no final são importantes!</p><p>Explicando algumas configurações:</p><ul><li><code>CMAKE_CXX_COMPILER</code> - para compilar arquivos c++</li><li><code>CUDA_HOST_COMPILER:FILEPATH</code> - para compilar arquivos cuda - Durante a instalação do pacote <code>system76-cudnn</code> reparei que ele instalva o <code>gcc-9</code>. Nada científico, eu sei.</li><li><code>CUDA_NVCC_FLAGS</code> - precisei um dia, posso parar de usar eventualmente</li><li><code>CUDNN_INCLUDE_DIR</code> - verifique sua pasta raiz do CUDA ai</li><li><code>CUDA_ARCH_BIN</code> - a arquitetura da sua GPU. Verifique aqui: <a href=https://developer.nvidia.com/cuda-gpus>https://developer.nvidia.com/cuda-gpus</a></li><li><code>OPENCV_EXTRA_MODULES_PATH</code> - caminho relativo ou absoluto da pasta raiz do projeto opencv_contrib</li></ul><p>Pra validar se ele encontrou todas as dependências, compare a linha <code>Unavailable: ...</code> no inicio da sessão anterior e procure por diferenças com a sua.</p><p>Caso precise rodar o cmake novamente, saia da pasta <code>build</code>, apague ela, recrie, lembre de mudar pra ela e só então rode de novo o cmake. Não pule esta estapa!</p><h1 id=compilar>Compilar</h1><p>Essa é a parte mais fácil de todas. Dado que todas as dependências foram encontradas, basa rodar o comando <code>make</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>make -j&lt;number of processes&gt;
+</span></span></code></pre></div><p>Recomendo fortemente utilizar a flag <code>-j</code> para diminuir o tempo de compilação. Caso queira continuar usando seu computador enquanto compila, recomendo usar um valor de <code>$(nproc)-2</code>.</p><p>Para sua referência, usar <code>-j60</code> e um armazenamento nvme, levou mais um menos 5 minutos e meio aqui.</p><p>Se algo der errado e o processo parar antes dos 100%, role pra cima (ou procure por <code>error:</code>) e verifique o que aconteceu.</p><h1 id=instalar>Instalar</h1><p>Se chegou até aqui:</p><p><img src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8dmme6y95n7525ca9qf8.png alt="Alt Text"></p><p>💯% baby!</p><p>Só precisa agora de:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo make install
+</span></span></code></pre></div><p>Essa é a única vez que precisamos evocar os super poderes do root, para poder copiar os arquivos para a pasta <code>/usr/local</code>.</p><h1 id=validar>Validar</h1><p>Para testar sua conquista:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>$ python3
+</span></span><span style=display:flex><span>&gt;&gt;&gt; import cv2
+</span></span><span style=display:flex><span>&gt;&gt;&gt; print<span style=color:#f92672>(</span>cv2.getBuildInformation<span style=color:#f92672>())</span>
+</span></span></code></pre></div><p>Compare essa saída com a do cmake. Verifique as dependencias e a data. Se nao baterem, desinstale o pip <code>opencv-contrib-python</code>.</p><h1 id=usar>Usar</h1><p>Para usar o OpenCV em um venv (leia mais sobre venv&rsquo;s <a href=/post/opencv-autocomplete-pycharm/>aqui</a>) use as flags:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>python -mvenv --system-site-packages venv
+</span></span></code></pre></div><p>Isso vai criar uma sub-pasta chamda <code>venv</code> com um ambiente virtual que inclui os pacotes globais do sistema, como o OpenCV.</p><h1 id=conclusão>Conclusão</h1><p>Se você chegou até aqui, parabéns! Você é uma pessoa muito determinada 🤣</p><p>Se precisar de alguma ajuda, deixe um comentário abaixo.</p><p>Boa sorte!</p><p>_</p><p>= M =</p></div><div class=post__footer><span><a class=tag href=/tags/opencv/>opencv</a><a class=tag href=/tags/python/>python</a><a class=tag href=/tags/cuda/>cuda</a></span></div></div></main></div><footer class="footer footer__base"><ul class=footer__list><li class=footer__item>&copy;
+2023</li></ul></footer><script type=text/javascript src=/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ=" crossorigin=anonymous></script></body></html>
