@@ -66,9 +66,9 @@ params:
     #    - title: dev.to
     #      icon: fab fa-dev fa-2x
     #      url: https://devto.com/moniquelive
-    - title: whatsapp
-      icon: fab fa-whatsapp fa-2x
-      url: https://wa.me/5521982820415?text=%23mandaaudios&lang=pt_br
+    # - title: whatsapp
+    #   icon: fab fa-whatsapp fa-2x
+    #   url: https://wa.me/5521982820415?text=%23mandaaudios&lang=pt_br
     - title: stackoverflow
       icon: fab fa-stack-overflow fa-2x
       url: https://stackoverflow.com/users/9793/cyber-oliveira
