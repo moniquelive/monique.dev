@@ -85,4 +85,8 @@ outputs:
   section:
     - HTML
     - RSS
+  term:
+    - HTML
+    - RSS
   taxonomy:
+    - HTML
