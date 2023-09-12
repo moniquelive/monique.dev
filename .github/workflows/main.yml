@@ -18,5 +18,4 @@ jobs:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
           cname: monique.dev
       - name: Done
-          run: echo Published
-
+        run: echo Published
