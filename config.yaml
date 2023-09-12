@@ -28,27 +28,12 @@ markup:
     renderer:
       unsafe: true
 
-# menu:
-#   main:
-#     - name: Blog
-#       url: /posts
-#       identifier: archives
-#       weight: 10
-#     - name: Tags
-#       url: /tags
-#       identifier: tags
-#       weight: 20
-#     - name: Sobre
-#       url: /about
-#       identifier: about
-#       weight: 999
-
 params:
   author: moniquelive
   title: monique.dev
   description: Traduções das minhas postagens do site dev.to
-  profilePicture: /logo.jpg
-  images: ["/logo.jpg"]
+  profilePicture: "images/logo.jpg"
+  #images: ["/logo.jpg"]
   displayMode: dark
   singleDateFormat: "2/1/2006"
   indexDateFormat: "2/1/2006"

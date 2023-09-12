@@ -12,10 +12,11 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
-        with:
-          submodules: true
       - name: Publish Site
         uses: chabad360/hugo-gh-pages@master
         with:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
           cname: monique.dev
+      - name: Done
+          run: echo Published
+
