@@ -41,7 +41,7 @@ params:
   singleDateFormat: "2/1/2006"
   indexDateFormat: "2/1/2006"
   listDateFormat: "2/1/2006"
-  mainSections: ["posts"]
+  postSectionName: "posts"
   customCss: ["css/custom.css", "css/syntax.css"]
 
   socialIcons:
