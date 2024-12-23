@@ -35,6 +35,6 @@ python_venv
 
 Só colar isso no seu `~/.zshrc`
 
-_
+\_
 
 = M =

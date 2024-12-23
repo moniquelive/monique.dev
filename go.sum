@@ -1,2 +1,6 @@
-github.com/lxndrblz/anatole v1.13.0 h1:H3f6kEZJWSPApJyvWSEee6L+rjWY896peMbSFpY9Eks=
-github.com/lxndrblz/anatole v1.13.0/go.mod h1:hy61SRyUDKaWw2P+cERt9UPde5guWyVKgtjdzRF5bfI=
+github.com/moniquelive/hugo-theme-nostyleplease v0.0.0-20241206231156-54b49193a0c5 h1:5hFMxUjfxyGZ1+vjHoMC37Ew2qR0mvBUdhGVfPQHRo8=
+github.com/moniquelive/hugo-theme-nostyleplease v0.0.0-20241206231156-54b49193a0c5/go.mod h1:WpsYIvO3r/NuegAxWvw7DRixoKmIk3s6oM7wh7kjgDQ=
+github.com/moniquelive/hugo-theme-nostyleplease v0.0.0-20241223214522-2274e8d0dc9b h1:hmNj8fc7pfOEPdTGFtw0hziKasU1c8pfEyHBJATneOg=
+github.com/moniquelive/hugo-theme-nostyleplease v0.0.0-20241223214522-2274e8d0dc9b/go.mod h1:WpsYIvO3r/NuegAxWvw7DRixoKmIk3s6oM7wh7kjgDQ=
+github.com/moniquelive/hugo-theme-nostyleplease v0.0.0-20241223215240-d1e1292a9572 h1:KrkKviAZCW4TvHidvZUd0yjIsDC/94Cq76QiDEvBy9w=
+github.com/moniquelive/hugo-theme-nostyleplease v0.0.0-20241223215240-d1e1292a9572/go.mod h1:WpsYIvO3r/NuegAxWvw7DRixoKmIk3s6oM7wh7kjgDQ=

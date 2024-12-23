@@ -1,15 +1,16 @@
 module:
   imports:
-    - path: github.com/lxndrblz/anatole
+    - path: github.com/moniquelive/hugo-theme-nostyleplease
 
 baseURL: https://monique.dev/
 title: monique.dev
-theme: github.com/lxndrblz/anatole
+theme: github.com/moniquelive/hugo-theme-nostyleplease
 defaultContentLanguage: pt-br
 languageCode: pt-br
 summarylength: 10
 
-paginate: 20
+pagination:
+  pageSize: 20
 
 # Syntax highlighting
 pygmentsUseClasses: true
@@ -28,6 +29,13 @@ sitemap:
   filename: sitemap.xml
 
 markup:
+  highlight:
+    guessSyntax: true
+    tabWidth: 2
+    style: catppuccin-mocha
+    # lineNoStart: 1
+    # lineNos: true
+    # lineNumbersInTable: true
   goldmark:
     renderer:
       unsafe: true
@@ -42,7 +50,10 @@ params:
   indexDateFormat: "2/1/2006"
   listDateFormat: "2/1/2006"
   postSectionName: "posts"
-  customCss: ["css/custom.css", "css/syntax.css"]
+  custom_css: ["css/syntax.css"]
+  theme_config:
+    show_description: true
+    back_home_text: "<--"
 
   socialIcons:
     - title: twitch.tv
