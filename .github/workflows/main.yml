@@ -17,5 +17,6 @@ jobs:
         with:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
           cname: monique.dev
+          hugoVersion: extended_0.140.0
       - name: Done
         run: echo Published
