@@ -1,10 +1,17 @@
 [[entries]]
-title = "info"
+title = "links"
 
   [[entries.entries]]
-  title = "github repo"
-  url = "https://github.com/moniquelive/monique.dev"
+  title = "meu site pessoal"
+  url = "https://moniquelive.com"
 
+  [[entries.entries]]
+  title = "meu github"
+  url = "https://github.com/moniquelive"
+
+  [[entries.entries]]
+  title = "RSS"
+  url = "index.xml"
 
 [[entries]]
 title = "posts"
@@ -15,15 +22,14 @@ title = "posts"
   show_more_text = "Ver todos..."
   show_more_url = "posts"
 
-# [[entries]]
-# title = "por categoria"
-#
-#   [entries.post_list]
-#   section = "posts"
-#   show_more = true
-#   show_more_text = "Ver mais posts..."
-#   show_more_url = "posts"
-
 [[entries]]
-title = "RSS"
-url = "index.xml"
+title = "por categoria"
+
+  [[entries.entries]]
+  title = "(TODO)"
+
+  # [entries.post_list]
+  # section = "posts"
+  # show_more = true
+  # show_more_text = "Ver mais posts..."
+  # show_more_url = "posts"
