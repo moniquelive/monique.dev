@@ -2,11 +2,11 @@
 title = "links"
 
   [[entries.entries]]
-  title = "meu site pessoal"
+  title = "site pessoal"
   url = "https://moniquelive.com"
 
   [[entries.entries]]
-  title = "meu github"
+  title = "github"
   url = "https://github.com/moniquelive"
 
   [[entries.entries]]
