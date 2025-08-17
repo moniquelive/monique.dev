@@ -1,0 +1,55 @@
+{{- /* Partial: jsonld.html — Schema.org (Website / BlogPosting) */ -}}
+{{- $site := .Site -}}
+{{- $isHome := eq .Kind "home" -}}
+{{- $desc := (or .Params.description .Summary $site.Params.description) | plainify -}}
+{{- $publisherName := or $site.Params.publisherName $site.Title -}}
+{{- $publisherLogo := or $site.Params.publisherLogo "/android-chrome-192x192.png" | absURL -}}
+
+{{- if $isHome -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ $site.Title | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "description": {{ $desc | jsonify }}
+}
+</script>
+{{- else -}}
+{{- $img := "" -}}
+{{- with .Params.ogImage }}{{ $img = . | absURL }}{{ end -}}
+{{- if not $img -}}
+  {{- with .Params.images -}}{{- if ge (len .) 1 -}}{{ $img = (index . 0) | absURL }}{{- end -}}{{- end -}}
+{{- end -}}
+{{- if not $img -}}
+  {{- with (.Resources.GetMatch (or .Params.cover "cover*")) -}}{{- $img = .RelPermalink | absURL -}}{{- end -}}
+{{- end -}}
+{{- if and (not $img) ($site.Params.defaultImage) -}}{{- $img = $site.Params.defaultImage | absURL -}}{{- end -}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ $desc | jsonify }},
+  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify }}
+  },
+  "author": {
+    "@type": "Person",
+    "name": {{ or .Params.author $site.Params.author $site.Title | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ $publisherName | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ $publisherLogo | jsonify }}
+    }
+  }{{ with $img }}, "image": {{ . | jsonify }}{{ end }}
+}
+</script>
+{{- end -}}

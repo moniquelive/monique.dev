@@ -4,7 +4,7 @@ layout: "about" # vai usar o layout que criaremos já já
 # opcional: trocar URL para /sobre/
 # url: "/sobre/"
 aliases: ["/about/", "/sobre/"] # mantém ambos funcionando
-roles: ["Eng. de Computação", "Empreendedora", "Developer"]
+roles: ["Eng. da Computação", "Empreendedora", "Developer forever"]
 skills:
   [
     "Assembly",

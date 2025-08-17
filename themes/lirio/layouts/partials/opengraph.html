@@ -1,0 +1,51 @@
+{{- /* Partial: opengraph.html — OG + Twitter cards (Tema Lírio) */ -}}
+{{- $site := .Site -}}
+{{- $title := cond (ne .Kind "home") (printf "%s · %s" .Title $site.Title) $site.Title -}}
+{{- $desc := (or .Params.description .Summary $site.Params.description) | plainify | htmlEscape -}}
+{{- $url := .Permalink -}}
+{{- $type := (cond (or (eq .Kind "home") (eq .Kind "section")) "website" "article") -}}
+{{- $locale := or $site.Language.LanguageCode "pt_BR" -}}
+
+{{- $img := "" -}}
+{{- $imgW := "" -}}
+{{- $imgH := "" -}}
+{{- with .Params.ogImage }}{{ $img = . | absURL }}{{ end -}}
+{{- if not $img -}}
+  {{- with .Params.images -}}
+    {{- if ge (len .) 1 -}}{{ $img = (index . 0) | absURL }}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $img -}}
+  {{- with (.Resources.GetMatch (or .Params.cover "cover*")) -}}
+    {{- $img = .RelPermalink | absURL -}}
+    {{- with .Width }}{{ $imgW = . }}{{ end -}}
+    {{- with .Height }}{{ $imgH = . }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- if and (not $img) ($site.Params.defaultImage) -}}
+  {{- $img = $site.Params.defaultImage | absURL -}}
+{{- end -}}
+
+<meta property="og:title" content="{{ $title }}">
+{{- with $desc }}<meta property="og:description" content="{{ . }}">{{ end -}}
+<meta property="og:type" content="{{ $type }}">
+<meta property="og:url" content="{{ $url }}">
+<meta property="og:site_name" content="{{ $site.Title }}">
+{{- with $locale }}<meta property="og:locale" content="{{ . }}">{{ end -}}
+{{- with $img }}<meta property="og:image" content="{{ . }}">{{ end -}}
+{{- with $imgW }}<meta property="og:image:width" content="{{ . }}">{{ end -}}
+{{- with $imgH }}<meta property="og:image:height" content="{{ . }}">{{ end -}}
+
+{{- if eq $type "article" -}}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- with .Lastmod -}}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{- end -}}
+  {{- with .Params.tags -}}{{- range . -}}<meta property="article:tag" content="{{ . }}">{{ end -}}{{- end -}}
+{{- end -}}
+
+{{- $twCard := cond $img "summary_large_image" "summary" -}}
+<meta name="twitter:card" content="{{ $twCard }}">
+{{- with $site.Params.twitterSite }}<meta name="twitter:site" content="@{{ . }}">{{ end -}}
+{{- with (or .Params.twitterCreator $site.Params.twitterCreator) }}<meta name="twitter:creator" content="@{{ . }}">{{ end -}}
+<meta name="twitter:title" content="{{ $title }}">
+{{- with $desc }}<meta name="twitter:description" content="{{ . }}">{{ end -}}
+{{- with $img }}<meta name="twitter:image" content="{{ . }}">{{ end -}}
