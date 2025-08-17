@@ -36,6 +36,11 @@
                 href="https://github.com/{{ . }}"
                 rel="me"
                 >GitHub</a
+            >{{ end }} {{ with .bluesky }}<a
+                class="chip"
+                href="https://bsky.app/profile/{{ . }}"
+                rel="me"
+                >BlueSky</a
             >{{ end }} {{ with .twitter }}<a
                 class="chip"
                 href="https://twitter.com/{{ . }}"
