@@ -1,0 +1,51 @@
+{{ define "main" }}
+  <section class="home-hero">
+    <h1>{{ with .Params.hero.title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h1>
+    {{ with .Params.hero.subtitle }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ with .Params.hero }}
+      {{ if and .ctaLabel .ctaUrl }}
+        <p><a class="button" href="{{ .ctaUrl }}">{{ .ctaLabel }}</a></p>
+      {{ end }}
+    {{ end }}
+    {{ if .Content }}
+      <div class="intro">{{ .Content }}</div>
+    {{ end }}
+  </section>
+
+  {{/* Posts em destaque (marque posts com featured: true no front matter) */}}
+  {{ $sections := .Site.Params.mainSections | default (slice "posts") }}
+  {{ $all := where .Site.RegularPages "Section" "in" $sections }}
+  {{ $featured := where $all "Params.featured" true | first 3 }}
+  {{ if gt (len $featured) 0 }}
+  <section aria-label="Destaques">
+    <h2>Destaques</h2>
+    {{ range $featured }}
+      <a class="post-card" href="{{ .RelPermalink }}">
+        <div class="meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ with .ReadingTime }} · {{ . }} min{{ end }}
+        </div>
+        <div class="title">{{ .Title }}</div>
+        {{ with .Params.tags }}<div class="chips">{{ range . }}<span class="chip">#{{ . }}</span>{{ end }}</div>{{ end }}
+      </a>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{/* Posts recentes */}}
+  <section aria-label="Posts recentes">
+    <h2>Posts recentes</h2>
+    {{ $recent := first 6 ( sort $all "Date" "desc" ) }}
+    {{ range $recent }}
+      <a class="post-card" href="{{ .RelPermalink }}">
+        <div class="meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ with .ReadingTime }} · {{ . }} min{{ end }}
+        </div>
+        <div class="title">{{ .Title }}</div>
+        {{ with .Params.tags }}<div class="chips">{{ range . }}<span class="chip">#{{ . }}</span>{{ end }}</div>{{ end }}
+      </a>
+    {{ end }}
+    <div class="pagination" style="margin-top:1rem">
+      <a class="button" href="/posts/">Ver todos os posts</a>
+    </div>
+  </section>
+{{ end }}

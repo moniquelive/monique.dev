@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="32" viewBox="0 0 160 32">
+  <defs>
+    <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d47fa6"/>
+      <stop offset="1" stop-color="#a68cd4"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round">
+    <path d="M8 24 C 16 8, 28 8, 36 24" />
+    <path d="M44 24 C 52 8, 64 8, 72 24" />
+    <path d="M80 24 C 88 8, 100 8, 108 24" />
+  </g>
+  <text x="116" y="23" font-size="14" font-family="Inter, system-ui" fill="#0f172a">Lírio</text>
+</svg>

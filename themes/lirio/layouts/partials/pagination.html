@@ -1,0 +1,8 @@
+{{ $p := .p }}
+{{ if gt $p.TotalPages 1 }}
+  <nav class="pagination" role="navigation" aria-label="Paginação">
+    {{ if $p.HasPrev }}<a class="button" href="{{ $p.Prev.URL }}">Anterior</a>{{ end }}
+    <span class="button" aria-current="page">{{ $p.PageNumber }}/{{ $p.TotalPages }}</span>
+    {{ if $p.HasNext }}<a class="button" href="{{ $p.Next.URL }}">Próxima</a>{{ end }}
+  </nav>
+{{ end }}

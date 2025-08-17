@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ $p := .Paginate .Pages }}
+  <section aria-label="Lista de posts">
+    {{ range $p.Pages }}
+      <a class="post-card" href="{{ .Permalink }}">
+        <div class="meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ with .ReadingTime }} · {{ . }} min{{ end }}
+        </div>
+        <div class="title">{{ .Title }}</div>
+        {{ with .Params.tags }}
+          <div class="chips">{{ range . }}<span class="chip">#{{ . }}</span>{{ end }}</div>
+        {{ end }}
+      </a>
+    {{ end }}
+    {{ partial "pagination.html" (dict "p" $p) }}
+  </section>
+{{ end }}

@@ -1,10 +1,6 @@
-module:
-  imports:
-    - path: github.com/moniquelive/hugo-theme-nostyleplease
-
 baseURL: https://monique.dev/
 title: monique.dev
-theme: github.com/moniquelive/hugo-theme-nostyleplease
+theme: "lirio"
 defaultContentLanguage: pt-br
 languageCode: pt-br
 summarylength: 10
@@ -30,11 +26,12 @@ sitemap:
 
 markup:
   highlight:
+    noClasses: false
     guessSyntax: true
     tabWidth: 2
-    style: catppuccin-mocha
+    style: "dracula"
+    lineNos: false
     # lineNoStart: 1
-    # lineNos: true
     # lineNumbersInTable: true
   goldmark:
     renderer:
@@ -43,17 +40,21 @@ markup:
 params:
   author: moniquelive
   title: monique.dev
-  description: Traduções das minhas postagens do site dev.to
+  # description: Traduções das minhas postagens do site dev.to
   profilePicture: "images/logo.jpg"
-  displayMode: dark
+  # displayMode: dark
   singleDateFormat: "2/1/2006"
   indexDateFormat: "2/1/2006"
   listDateFormat: "2/1/2006"
   postSectionName: "posts"
-  custom_css: ["css/syntax.css"]
-  theme_config:
-    show_description: true
-    back_home_text: "<--"
+  # custom_css: ["css/syntax.css"]
+  colorScheme: "auto"
+  showTOC: true
+  showDates: true
+  showEstimatedReadingTime: true
+  hero:
+    image: "images/logo.jpg"
+    background: "#000000"
 
   socialIcons:
     - title: twitch.tv

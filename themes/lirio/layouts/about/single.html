@@ -1,0 +1,54 @@
+{{ define "main" }}
+<article class="about">
+    {{/* Avatar via Page Resources (avatar.jpg/png/webp) */}} {{ $avatar :=
+    .Resources.GetMatch "avatar*" }}
+    <header class="about-head">
+        {{ if $avatar }}
+        <img
+            class="about-avatar"
+            src="{{ $avatar.RelPermalink }}"
+            alt="Foto de {{ .Site.Title }}"
+        />
+        {{ end }}
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.roles }}
+        <div class="chips">
+            {{ range . }}<span class="chip">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+    </header>
+
+    {{ if .Content }}
+    <section class="about-content">{{ .Content }}</section>
+    {{ end }} {{/* Habilidades */}} {{ with .Params.skills }}
+    <section>
+        <h2>Habilidades</h2>
+        <div class="chips">
+            {{ range . }}<span class="chip">#{{ . }}</span>{{ end }}
+        </div>
+    </section>
+    {{ end }} {{/* Sociais */}} {{ with .Params.social }}
+    <section>
+        <h2>Onde me encontrar</h2>
+        <div class="chips">
+            {{ with .github }}<a
+                class="chip"
+                href="https://github.com/{{ . }}"
+                rel="me"
+                >GitHub</a
+            >{{ end }} {{ with .twitter }}<a
+                class="chip"
+                href="https://twitter.com/{{ . }}"
+                rel="me"
+                >Twitter/X</a
+            >{{ end }} {{ with .linkedin }}<a
+                class="chip"
+                href="https://www.linkedin.com/{{ . }}"
+                rel="me"
+                >LinkedIn</a
+            >{{ end }}
+        </div>
+    </section>
+    {{ end }}
+</article>
+{{ end }}

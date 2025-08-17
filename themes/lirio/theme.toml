@@ -1,0 +1,18 @@
+name = "Lírio"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "Tema Hugo mobile-first, elegante, minimalista e com toque feminino."
+homepage = "https://monique.dev"
+tags = ["blog", "minimal", "mobile-first", "darkmode", "a11y"]
+features = ["responsive", "dark-mode", "rss", "toc"]
+min_version = "0.111.3"
+
+[author]
+  name = "Monique + ChatGPT"
+  homepage = "https://monique.dev"
+
+[params]
+  colorScheme = "auto" # light | dark | auto
+  showTOC = true
+  showDates = true
+  showEstimatedReadingTime = true
