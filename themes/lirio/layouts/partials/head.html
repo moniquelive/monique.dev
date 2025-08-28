@@ -1,7 +1,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ if .Title }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
-<link rel="alternate" type="application/rss+xml" href="{{ .Site.BaseURL }}index.xml" />
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    href="{{ .Site.BaseURL }}index.xml"
+/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="alternate icon" type="image/png" href="/favicon.png" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -9,9 +13,14 @@
 <meta name="theme-color" content="#d47fa6" />
 <!-- opcional fallback -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Marcellus&display=swap" rel="stylesheet"
+<link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet"
 />
 {{ $css := resources.Get "css/lirio.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" />
-{{ partial "opengraph.html" . }}
-{{ partial "jsonld.html" . }}
+<link
+    rel="stylesheet"
+    href="{{ $css.Permalink }}"
+    integrity="{{ $css.Data.Integrity }}"
+/>
+{{ partial "opengraph.html" . }} {{ partial "jsonld.html" . }}
