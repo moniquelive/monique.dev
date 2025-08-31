@@ -14,20 +14,20 @@ Aqui está meu setup de trabalho e criação de conteúdo.
 - SSD: APPLE SSD AP2048Z (2TB)
 - Teclado: [Ergodox EZ](https://ergodox-ez.com/)
 - Mouse: Logitech MX Master 3
-- Monitores: Dell UP3216Q & LG HDR 4K (x2)
+- Monitores: LG HDR 4K (x3)
 - iPad: às vezes para escrevinhar na tela
 
 ## Vídeo/Streaming
-- Câmera: GoPro Hero 9 & Logitech Brio 4K
+- Câmera: GoPro Hero 12 & Logitech Brio 4K
 - Microfone: Shure Inc. MV7
 - OBS Studio
 - Cena com tela + câmera em picture‑in‑picture
 - Plugins básicos (compressor, limiter, noise gate)
 
 ## Software
-- Terminal: iTerm2 + zsh + fzf
-- Editor: JetBrains (quando cabe), Neovim para velocidade, VS Code para extensões específicas
-- Navegador: Arc/Chrome
+- Terminal: Ghostty + fish + fzf
+- Editor: JetBrains (quando cabe), Neovim para velocidade, VS Code sob tortura
+- Navegador: Arc/Chrome/Brave
 - Notas: Obsidian
 
 ## Dev stack
