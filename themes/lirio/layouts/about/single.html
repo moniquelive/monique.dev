@@ -20,14 +20,38 @@
 
     {{ if .Content }}
     <section class="about-content">{{ .Content }}</section>
-    {{ end }} {{/* Habilidades */}} {{ with .Params.skills }}
+    {{ end }}
+
+    {{/* Agora (/now) */}}
+    {{ with .Params.now }}
+    <section>
+        <h2>Agora</h2>
+        <ul>
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+    </section>
+    {{ end }}
+
+    {{/* Habilidades */}} {{ with .Params.skills }}
     <section>
         <h2>Habilidades</h2>
         <div class="chips">
             {{ range . }}<span class="chip">#{{ . }}</span>{{ end }}
         </div>
     </section>
-    {{ end }} {{/* Sociais */}} {{ with .Params.social }}
+    {{ end }}
+
+    {{/* Destaques */}}
+    {{ with .Params.highlights }}
+    <section>
+        <h2>Destaques</h2>
+        <div class="chips">
+            {{ range . }}<a class="chip" href="{{ .url }}">{{ .title }}</a>{{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{/* Sociais */}} {{ with .Params.social }}
     <section>
         <h2>Onde me encontrar</h2>
         <div class="chips">
@@ -43,9 +67,9 @@
                 >BlueSky</a
             >{{ end }} {{ with .twitter }}<a
                 class="chip"
-                href="https://twitter.com/{{ . }}"
+                href="https://x.com/{{ . }}"
                 rel="me"
-                >Twitter/X</a
+                >X (Twitter)</a
             >{{ end }} {{ with .linkedin }}<a
                 class="chip"
                 href="https://www.linkedin.com/{{ . }}"
@@ -53,6 +77,25 @@
                 >LinkedIn</a
             >{{ end }}
         </div>
+    </section>
+    {{ end }}
+
+    {{/* Setup / Uses */}}
+    {{ with site.GetPage "/uses" }}
+    <section>
+        <h2>Setup</h2>
+        <p>Curioso(a) com meu setup? Veja a página <a href="{{ .RelPermalink }}">/uses</a>.</p>
+    </section>
+    {{ end }}
+
+    {{/* Contato */}}
+    {{ with .Params.contact }}
+    <section>
+        <h2>Contato</h2>
+        <p>
+            {{ if .email }}Prefere email? <a href="mailto:{{ .email }}">{{ .email }}</a>.{{ end }}
+            {{ if .openDM }} DMs abertas nas redes acima.{{ end }}
+        </p>
     </section>
     {{ end }}
 </article>

@@ -2,8 +2,9 @@
 <html lang="pt-br" data-color-scheme="{{ with .Site.Params.colorScheme }}{{ . }}{{ else }}auto{{ end }}">
   {{ partial "head.html" . }}
   <body>
+    <a class="skip-link" href="#content">Pular para o conteúdo</a>
     {{ partial "header.html" . }}
-    <main class="prose">
+    <main id="content" class="prose">
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}

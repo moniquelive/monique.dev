@@ -5,7 +5,28 @@
 {{- $publisherName := or $site.Params.publisherName $site.Title -}}
 {{- $publisherLogo := or $site.Params.publisherLogo "/android-chrome-192x192.png" | absURL -}}
 
-{{- if $isHome -}}
+{{- if or (eq .Layout "about") (eq .Type "about") -}}
+{{- $avatar := (.Resources.GetMatch "avatar*") -}}
+{{- $img := "" -}}
+{{- with $avatar }}{{ $img = .RelPermalink | absURL }}{{ end -}}
+{{- $social := .Params.social -}}
+{{- $sameAs := slice -}}
+{{- with $social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+{{- with $social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+{{- with $social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
+{{- with $social.linkedin }}{{ $sameAs = $sameAs | append (printf "https://www.linkedin.com/%s" .) }}{{ end -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ (or .Params.author $site.Params.author $site.Title) | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  {{- with $img }}"image": {{ . | jsonify }},{{ end }}
+  {{- with .Params.roles }}"jobTitle": {{ (index . 0) | jsonify }},{{ end }}
+  {{- with $sameAs }}"sameAs": {{ . | jsonify }}{{ end }}
+}
+</script>
+{{- else if $isHome -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

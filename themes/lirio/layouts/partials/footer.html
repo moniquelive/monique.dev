@@ -3,3 +3,51 @@
     © {{ now.Format "2006" }} {{ .Site.Title }} · Feito com Hugo · Tema “Lírio”
   </div>
 </footer>
+<script>
+  (function(){
+    const switcher = document.getElementById('theme-switcher');
+    const btn = document.getElementById('theme-toggle');
+    const menu = document.getElementById('theme-menu');
+    if (!btn || !menu || !switcher) return;
+    const root = document.documentElement;
+    const labelEl = btn.querySelector('.mode-label');
+    const items = Array.from(menu.querySelectorAll('[role="menuitemradio"]'));
+    const label = (m) => m === 'dark' ? 'Escuro' : (m === 'light' ? 'Claro' : 'Auto');
+    const apply = (m) => {
+      root.setAttribute('data-color-scheme', m);
+      btn.dataset.mode = m;
+      try { localStorage.setItem('color-scheme', m); } catch(e){}
+      btn.setAttribute('aria-label', 'Alternar tema (atual: ' + label(m) + ')');
+      btn.title = 'Tema: ' + label(m);
+      if (labelEl) labelEl.textContent = label(m);
+      items.forEach(it => it.setAttribute('aria-checked', it.dataset.mode === m ? 'true' : 'false'));
+    };
+    let mode = (function(){
+      try { return localStorage.getItem('color-scheme') || root.getAttribute('data-color-scheme') || 'auto'; }
+      catch(e){ return root.getAttribute('data-color-scheme') || 'auto'; }
+    })();
+    apply(mode);
+
+    const openMenu = () => { switcher.dataset.open = 'true'; btn.setAttribute('aria-expanded', 'true'); };
+    const closeMenu = () => { delete switcher.dataset.open; btn.setAttribute('aria-expanded', 'false'); };
+    const toggleMenu = () => { if (switcher.dataset.open === 'true') closeMenu(); else openMenu(); };
+
+    btn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); openMenu(); const first = items[0]; if (first) first.focus();
+      }
+    });
+    items.forEach((it, idx) => {
+      it.addEventListener('click', (e) => { e.stopPropagation(); mode = it.dataset.mode; apply(mode); closeMenu(); btn.focus(); });
+      it.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { e.preventDefault(); closeMenu(); btn.focus(); }
+        if (e.key === 'ArrowDown') { e.preventDefault(); (items[idx+1] || items[0]).focus(); }
+        if (e.key === 'ArrowUp') { e.preventDefault(); (items[idx-1] || items[items.length-1]).focus(); }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mode = it.dataset.mode; apply(mode); closeMenu(); btn.focus(); }
+      });
+    });
+    document.addEventListener('click', (e) => { if (!switcher.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>

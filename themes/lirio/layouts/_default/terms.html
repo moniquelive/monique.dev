@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <section aria-label="Tags">
+    <h1>{{ .Title }}</h1>
+    {{ $terms := .Data.Terms }}
+    {{ with $terms }}
+      {{ $bycount := .ByCount }}
+      <div class="chips tag-cloud">
+        {{ range $bycount }}
+          {{ $c := .Count }}
+          {{ $cls := (cond (le $c 2) "s1" (cond (le $c 5) "s2" (cond (le $c 10) "s3" (cond (le $c 20) "s4" "s5")))) }}
+          <a class="chip {{ $cls }}" href="{{ .Page.RelPermalink }}" aria-label="{{ .Term }} ({{ $c }})">
+            #{{ .Term }}<span class="tag-count" aria-hidden="true">{{ $c }}</span>
+          </a>
+        {{ end }}
+      </div>
+    {{ else }}
+      <p>Nenhuma tag encontrada.</p>
+    {{ end }}
+  </section>
+{{ end }}
+

@@ -1,0 +1,6 @@
+{{- $id := .Anchor -}}
+<h{{ .Level }} id="{{ $id }}">
+  {{ .Text | safeHTML }}
+  <a class="heading-anchor" href="#{{ $id }}" aria-label="Link para esta seção">#</a>
+  </h{{ .Level }}>
+

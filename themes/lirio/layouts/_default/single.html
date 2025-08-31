@@ -2,9 +2,15 @@
   <article>
     <header>
       <h1>{{ .Title }}</h1>
+      {{ $sections := .Site.Params.mainSections | default (slice "posts") }}
+      {{ $isArticle := in $sections .Type }}
+      {{ $showDate := cond (isset .Params "showDates") .Params.showDates (cond $isArticle .Site.Params.showDates false) }}
+      {{ $showRead := cond (isset .Params "showEstimatedReadingTime") .Params.showEstimatedReadingTime (cond $isArticle .Site.Params.showEstimatedReadingTime false) }}
+      {{ if or $showDate (and $showRead .ReadingTime) }}
       <div class="meta">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ with .ReadingTime }} · {{ . }} min{{ end }}
+        {{ if $showDate }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ end }}{{ if and $showRead .ReadingTime }}{{ if $showDate }} · {{ end }}{{ .ReadingTime }} min{{ end }}
       </div>
+      {{ end }}
       {{ if .TableOfContents }}{{ partial "toc.html" . }}{{ end }}
     </header>
     <section>{{ .Content }}</section>
