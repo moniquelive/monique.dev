@@ -22,6 +22,7 @@ social:
   twitter: "moniquelive"
   linkedin: "in/moniquelive"
   bluesky: "monique.live"
+  instagram: "moniquelive.dev"
 contact:
   openDM: true
 ---

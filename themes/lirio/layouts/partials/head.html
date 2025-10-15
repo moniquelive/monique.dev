@@ -10,8 +10,8 @@
 <link rel="alternate icon" type="image/png" href="/favicon.png" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
 <!-- opcional fallback -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -22,18 +22,15 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
     rel="stylesheet"
 />
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    crossorigin="anonymous"
+/>
 {{ $css := resources.Get "css/lirio.css" | minify | fingerprint }}
 <link
     rel="stylesheet"
     href="{{ $css.Permalink }}"
     integrity="{{ $css.Data.Integrity }}"
 />
-<script>
-  (() => {
-    try {
-      const stored = localStorage.getItem('color-scheme');
-      if (stored) document.documentElement.setAttribute('data-color-scheme', stored);
-    } catch (e) {}
-  })();
-</script>
 {{ partial "opengraph.html" . }} {{ partial "jsonld.html" . }}

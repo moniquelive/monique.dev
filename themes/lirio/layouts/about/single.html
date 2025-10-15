@@ -12,7 +12,7 @@
         {{ end }}
         <h1>{{ .Title }}</h1>
         {{ with .Params.roles }}
-        <div class="chips">
+        <div class="chip-list">
             {{ range . }}<span class="chip">{{ . }}</span>{{ end }}
         </div>
         {{ end }}
@@ -35,7 +35,7 @@
     {{/* Habilidades */}} {{ with .Params.skills }}
     <section>
         <h2>Habilidades</h2>
-        <div class="chips">
+        <div class="chip-list">
             {{ range . }}<span class="chip">#{{ . }}</span>{{ end }}
         </div>
     </section>
@@ -45,7 +45,7 @@
     {{ with .Params.highlights }}
     <section>
         <h2>Destaques</h2>
-        <div class="chips">
+        <div class="chip-list">
             {{ range . }}<a class="chip" href="{{ .url }}">{{ .title }}</a>{{ end }}
         </div>
     </section>
@@ -54,12 +54,17 @@
     {{/* Sociais */}} {{ with .Params.social }}
     <section>
         <h2>Onde me encontrar</h2>
-        <div class="chips">
+        <div class="chip-list">
             {{ with .github }}<a
                 class="chip"
                 href="https://github.com/{{ . }}"
                 rel="me"
                 >GitHub</a
+            >{{ end }} {{ with .instagram }}<a
+                class="chip"
+                href="https://instagram.com/{{ . }}"
+                rel="me"
+                >Instagram</a
             >{{ end }} {{ with .bluesky }}<a
                 class="chip"
                 href="https://bsky.app/profile/{{ . }}"
