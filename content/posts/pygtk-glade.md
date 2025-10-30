@@ -1,14 +1,18 @@
 ---
 title: Python3 + GTK+3 + Glade + Templates = <3
 date: 2021-03-28T19:00:00-03:00
+description: Mostro como montar uma janela Gtk com Glade, conectar sinais e dirigir tudo com @Gtk.Template em pouquíssimas linhas.
 tags: [python, gtk, glade]
 ---
+
+## Resumo
+Como montar uma janela Gtk com Glade, conectar sinais e dirigir tudo com `@Gtk.Template` em pouquíssimas linhas.
 
 Vários softwares que você usa no ambiente Gnome podem ter sido desenvolvidos em Python. Aplicativos como Gnome Music e Gnome Tweaks são alguns exemplos disso.
 
 Neste artigo eu vou mostrar um exemplo mínimo para que você tenha um ponto de partida para suas idéias. Vamos lá:
 
-## Crie um layout básico usando o editor Glade:
+## Crie um layout básico usando o editor Glade
 
 ![GtkApplicationWindow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/suzcky8ibzokyhfcqv2q.png)
 
@@ -29,7 +33,7 @@ Com o Botão selecionado, troque para a aba _Signals_:
 
 Isso é tudo com o editor Glade. Salve seu _.glade_ na pasta do seu projeto.
 
-## Crie um arquivo mínimo em Python:
+## Crie um arquivo mínimo em Python
 
 ```python
 import gi

@@ -1,9 +1,13 @@
 ---
 title: "LSP de Haskell (bonus: com Vim)"
 date: 2020-10-26T12:00:00-03:00
+description: Guio a instalação do Haskell Language Server e configuro o Vim com atalhos e plugins para ter LSP completo no dia a dia.
 tags: [haskell,vim,lsp]
 cover_image: https://www.techort.com/wp-content/uploads/2019/01/applicative-parsers-on-haskell-habr.png
 ---
+
+## Resumo
+Instalação do Haskell Language Server e como usar o Vim com atalhos e plugins para ter LSP completo no dia a dia.
 
 Então você curte codar em Haskell. E você ouviu dizer que os jovens hoje em dia usam esse negócio chamado [LSP][lsp].
 
@@ -11,6 +15,7 @@ Direto ao ponto: `LSP` é uma especificação que padroniza o auto-complete, nav
 
 Neste artigo vamos focar no `LSP` de Haskell ([haskell's language server][hls]). Há um tempo atrás o `LSP` padrão de Haskell era o `HIE`, mas foi descontinuado.
 
+## Instalando o servidor
 Vamos começar então! Assumindo que você tem o [Haskell Stack][stack] instalado:
 
 ```shell
@@ -22,6 +27,7 @@ stack ./install.hs hls
 ```
 Os binários são instalados em `~/.local/bin`
 
+## Configurando o Vim
 Certo, mas como usá-lo agora? Bem, depende do seu editor. Vou mostrar como faço no meu `.vimrc`:
 
 ```VimL
@@ -84,6 +90,7 @@ augroup lsp_install
 augroup END
 ```
 
+## Primeiro contato
 A primeira vez que iniciar o vim com um arquivo Haskell vai levar um tempinho pra carregar (verifique o status com `:LspStatus`). Assim que a margem esquerda do editor ficar com um espaço de 1 letra quer dizer que funcionou!
 
 Agora seu Vim fala `LSP`:

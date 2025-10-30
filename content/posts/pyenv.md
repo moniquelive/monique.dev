@@ -1,9 +1,13 @@
 ---
-title: Auto ativar e desativar python venv usando zsh
+title: Auto ativar e desativar python venv usando zsh (e fish)
 date: 2021-12-21T12:00:00-03:00
-tags: [python, venv, zsh, chpwd]
+description: Crio um hook chpwd no zsh que ativa o venv automaticamente ao entrar na pasta do projeto e desativa ao sair.
+tags: [python, venv, zsh, chpwd, fish]
 #featuredImage: https://logodownload.org/wp-content/uploads/2019/10/python-logo-1.png
 ---
+
+## Resumo
+Como criar um hook `chpwd` no zsh que ativa o venv automaticamente ao entrar na pasta do projeto e desativa ao sair.
 
 Quando aprendi sobre o python venv (`apt-get install python3-venv`) me
 converti na hora. É simples, padrão e explícito.
@@ -18,6 +22,7 @@ Então decidi investir finalmente 10 minutos para me liberar de ficar
 ativando e desativando esse negócio toda vez que eu entrasse ou saísse de uma
 pasta de projeto com minha pastinha padrão `./venv`:
 
+## Automação com chpwd
 ```zsh
 #---------------------------------------------- chpwd pyvenv ---
 python_venv() {
@@ -34,6 +39,19 @@ python_venv
 ```
 
 Só colar isso no seu `~/.zshrc`
+
+edit: traduzindo para o scripting do shell Fish fica assim:
+
+```shell
+function python_venv --on-variable PWD
+    set myvenv ./venv
+    if test -d $myvenv
+        source $myvenv/bin/activate.fish
+    else if type -q deactivate
+        deactivate
+    end
+end
+```
 
 \_
 

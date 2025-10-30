@@ -1,10 +1,13 @@
 ---
 title: Usando fzf para escolher de uma lista de opções
 date: 2024-01-02T12:00:00-03:00
-description: Alguns cenários onde o fzf pode ajudar bastante
+description: Bato papo sobre jeitos reais de usar fzf como seletor interativo, desde limpar imagens Docker até pré-visualizar temas do Pygments.
 tags: [fzf, shell, docker, pygments]
 #featuredImage: https://raw.githubusercontent.com/junegunn/i/master/fzf.png
 ---
+
+## Resumo
+Jeitos reais de usar fzf como seletor interativo, desde limpar imagens Docker até pré-visualizar temas do Pygments.
 
 Alguns cenários em que uso fzf para me ajudar a escolher de uma lista de opções
 

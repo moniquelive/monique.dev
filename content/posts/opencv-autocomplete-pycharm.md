@@ -1,9 +1,13 @@
 ---
 title: OpenCV instalado globalmente com autocomplete no PyCharm
 date: 2020-12-28T12:00:00-03:00
+description: Ensino a combinar um venv com --system-site-packages e apontar o PyCharm pro .so do OpenCV para ganhar autocomplete cheio.
 tags: [python, opencv, pycharm]
 cover_image: https://pyimagesearch.com/wp-content/uploads/2015/03/pycharm_opencv_logos.jpg
 ---
+
+## Resumo
+Como combinar um venv com `--system-site-packages` e apontar o PyCharm pro `.so` do OpenCV para ganhar autocomplete completo.
 
 ## Intro
 

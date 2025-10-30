@@ -1,10 +1,13 @@
 ---
 title: "Tecnologia Encontra Música: Criando um Fluxo de Trabalho Alfred Sem Costura para Aficionados de EDM"
 date: 2024-01-05T12:00:00-03:00
-description: Um workflow customizado para escolher músicas da Digitally Imported
+description: Compartilho como automatizei no Alfred a troca de estações da Digitally Imported, gerando a lista via GPT-4 e ligando tudo no Apple Music.
 tags: [alfred, digitallyimported, workflow]
 #featuredImage: https://www.alfredapp.com/media/logo4@2x.png
 ---
+
+## Resumo
+Como automatizei no Alfred a troca de estações da Digitally Imported, gerando a lista via GPT-4 e ligando tudo no Apple Music.
 
 Um workflow customizado para escolher músicas da [Digitally Imported](https://di.fm)
 

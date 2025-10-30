@@ -1,9 +1,13 @@
 ---
 title: Como eu compilo o OpenCV no Linux com um monte de penduricalhos (CuDNN, CUDA, OpenGL, Qt, TrueType, CODECs de Video)
 date: 2021-02-16T12:00:00-03:00
+description: Detalho cada dependência e flag do meu cmake gigante para compilar o OpenCV com CUDA, CuDNN, Qt, OpenGL e companhia.
 tags: [opencv, python, cuda]
 cover_image: https://upload.wikimedia.org/wikipedia/commons/5/53/OpenCV_Logo_with_text.png
 ---
+
+## Resumo
+Cada dependência e flag do meu cmake gigante para compilar o OpenCV com CUDA, CuDNN, Qt, OpenGL e companhia.
 
 OpenCV é uma biblioteca gigante. Mas ao mesmo tempo bastante flexível. Você escolhe o que a sua versão vai ter através da instalação ou não no seu sistema de dependências opcionais.
 

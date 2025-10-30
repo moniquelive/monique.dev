@@ -1,9 +1,13 @@
 ---
 title: OBS Studio como uma webcam virtual
 date: 2020-12-22T12:00:00-03:00
+description: Passo o passo a passo de ativar o v4l2loopback e o plugin v4l2sink para usar o OBS como webcam virtual no Linux.
 tags: [obs,virtual cam,linux]
 cover_image: https://obsproject.com/assets/images/new_icon_small-r.png
 ---
+
+## Resumo
+Passo o passo a passo de como ativar o v4l2loopback e o plugin v4l2sink para usar o OBS como webcam virtual no Linux.
 
 No ano de 2020 as video conferências explodiram pelo globo. Se tornaram uma necessidade para vários trabalhadores remotos.
 
@@ -61,4 +65,3 @@ Boas conferências ;)
 _
 
 = M =
-
