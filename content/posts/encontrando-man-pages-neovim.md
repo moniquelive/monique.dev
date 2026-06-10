@@ -3,7 +3,7 @@ title: Encontrando man pages pelo Neovim com Telescope e/ou mini.pick
 date: 2026-06-05T12:00:00-03:00
 description: Um plugin pequeno para Neovim que descobre man pages locais com apropos e abre tudo pelo comando :Man nativo do Neovim.
 tags: [neovim, lua, telescope, vim]
-draft: true
+draft: false
 ---
 
 ## Resumo
