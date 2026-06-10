@@ -1,0 +1,26 @@
+[tools]
+hugo-extended = "0.162.1"
+node = "26.3.0"
+
+[env]
+TZ = "America/Sao_Paulo"
+
+[tasks.build]
+description = "Build the production site"
+run = "hugo --gc --minify"
+
+[tasks.dev]
+description = "Run the Hugo development server with drafts"
+run = "hugo server -D --disableFastRender"
+
+[tasks.clean]
+description = "Remove generated Hugo output and transient files"
+run = "rm -rf public resources .hugo_build.lock"
+
+[tasks.test]
+description = "Build the site with path warning checks"
+run = "hugo --printPathWarnings"
+
+[tasks.ci]
+description = "Run validation and production build"
+depends = ["test", "build"]
