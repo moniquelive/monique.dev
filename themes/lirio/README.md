@@ -1,6 +1,8 @@
-# Tema Hugo — Lírio
+# Tema Hugo — Lírio Pop
 
-Tema local, mobile-first e minimalista do `monique.dev`.
+Tema local, mobile-first, legível e divertido do `monique.dev`. A interface usa Rosé Pine Dawn no
+modo claro e Rosé Pine Moon no escuro, com Atkinson Hyperlegible Next para leitura e Atkinson
+Hyperlegible Mono para código.
 
 O Lírio é versionado diretamente neste repositório em `themes/lirio/`; ele não é um
 submódulo Git nem uma dependência de Hugo Modules. Alterações específicas do site

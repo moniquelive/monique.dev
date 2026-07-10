@@ -1,7 +1,7 @@
 # monique.dev
 
 Código-fonte do site pessoal [monique.dev](https://monique.dev/), construído com Hugo e o tema
-local Lirio.
+local Lírio Pop.
 
 ## Desenvolvimento
 
