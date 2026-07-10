@@ -1,0 +1,35 @@
+{{- $page := . -}}
+{{- $url := "" -}}
+{{- $width := 0 -}}
+{{- $height := 0 -}}
+{{- with $page.Params.ogImage }}{{ $url = . | absURL }}{{ end -}}
+{{- if not $url -}}
+  {{- with $page.Params.images -}}
+    {{- if ge (len .) 1 }}{{ $url = (index . 0) | absURL }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $url -}}
+  {{- with $page.Params.cover_image }}{{ $url = . | absURL }}{{ end -}}
+{{- end -}}
+{{- if not $url -}}
+  {{- with $page.Params.cover -}}
+    {{- with $page.Resources.GetMatch . -}}
+      {{- $url = .RelPermalink | absURL -}}
+      {{- $width = .Width -}}
+      {{- $height = .Height -}}
+    {{- else -}}
+      {{- $url = . | absURL -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $url -}}
+  {{- with $page.Resources.GetMatch "cover*" -}}
+    {{- $url = .RelPermalink | absURL -}}
+    {{- $width = .Width -}}
+    {{- $height = .Height -}}
+  {{- end -}}
+{{- end -}}
+{{- if and (not $url) $page.Site.Params.defaultImage -}}
+  {{- $url = $page.Site.Params.defaultImage | absURL -}}
+{{- end -}}
+{{- return (dict "URL" $url "Width" $width "Height" $height) -}}

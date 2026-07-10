@@ -1,6 +1,8 @@
 <!doctype html>
-<html lang="pt-br">
-  {{ partial "head.html" . }}
+<html lang="{{ .Site.Language.Locale }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
   <body>
     <a class="skip-link" href="#content">Pular para o conteúdo</a>
     {{ partial "header.html" . }}

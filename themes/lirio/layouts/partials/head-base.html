@@ -1,0 +1,33 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ if ne .Kind "home" }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
+{{ with .Site.Home.OutputFormats.Get "rss" }}
+  <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}" />
+{{ end }}
+<link rel="canonical" href="{{ .Permalink }}" />
+{{ with partial "description.html" . }}<meta name="description" content="{{ . }}" />{{ end }}
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}" />
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}" />
+<meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css"
+  integrity="sha384-L1dWfspMTHU/ApYnFiMz2QID/PlP1xCW9visvBdbEkOLkSSWsP6ZJWhPw6apiXxU"
+  crossorigin="anonymous"
+/>
+{{ $css := resources.Get "css/lirio.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+{{ partial "opengraph.html" . }}
+{{ partial "jsonld.html" . }}

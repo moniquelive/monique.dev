@@ -1,76 +1,64 @@
-{{- /* Partial: jsonld.html — Schema.org (Website / BlogPosting) */ -}}
 {{- $site := .Site -}}
-{{- $isHome := eq .Kind "home" -}}
-{{- $desc := (or .Params.description .Summary $site.Params.description) | plainify -}}
-{{- $publisherName := or $site.Params.publisherName $site.Title -}}
-{{- $publisherLogo := or $site.Params.publisherLogo "/android-chrome-192x192.png" | absURL -}}
+{{- $description := partial "description.html" . -}}
+{{- $mainSections := $site.Params.mainSections | default (slice "posts") -}}
+{{- $isPost := and .IsPage (in $mainSections .Section) -}}
+{{- $isAbout := or (eq .Layout "about") (eq .Type "about") -}}
+{{- $schema := dict "@context" "https://schema.org" -}}
 
-{{- if or (eq .Layout "about") (eq .Type "about") -}}
-{{- $avatar := (.Resources.GetMatch "avatar*") -}}
-{{- $img := "" -}}
-{{- with $avatar }}{{ $img = .RelPermalink | absURL }}{{ end -}}
-{{- $social := .Params.social -}}
-{{- $sameAs := slice -}}
-{{- with $social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
-{{- with $social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
-{{- with $social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
-{{- with $social.linkedin }}{{ $sameAs = $sameAs | append (printf "https://www.linkedin.com/%s" .) }}{{ end -}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": {{ (or .Params.author $site.Params.author $site.Title) | jsonify }},
-  "url": {{ .Permalink | jsonify }},
-  {{- with $img }}"image": {{ . | jsonify }},{{ end }}
-  {{- with .Params.roles }}"jobTitle": {{ (index . 0) | jsonify }},{{ end }}
-  {{- with $sameAs }}"sameAs": {{ . | jsonify }}{{ end }}
-}
-</script>
-{{- else if $isHome -}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": {{ $site.Title | jsonify }},
-  "url": {{ .Permalink | jsonify }},
-  "description": {{ $desc | jsonify }}
-}
-</script>
+{{- if $isAbout -}}
+  {{- $sameAs := slice -}}
+  {{- with .Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+  {{- with .Params.social.instagram }}{{ $sameAs = $sameAs | append (printf "https://instagram.com/%s" .) }}{{ end -}}
+  {{- with .Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+  {{- with .Params.social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
+  {{- with .Params.social.linkedin }}{{ $sameAs = $sameAs | append (printf "https://www.linkedin.com/%s" .) }}{{ end -}}
+  {{- $person := dict
+    "@type" "Person"
+    "name" (.Params.author | default $site.Params.author | default $site.Title)
+    "url" .Permalink
+  -}}
+  {{- with .Resources.GetMatch "avatar*" }}{{ $person = merge $person (dict "image" (.RelPermalink | absURL)) }}{{ end -}}
+  {{- with .Params.roles }}{{ $person = merge $person (dict "jobTitle" (index . 0)) }}{{ end -}}
+  {{- if gt (len $sameAs) 0 }}{{ $person = merge $person (dict "sameAs" $sameAs) }}{{ end -}}
+  {{- $schema = merge $schema $person -}}
+{{- else if eq .Kind "home" -}}
+  {{- $schema = merge $schema (dict
+    "@type" "WebSite"
+    "name" $site.Title
+    "url" .Permalink
+  ) -}}
+  {{- with $description }}{{ $schema = merge $schema (dict "description" .) }}{{ end -}}
+{{- else if $isPost -}}
+  {{- $publisher := dict
+    "@type" "Organization"
+    "name" ($site.Params.publisherName | default $site.Title)
+    "logo" (dict
+      "@type" "ImageObject"
+      "url" (($site.Params.publisherLogo | default "android-chrome-192x192.png") | absURL)
+    )
+  -}}
+  {{- $post := dict
+    "@type" "BlogPosting"
+    "headline" .Title
+    "url" .Permalink
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+    "author" (dict "@type" "Person" "name" (.Params.author | default $site.Params.author | default $site.Title))
+    "publisher" $publisher
+  -}}
+  {{- with $description }}{{ $post = merge $post (dict "description" .) }}{{ end -}}
+  {{- with (partial "social-image.html" .).URL }}{{ $post = merge $post (dict "image" .) }}{{ end -}}
+  {{- $schema = merge $schema $post -}}
 {{- else -}}
-{{- $img := "" -}}
-{{- with .Params.ogImage }}{{ $img = . | absURL }}{{ end -}}
-{{- if not $img -}}
-  {{- with .Params.images -}}{{- if ge (len .) 1 -}}{{ $img = (index . 0) | absURL }}{{- end -}}{{- end -}}
+  {{- $pageType := cond (or .IsSection (in (slice "taxonomy" "term") .Kind)) "CollectionPage" "WebPage" -}}
+  {{- $page := dict
+    "@type" $pageType
+    "name" .Title
+    "url" .Permalink
+    "isPartOf" (dict "@type" "WebSite" "name" $site.Title "url" $site.Home.Permalink)
+  -}}
+  {{- with $description }}{{ $page = merge $page (dict "description" .) }}{{ end -}}
+  {{- $schema = merge $schema $page -}}
 {{- end -}}
-{{- if not $img -}}
-  {{- with (.Resources.GetMatch (or .Params.cover "cover*")) -}}{{- $img = .RelPermalink | absURL -}}{{- end -}}
-{{- end -}}
-{{- if and (not $img) ($site.Params.defaultImage) -}}{{- $img = $site.Params.defaultImage | absURL -}}{{- end -}}
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": {{ .Title | jsonify }},
-  "description": {{ $desc | jsonify }},
-  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
-  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": {{ .Permalink | jsonify }}
-  },
-  "author": {
-    "@type": "Person",
-    "name": {{ or .Params.author $site.Params.author $site.Title | jsonify }}
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ $publisherName | jsonify }},
-    "logo": {
-      "@type": "ImageObject",
-      "url": {{ $publisherLogo | jsonify }}
-    }
-  }{{ with $img }}, "image": {{ . | jsonify }}{{ end }}
-}
-</script>
-{{- end -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
