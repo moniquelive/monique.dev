@@ -1,10 +1,10 @@
-name = "Lírio"
+name = "Lírio Pop"
 license = "MIT"
 licenselink = "https://opensource.org/licenses/MIT"
-description = "Tema Hugo mobile-first, elegante, minimalista e com toque feminino."
+description = "Tema Hugo legível e divertido com as paletas Rosé Pine Dawn e Moon."
 homepage = "https://monique.dev"
-tags = ["blog", "minimal", "mobile-first", "darkmode", "a11y"]
-features = ["responsive", "dark-mode", "rss", "toc"]
+tags = ["blog", "colorful", "mobile-first", "darkmode", "a11y"]
+features = ["responsive", "adaptive-color", "legible-type", "rss", "toc"]
 min_version = "0.111.3"
 
 [author]
