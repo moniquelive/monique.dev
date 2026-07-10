@@ -7,7 +7,7 @@ TZ = "America/Sao_Paulo"
 
 [tasks.build]
 description = "Build the production site"
-run = "hugo --gc --minify"
+run = "hugo --cleanDestinationDir --gc --minify --panicOnWarning"
 
 [tasks.dev]
 description = "Run the Hugo development server with drafts"
@@ -19,8 +19,21 @@ run = "rm -rf public resources .hugo_build.lock"
 
 [tasks.test]
 description = "Build the site with path warning checks"
-run = "hugo --printPathWarnings"
+run = "hugo --cleanDestinationDir --printPathWarnings --panicOnWarning"
+
+[tasks.format]
+description = "Format repository CSS"
+run = "npm run format"
+
+[tasks.format-check]
+description = "Check repository CSS formatting"
+run = "npm run format:check"
+
+[tasks.links]
+description = "Check generated internal links, fragments, and CSS references"
+depends = ["build"]
+run = "npm run links"
 
 [tasks.ci]
 description = "Run validation and production build"
-depends = ["test", "build"]
+run = "npm run format:check && hugo --cleanDestinationDir --gc --minify --printPathWarnings --panicOnWarning"

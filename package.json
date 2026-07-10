@@ -1,0 +1,17 @@
+{
+  "name": "monique.dev",
+  "private": true,
+  "packageManager": "npm@11.16.0",
+  "engines": {
+    "node": ">=26.3.0"
+  },
+  "scripts": {
+    "format": "prettier --write 'assets/css/*.css' 'themes/lirio/assets/css/*.css'",
+    "format:check": "prettier --check 'assets/css/*.css' 'themes/lirio/assets/css/*.css'",
+    "links": "linkinator public --recurse --check-fragments --check-css --skip '^https?://(?!localhost(?:[:/]|$)|127\\.0\\.0\\.1(?:[:/]|$))' --verbosity warning"
+  },
+  "devDependencies": {
+    "linkinator": "7.6.1",
+    "prettier": "3.9.5"
+  }
+}
