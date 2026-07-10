@@ -1,7 +1,9 @@
 ---
 title: Python3 + GTK+3 + Glade + Templates = <3
 date: 2021-03-28T19:00:00-03:00
-description: Mostro como montar uma janela Gtk com Glade, conectar sinais e dirigir tudo com @Gtk.Template em pouquíssimas linhas.
+description: >-
+  Mostro como montar uma janela Gtk com Glade, conectar sinais e dirigir tudo com
+  @Gtk.Template em pouquíssimas linhas.
 tags: [python, gtk, glade]
 ---
 

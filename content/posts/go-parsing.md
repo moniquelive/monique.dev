@@ -1,9 +1,11 @@
 ---
 title: Parsing em GO com uso eficiente da memória
 date: 2020-10-21T12:00:00-03:00
-description: Explico por que vale usar json.NewDecoder (e cia) para fazer streaming de dados gigantes em Go sem estourar memória.
+description: >-
+  Explico por que vale usar json.NewDecoder (e cia) para fazer streaming de dados gigantes
+  em Go sem estourar memória.
 tags: [go,golang,json,xml,stream]
-cover_image: https://miro.medium.com/max/4800/1*xGNVMFqXXTeK7ZyK2eN21Q.jpeg
+images: [https://miro.medium.com/max/4800/1*xGNVMFqXXTeK7ZyK2eN21Q.jpeg]
 ---
 
 ## Resumo

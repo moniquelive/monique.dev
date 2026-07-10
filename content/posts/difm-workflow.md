@@ -1,9 +1,10 @@
 ---
 title: "Tecnologia Encontra Música: Criando um Fluxo de Trabalho Alfred Sem Costura para Aficionados de EDM"
 date: 2024-01-05T12:00:00-03:00
-description: Compartilho como automatizei no Alfred a troca de estações da Digitally Imported, gerando a lista via GPT-4 e ligando tudo no Apple Music.
+description: >-
+  Compartilho como automatizei no Alfred a troca de estações da Digitally Imported,
+  gerando a lista via GPT-4 e ligando tudo no Apple Music.
 tags: [alfred, digitallyimported, workflow]
-#featuredImage: https://www.alfredapp.com/media/logo4@2x.png
 ---
 
 ## Resumo
@@ -11,7 +12,7 @@ Como automatizei no Alfred a troca de estações da Digitally Imported, gerando 
 
 Um workflow customizado para escolher músicas da [Digitally Imported](https://di.fm)
 
-### O Problema
+## O problema
 
 Se você é um fã de EDM como eu, provavelmente conhece o super tradicional site [Digitally Imported](https://di.fm).
 
@@ -19,7 +20,7 @@ Sou apoiadora de longa data (e recomendo que você considere apoiar - as contas 
 
 Como sou também usuária frequente do Alfred, procurei um workflow, mas não tive sorte. Então, fiz um.
 
-### A Solução
+## A solução
 O editor de workflows é bem legal. Você arrasta caixas e as conecta para que a saída de uma caixa se torne a entrada da outra:
 
 ![Painel de Workflow do Meu Alfred](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4h6d9yvzfkbk3losdov9.png)
@@ -27,7 +28,7 @@ O editor de workflows é bem legal. Você arrasta caixas e as conecta para que a
 
 E é isso. Apenas duas caixas conectadas para tocar um pouco de música eletrônica ❤️
 
-### Mas espera, tem mais!
+## Mas espera, tem mais!
 Seria um artigo muito chato se terminasse aqui, certo? 😊
 
 Primeiro de tudo, a lista de estações de rádio é enorme! (99):
@@ -37,7 +38,7 @@ Primeiro de tudo, a lista de estações de rádio é enorme! (99):
 
 Eu nunca digitaria 99 vezes cada informação da estação... Não... Pedi ajuda ao nosso amigável soberano **GPT-4**.
 
-### Chat GPT ao Resgate
+## Chat GPT ao resgate
 Tudo o que eu tinha eram os 99 [slugs](https://pt.wikipedia.org/wiki/Slug_(programação)) das estações de rádio. Quando você abre uma playlist (.pls), você obtém todas as URLs de streaming no formato:
 
 `http://prem1.di.fm/${query}?XXXXXX`
@@ -85,7 +86,7 @@ O segundo nó é super simples. É um nó *Run Script* com o seguinte:
 
 Você pode usar o player de sua preferência aqui. Eu testei com VLC e Apple Music.
 
-### E é Isso!
+## E é isso!
 
 Agora você tem um seletor de estações personalizado:
 

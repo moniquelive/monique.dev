@@ -1,9 +1,11 @@
 ---
 title: "LSP de Haskell (bonus: com Vim)"
 date: 2020-10-26T12:00:00-03:00
-description: Guio a instalação do Haskell Language Server e configuro o Vim com atalhos e plugins para ter LSP completo no dia a dia.
+description: >-
+  Guio a instalação do Haskell Language Server e configuro o Vim com atalhos e plugins
+  para ter LSP completo no dia a dia.
 tags: [haskell,vim,lsp]
-cover_image: https://www.techort.com/wp-content/uploads/2019/01/applicative-parsers-on-haskell-habr.png
+images: [https://www.techort.com/wp-content/uploads/2019/01/applicative-parsers-on-haskell-habr.png]
 ---
 
 ## Resumo
@@ -97,11 +99,11 @@ Agora seu Vim fala `LSP`:
 
 * Hover:
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/ldga2jmvzlj9epp0rjf8.png)
+![Informações de hover do LSP exibidas no Vim](https://dev-to-uploads.s3.amazonaws.com/i/ldga2jmvzlj9epp0rjf8.png)
 
 * Auto-complete:
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/yhiu4kww6paaehuisp20.png)
+![Sugestões de autocompletar do LSP exibidas no Vim](https://dev-to-uploads.s3.amazonaws.com/i/yhiu4kww6paaehuisp20.png)
 
 etc. etc. etc.
 

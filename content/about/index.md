@@ -1,7 +1,7 @@
 ---
 title: "Sobre"
 layout: "about"
-aliases: ["/about/", "/sobre/"]
+aliases: ["/sobre/"]
 roles: ["Engenheira de Computação", "Criadora de conteúdo", "Dev" ]
 skills: ["Go", "Python", "Acessibilidade", "Sistemas", "Streaming", "Swift/SwiftUI"]
 now:

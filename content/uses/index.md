@@ -1,6 +1,5 @@
 ---
 title: "Uses"
-aliases: ["/uses/"]
 showDates: false
 showEstimatedReadingTime: false
 ---
@@ -17,7 +16,7 @@ Aqui está meu setup de trabalho e criação de conteúdo.
 - Monitores: LG HDR 4K (x3)
 - iPad: às vezes para escrevinhar na tela
 
-## Vídeo/Streaming
+## Vídeo/streaming
 - Câmera: GoPro Hero 12 & Logitech Brio 4K
 - Microfone: Shure Inc. MV7
 - OBS Studio

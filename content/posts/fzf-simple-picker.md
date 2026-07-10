@@ -1,9 +1,10 @@
 ---
 title: Usando fzf para escolher de uma lista de opções
 date: 2024-01-02T12:00:00-03:00
-description: Bato papo sobre jeitos reais de usar fzf como seletor interativo, desde limpar imagens Docker até pré-visualizar temas do Pygments.
+description: >-
+  Bato papo sobre jeitos reais de usar fzf como seletor interativo, desde limpar imagens
+  Docker até pré-visualizar temas do Pygments.
 tags: [fzf, shell, docker, pygments]
-#featuredImage: https://raw.githubusercontent.com/junegunn/i/master/fzf.png
 ---
 
 ## Resumo
@@ -11,7 +12,7 @@ Jeitos reais de usar fzf como seletor interativo, desde limpar imagens Docker at
 
 Alguns cenários em que uso fzf para me ajudar a escolher de uma lista de opções
 
-### #1 - escolhendo quais imagens docker eu gostaria de remover
+## 1. Escolhendo quais imagens Docker eu gostaria de remover
 
 ```shell
 fzfrmimage () {
@@ -26,7 +27,7 @@ fzfrmimage () {
 
 ---
 
-### #2 - escolhendo entre os temas do pygments (estilos)
+## 2. Escolhendo entre os temas do Pygments (estilos)
 
 Usei isso como uma linha de comando (na verdade 2 para melhor legibilidade) para visualizar um código de exemplo usando o estilo.
 

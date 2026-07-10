@@ -1,9 +1,11 @@
 ---
 title: Versões pré-compiladas de Pytorch
 date: 2021-01-20T15:00:00-03:00
-description: Compartilho o truque de usar o índice torch_stable do PyTorch para instalar versões antigas ou específicas direto pelo pip.
+description: >-
+  Compartilho o truque de usar o índice torch_stable do PyTorch para instalar versões
+  antigas ou específicas direto pelo pip.
 tags: [python, pytorch, cuda, gpu]
-cover_image: https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png
+images: [https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png]
 ---
 
 ## Resumo
@@ -14,7 +16,7 @@ Acabo de descobrir um repositório que salvou minha pele, então resolvi vir aqu
 
 Se você abrir o site do `pytorch`, ele te apresenta algumas opções de instalação:
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/oixb0x4hndw3ddm10gub.png)
+![Opções de instalação exibidas no site do PyTorch](https://dev-to-uploads.s3.amazonaws.com/i/oixb0x4hndw3ddm10gub.png)
 
 A questão é que, se você quiser instalar uma versão diferente da apresentada (hoje é a 1.7.1), vai começar uma caça ao tesouro bem chatinha...
 

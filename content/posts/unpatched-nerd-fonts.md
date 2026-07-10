@@ -1,9 +1,10 @@
 ---
 title: Usando símbolos de Nerdfont e Emoji com qualquer fonte (original) no Linux
 date: 2024-01-03T12:00:00-03:00
-description: Explico como o fontconfig cria uma família híbrida com sua fonte favorita, Nerd Fonts e emoji para ter fallback limpo no Linux.
+description: >-
+  Explico como o fontconfig cria uma família híbrida com sua fonte favorita, Nerd Fonts e
+  emoji para ter fallback limpo no Linux.
 tags: [fontconfig, nerdfont, símbolos, fontfamily]
-#featuredImage: https://dev-to-uploads.s3.amazonaws.com/uploads/articles/316326l50vp8do2bhun3.png
 ---
 
 ## Resumo

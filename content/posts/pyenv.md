@@ -1,9 +1,10 @@
 ---
 title: Auto ativar e desativar python venv usando zsh (e fish)
 date: 2021-12-21T12:00:00-03:00
-description: Crio um hook chpwd no zsh que ativa o venv automaticamente ao entrar na pasta do projeto e desativa ao sair.
+description: >-
+  Crio um hook chpwd no zsh que ativa o venv automaticamente ao entrar na pasta do projeto
+  e desativa ao sair.
 tags: [python, venv, zsh, chpwd, fish]
-#featuredImage: https://logodownload.org/wp-content/uploads/2019/10/python-logo-1.png
 ---
 
 ## Resumo

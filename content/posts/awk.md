@@ -1,9 +1,10 @@
 ---
 title: Como interpretar uma lista de pares chave-valor com AWK
 date: 2020-09-07T12:00:00-03:00
-description: Mostro como transformar saídas em pares chave=valor em um array AWK para capturar rapidinho só o campo que interessa.
+description: >-
+  Mostro como transformar saídas em pares chave=valor em um array AWK para capturar
+  rapidinho só o campo que interessa.
 tags: [awk, parse, shell, oneliner]
-#featuredImage: https://logodownload.org/wp-content/uploads/2017/11/gnu-logo.png
 ---
 
 ## Resumo

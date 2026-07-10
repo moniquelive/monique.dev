@@ -1,9 +1,10 @@
 ---
 title: Passando múltiplos argumentos para sub-templates em golang
 date: 2024-01-01T12:00:00-03:00
-description: Mostro a truqueira de criar uma função helper no FuncMap para empacotar múltiplos parâmetros ao chamar sub-templates Go.
+description: >-
+  Mostro a truqueira de criar uma função helper no FuncMap para empacotar múltiplos
+  parâmetros ao chamar sub-templates Go.
 tags: [go, golang, template, argumentos]
-#featuredImage: https://miro.medium.com/max/4800/0*YIWeYQPpPm_bOwVP.png
 ---
 
 ## Resumo
