@@ -1,24 +1,14 @@
 {{ define "main" }}
   {{ $p := .Paginate .Pages }}
   <section aria-label="Lista de posts">
+    <h1>{{ .Title }}</h1>
     <div class="post-grid">
       {{ range $p.Pages }}
-        <article class="post-card">
-          <header>
-            <div class="meta">
-              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ with .ReadingTime }} · {{ . }} min{{ end }}
-            </div>
-            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-          </header>
-          {{ with .Summary }}
-            <p>{{ . | plainify }}</p>
-          {{ end }}
-          {{ with .Params.tags }}
-            <footer>
-              <div class="chip-list">{{ range . }}<a class="chip" href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a>{{ end }}</div>
-            </footer>
-          {{ end }}
-        </article>
+        {{ partial "post-card.html" (dict
+          "page" .
+          "headingLevel" 2
+          "dateFormat" (.Site.Params.listDateFormat | default ":date_medium")
+        ) }}
       {{ end }}
     </div>
     {{ partial "pagination.html" (dict "p" $p) }}

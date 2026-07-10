@@ -1,8 +1,11 @@
 /* Pico.css customization and site styling */
 :root {
   color-scheme: light;
-  --pico-font-family-sans-serif: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --pico-font-family-monospace: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --pico-font-family-sans-serif:
+    "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --pico-font-family-monospace:
+    "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    monospace;
   --pico-font-weight: 400;
   --pico-font-weight-bold: 650;
   --md-body-font-weight: 400;
@@ -156,7 +159,11 @@ main p {
 }
 
 .site-header {
-  background: linear-gradient(120deg, var(--brand-gradient-start), var(--brand-gradient-end));
+  background: linear-gradient(
+    120deg,
+    var(--brand-gradient-start),
+    var(--brand-gradient-end)
+  );
   padding-block: clamp(1.6rem, 4vw, 2.4rem);
   color: var(--pico-primary-inverse);
   box-shadow: 0 12px 32px -18px rgba(15, 23, 42, 0.45);
@@ -206,7 +213,10 @@ main p {
   border-radius: var(--md-pill-radius);
   background-color: rgba(249, 250, 251, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: transform var(--pico-transition), background-color var(--pico-transition), border-color var(--pico-transition);
+  transition:
+    transform var(--pico-transition),
+    background-color var(--pico-transition),
+    border-color var(--pico-transition);
 }
 
 .site-header .nav-links a:hover,
@@ -246,7 +256,9 @@ main h4 {
   font-size: 0.8em;
   color: var(--pico-primary);
   text-decoration: none;
-  transition: opacity var(--pico-transition), color var(--pico-transition);
+  transition:
+    opacity var(--pico-transition),
+    color var(--pico-transition);
 }
 
 h1:hover .heading-anchor,
@@ -277,7 +289,9 @@ h6:hover .heading-anchor {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  transition: transform var(--pico-transition), box-shadow var(--pico-transition);
+  transition:
+    transform var(--pico-transition),
+    box-shadow var(--pico-transition);
 }
 
 .post-card:hover,
@@ -286,12 +300,12 @@ h6:hover .heading-anchor {
   box-shadow: 0 22px 55px -32px rgba(79, 70, 229, 0.6);
 }
 
-.post-card header h2 {
+.post-card header :is(h2, h3) {
   margin-bottom: 0.25rem;
   font-size: clamp(1.2rem, 2.5vw, 1.45rem);
 }
 
-.post-card header h2 a {
+.post-card header :is(h2, h3) a {
   text-decoration: none;
 }
 
@@ -455,7 +469,9 @@ article pre {
   height: 0.38rem;
   border-radius: 999px;
   background: var(--md-toc-bullet-color);
-  transition: background var(--pico-transition), opacity var(--pico-transition);
+  transition:
+    background var(--pico-transition),
+    opacity var(--pico-transition);
   opacity: 0.85;
   margin: 0;
   align-self: center;
@@ -509,7 +525,10 @@ article pre {
   color: inherit;
   text-decoration: none;
   font-weight: 500;
-  transition: transform var(--pico-transition), box-shadow var(--pico-transition), border-color var(--pico-transition);
+  transition:
+    transform var(--pico-transition),
+    box-shadow var(--pico-transition),
+    border-color var(--pico-transition);
 }
 
 .button:hover,

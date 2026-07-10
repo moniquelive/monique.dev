@@ -3,17 +3,17 @@
     <nav aria-label="Navegação principal">
       <ul>
         <li>
-          <a class="brand" href="/">
-            <img alt="{{ .Site.Title }}" src="/favicon.svg" />
+          <a class="brand" href="{{ site.Home.RelPermalink }}">
+            <img alt="" src="{{ "favicon.svg" | relURL }}" aria-hidden="true" />
             <span>{{ .Site.Title }}</span>
           </a>
         </li>
       </ul>
       <ul class="nav-links">
-        <li><a href="/posts/">Posts</a></li>
-        <li><a href="/tags/">Tags</a></li>
-        <li><a href="/about/">Sobre</a></li>
-        <li><a href="/index.xml">RSS</a></li>
+        <li><a href="{{ "posts/" | relURL }}"{{ if eq .Section "posts" }} aria-current="page"{{ end }}>Posts</a></li>
+        <li><a href="{{ "tags/" | relURL }}"{{ if eq .Type "tags" }} aria-current="page"{{ end }}>Tags</a></li>
+        <li><a href="{{ "about/" | relURL }}"{{ if eq .Type "about" }} aria-current="page"{{ end }}>Sobre</a></li>
+        <li><a href="{{ "index.xml" | relURL }}">RSS</a></li>
       </ul>
     </nav>
   </div>

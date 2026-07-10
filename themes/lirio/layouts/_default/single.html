@@ -8,7 +8,7 @@
       {{ $showRead := cond (isset .Params "showEstimatedReadingTime") .Params.showEstimatedReadingTime (cond $isArticle .Site.Params.showEstimatedReadingTime false) }}
       {{ if or $showDate (and $showRead .ReadingTime) }}
       <div class="meta">
-        {{ if $showDate }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ end }}{{ if and $showRead .ReadingTime }}{{ if $showDate }} · {{ end }}{{ .ReadingTime }} min{{ end }}
+        {{ if $showDate }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ time.Format (.Site.Params.singleDateFormat | default ":date_medium") .Date }}</time>{{ end }}{{ if and $showRead .ReadingTime }}{{ if $showDate }} · {{ end }}{{ .ReadingTime }} min{{ end }}
       </div>
       {{ end }}
       {{ if .TableOfContents }}{{ partial "toc.html" . }}{{ end }}

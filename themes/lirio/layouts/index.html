@@ -7,67 +7,41 @@
         <p><a class="button" href="{{ .ctaUrl }}">{{ .ctaLabel }}</a></p>
       {{ end }}
     {{ end }}
-    {{ if .Content }}
-      <div class="intro">{{ .Content }}</div>
-    {{ end }}
+    {{ if .Content }}<div class="intro">{{ .Content }}</div>{{ end }}
   </section>
 
-  {{/* Posts em destaque (marque posts com featured: true no front matter) */}}
   {{ $sections := .Site.Params.mainSections | default (slice "posts") }}
   {{ $all := where .Site.RegularPages "Section" "in" $sections }}
   {{ $featured := where $all "Params.featured" true | first 3 }}
   {{ if gt (len $featured) 0 }}
-  <section aria-label="Destaques">
-    <h2>Destaques</h2>
-    <div class="post-grid">
-      {{ range $featured }}
-        <article class="post-card">
-          <header>
-            <div class="meta">
-              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ with .ReadingTime }} · {{ . }} min{{ end }}
-            </div>
-            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          </header>
-          {{ with .Summary }}
-            <p>{{ . | plainify }}</p>
-          {{ end }}
-          {{ with .Params.tags }}
-            <footer>
-              <div class="chip-list">{{ range . }}<a class="chip" href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a>{{ end }}</div>
-            </footer>
-          {{ end }}
-        </article>
-      {{ end }}
-    </div>
-  </section>
+    <section aria-labelledby="featured-heading">
+      <h2 id="featured-heading">Destaques</h2>
+      <div class="post-grid">
+        {{ range $featured }}
+          {{ partial "post-card.html" (dict
+            "page" .
+            "headingLevel" 3
+            "dateFormat" (.Site.Params.indexDateFormat | default ":date_medium")
+          ) }}
+        {{ end }}
+      </div>
+    </section>
   {{ end }}
 
-  {{/* Posts recentes */}}
-  <section aria-label="Posts recentes">
-    <h2>Posts recentes</h2>
-    {{ $recent := first 6 ( sort $all "Date" "desc" ) }}
+  <section aria-labelledby="recent-heading">
+    <h2 id="recent-heading">Posts recentes</h2>
+    {{ $recent := first 6 (sort $all "Date" "desc") }}
     <div class="post-grid">
       {{ range $recent }}
-        <article class="post-card">
-          <header>
-            <div class="meta">
-              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>{{ with .ReadingTime }} · {{ . }} min{{ end }}
-            </div>
-            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          </header>
-          {{ with .Summary }}
-            <p>{{ . | plainify }}</p>
-          {{ end }}
-          {{ with .Params.tags }}
-            <footer>
-              <div class="chip-list">{{ range . }}<a class="chip" href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a>{{ end }}</div>
-            </footer>
-          {{ end }}
-        </article>
+        {{ partial "post-card.html" (dict
+          "page" .
+          "headingLevel" 3
+          "dateFormat" (.Site.Params.indexDateFormat | default ":date_medium")
+        ) }}
       {{ end }}
     </div>
     <div class="pagination">
-      <a class="button" href="/posts/">Ver todos os posts</a>
+      <a class="button" href="{{ "posts/" | relURL }}">Ver todos os posts</a>
     </div>
   </section>
 {{ end }}

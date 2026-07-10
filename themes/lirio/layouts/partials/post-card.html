@@ -1,0 +1,28 @@
+{{- $page := .page -}}
+{{- $headingLevel := .headingLevel | default 2 -}}
+{{- $dateFormat := .dateFormat | default ":date_medium" -}}
+{{- $description := $page.Params.description -}}
+{{- if not $description -}}
+  {{- $description = $page.Summary | plainify | replaceRE `(?i)^\s*resumo\s*#?\s*` "" -}}
+{{- end -}}
+<article class="post-card">
+  <header>
+    <div class="meta">
+      <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ time.Format $dateFormat $page.Date }}</time>
+      {{- with $page.ReadingTime }} · {{ . }} min{{ end }}
+    </div>
+    {{ if eq $headingLevel 3 }}
+      <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
+    {{ else }}
+      <h2><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+    {{ end }}
+  </header>
+  {{ with $description }}<p>{{ . | plainify }}</p>{{ end }}
+  {{ with $page.Params.tags }}
+    <footer>
+      <div class="chip-list">
+        {{ range . }}<a class="chip" href="{{ (printf "tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a>{{ end }}
+      </div>
+    </footer>
+  {{ end }}
+</article>
