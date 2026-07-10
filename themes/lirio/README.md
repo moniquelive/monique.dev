@@ -1,40 +1,37 @@
 # Tema Hugo — Lírio
 
-Um tema **mobile-first**, **elegante** e **minimalista** com um toque feminino.
+Tema local, mobile-first e minimalista do `monique.dev`.
 
-## Instalação
-
-```bash
-# Dentro do seu repositório monique.dev
-git submodule add https://example.com/moniquelive/hugo-theme-lirio themes/lirio
-# ou copie a pasta para themes/lirio
-```
-
-No `config.toml` (ou `hugo.toml`):
-
-```toml
-baseURL = "https://monique.dev"
-theme = "lirio"
-
-[params]
-  colorScheme = "auto"   # light | dark | auto
-  showTOC = true
-  showDates = true
-  showEstimatedReadingTime = true
-```
+O Lírio é versionado diretamente neste repositório em `themes/lirio/`; ele não é um
+submódulo Git nem uma dependência de Hugo Modules. Alterações específicas do site
+podem ser feitas em `layouts/`, que tem precedência sobre os templates do tema.
 
 ## Desenvolvimento
 
+Use as tarefas do projeto na raiz do repositório:
+
 ```bash
-hugo server -D
+mise install
+mise run dev
+mise run test
 ```
 
 ## Estrutura
 
-- `assets/css/lirio.css` — CSS leve com variáveis e utilitários
-- `layouts/_default/{baseof,list,single}.html` — Estruturas principais
-- `layouts/partials/{head,header,footer,toc,pagination}.html` — Parciais
-- `static/{favicon.svg,logo.svg}` — Ícones
+- `assets/css/lirio.css` — estilos, variáveis e utilitários do tema.
+- `layouts/_default/` — templates base, de lista e de página.
+- `layouts/partials/` — cabeçalho, metadados, cards, rodapé, sumário e paginação.
+- `layouts/about/` — apresentação da página Sobre.
+- `static/` — favicons, manifesto e logotipo publicados sem transformação.
+
+## Parâmetros usados
+
+- `colorScheme`: `light`, `dark` ou `auto`.
+- `showTOC`: exibe o sumário nas páginas.
+- `showDates`: exibe a data dos posts.
+- `showEstimatedReadingTime`: exibe o tempo estimado de leitura.
+- `singleDateFormat`, `listDateFormat` e `indexDateFormat`: formatos de data do Hugo.
+- `mainSections`: seções tratadas como posts; o padrão é `posts`.
 
 ## Licença
 
