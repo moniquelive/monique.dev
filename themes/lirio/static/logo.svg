@@ -6,7 +6,8 @@
       <stop offset="1" stop-color="#a897ef"/>
     </linearGradient>
     <style>
-      .wordmark { fill: #d3cfcf; }
+      .wordmark { fill: #4f4073; }
+      @media (prefers-color-scheme: dark) { .wordmark { fill: #d3cfcf; } }
     </style>
   </defs>
   <g fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round">

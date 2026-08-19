@@ -192,7 +192,7 @@
 
 .chroma .gd {
   color: var(--ef-red-warmer);
-  background-color: #340a14;
+  background-color: var(--ef-bg-removed-faint);
 }
 
 .chroma .ge {
@@ -207,7 +207,7 @@
 
 .chroma .gi {
   color: var(--ef-green-cooler);
-  background-color: #002410;
+  background-color: var(--ef-bg-added-faint);
 }
 
 .chroma .go,

@@ -1,11 +1,15 @@
-/* Pico.css customization and site styling, based on ef-cherie. */
+/* Pico.css customization and site styling, based on ef-summer and ef-cherie. */
 :root,
-:root:not([data-theme="light"]) {
-  color-scheme: dark;
-  --pico-font-family-sans-serif: "Atkinson Hyperlegible Next", Atkinson,
-    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --pico-font-family-monospace: "Atkinson Hyperlegible Mono", "SFMono-Regular",
-    Consolas, "Liberation Mono", Menlo, monospace;
+:root:not([data-theme]),
+:root[data-theme="light"],
+:root[data-theme="dark"] {
+  color-scheme: light dark;
+  --pico-font-family-sans-serif:
+    "Atkinson Hyperlegible Next", Atkinson, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --pico-font-family-monospace:
+    "Atkinson Hyperlegible Mono", "SFMono-Regular", Consolas, "Liberation Mono",
+    Menlo, monospace;
   --pico-font-weight: 400;
   --pico-font-weight-bold: 700;
   --md-body-font-weight: 400;
@@ -19,47 +23,68 @@
   --md-pill-radius: 0.4rem;
   --md-article-measure: 72ch;
 
-  --ef-bg-main: #190a0f;
-  --ef-bg-dim: #291f26;
-  --ef-bg-alt: #392a2f;
-  --ef-fg-main: #d3cfcf;
-  --ef-fg-dim: #808898;
-  --ef-fg-alt: #bf9cdf;
-  --ef-bg-active: #594a4f;
-  --ef-bg-inactive: #2e2226;
-  --ef-border: #695960;
-  --ef-red: #ff7359;
-  --ef-red-warmer: #ff656f;
-  --ef-red-cooler: #ff78aa;
-  --ef-green: #60b444;
-  --ef-green-cooler: #60bf88;
-  --ef-yellow: #e5b76f;
-  --ef-yellow-warmer: #ea9955;
-  --ef-yellow-cooler: #f59280;
-  --ef-yellow-faint: #bf9f8f;
-  --ef-blue-warmer: #a897ef;
-  --ef-magenta: #ef80bf;
-  --ef-magenta-warmer: #f470df;
-  --ef-magenta-cooler: #df7fff;
-  --ef-magenta-faint: #cc9bcf;
-  --ef-cyan: #8fbaef;
-  --ef-cyan-warmer: #9ac0e4;
-  --ef-cyan-cooler: #8fcfdf;
-  --ef-cyan-faint: #aac0cf;
-  --ef-bg-mode-line: #771a4f;
-  --ef-fg-mode-line: #ffcfdf;
-  --ef-bg-hover: #303f6f;
-  --ef-bg-hover-secondary: #66364f;
+  --ef-bg-main: light-dark(#fff2f3, #190a0f);
+  --ef-bg-dim: light-dark(#f2e4ea, #291f26);
+  --ef-bg-alt: light-dark(#efd3e4, #392a2f);
+  --ef-fg-main: light-dark(#4f4073, #d3cfcf);
+  --ef-fg-dim: light-dark(#786e74, #808898);
+  --ef-fg-alt: light-dark(#af4988, #bf9cdf);
+  --ef-bg-active: light-dark(#cfb3c4, #594a4f);
+  --ef-bg-inactive: light-dark(#efe2e5, #2e2226);
+  --ef-border: light-dark(#c6bbc6, #695960);
+  --ef-red: light-dark(#d3303a, #ff7359);
+  --ef-red-warmer: light-dark(#e00033, #ff656f);
+  --ef-red-cooler: light-dark(#d50f7f, #ff78aa);
+  --ef-green: light-dark(#217a3c, #60b444);
+  --ef-green-cooler: light-dark(#007f68, #60bf88);
+  --ef-yellow: light-dark(#a45f22, #e5b76f);
+  --ef-yellow-warmer: light-dark(#b6532f, #ea9955);
+  --ef-yellow-cooler: light-dark(#b65050, #f59280);
+  --ef-yellow-faint: light-dark(#9a5f6a, #bf9f8f);
+  --ef-blue-warmer: light-dark(#5250ef, #a897ef);
+  --ef-magenta: light-dark(#ba35af, #ef80bf);
+  --ef-magenta-warmer: light-dark(#cb1aaa, #f470df);
+  --ef-magenta-cooler: light-dark(#8e44f3, #df7fff);
+  --ef-magenta-faint: light-dark(#a45392, #cc9bcf);
+  --ef-cyan: light-dark(#1f6fbf, #8fbaef);
+  --ef-cyan-warmer: light-dark(#3f6faf, #9ac0e4);
+  --ef-cyan-cooler: light-dark(#0f7b8f, #8fcfdf);
+  --ef-cyan-faint: light-dark(#5f60bf, #aac0cf);
+  --ef-bg-mode-line: light-dark(#ffa4dc, #771a4f);
+  --ef-fg-mode-line: light-dark(#341f58, #ffcfdf);
+  --ef-bg-hover: light-dark(#b4cfff, #303f6f);
+  --ef-bg-hover-secondary: light-dark(#aaeccf, #66364f);
+  --ef-bg-added-faint: light-dark(#dff6ea, #002410);
+  --ef-bg-removed-faint: light-dark(#ffdfe6, #340a14);
 
   --md-card-background: var(--ef-bg-dim);
-  --md-button-background: var(--ef-bg-inactive);
+  --md-button-background: light-dark(var(--ef-bg-main), var(--ef-bg-inactive));
   --md-chip-background: var(--ef-bg-inactive);
-  --md-page-pattern: rgba(239, 128, 191, 0.04);
+  --md-page-pattern: light-dark(
+    rgba(186, 53, 175, 0.07),
+    rgba(239, 128, 191, 0.04)
+  );
+  --md-shadow-color: light-dark(rgba(79, 64, 115, 0.32), rgba(0, 0, 0, 0.95));
+  --md-avatar-shadow-color: light-dark(
+    rgba(79, 64, 115, 0.42),
+    rgba(0, 0, 0, 0.9)
+  );
+  --md-header-glow: light-dark(
+    rgba(203, 26, 170, 0.16),
+    rgba(244, 112, 223, 0.22)
+  );
+  --md-card-meta-color: light-dark(var(--ef-fg-main), var(--ef-yellow-faint));
+  --md-chip-color: light-dark(var(--ef-fg-main), var(--ef-magenta-faint));
+  --md-meta-color: light-dark(var(--ef-fg-main), var(--ef-fg-alt));
+  --md-interactive-hover-color: light-dark(
+    var(--ef-fg-main),
+    var(--ef-magenta-warmer)
+  );
   --md-code-background: var(--ef-bg-main);
   --md-code-color: var(--ef-fg-main);
   --md-toc-border: 1px solid var(--ef-border);
-  --md-toc-shadow: 0 22px 52px -34px rgba(0, 0, 0, 0.95);
-  --md-toc-background: var(--ef-bg-dim);
+  --md-toc-shadow: 0 22px 52px -34px var(--md-shadow-color);
+  --md-toc-background: light-dark(var(--ef-bg-main), var(--ef-bg-dim));
   --md-toc-summary-color: var(--ef-yellow);
   --md-toc-link-color: var(--ef-fg-main);
   --md-toc-link-hover: var(--ef-magenta-warmer);
@@ -77,13 +102,19 @@
   --pico-muted-color: var(--ef-fg-alt);
   --pico-border-color: var(--ef-border);
   --pico-muted-border-color: var(--ef-bg-active);
-  --pico-primary: var(--ef-magenta-cooler);
-  --pico-primary-hover: var(--ef-magenta-warmer);
-  --pico-primary-focus: rgba(244, 112, 223, 0.42);
+  --pico-primary: light-dark(var(--ef-blue-warmer), var(--ef-magenta-cooler));
+  --pico-primary-hover: var(--md-interactive-hover-color);
+  --pico-primary-focus: light-dark(
+    rgba(142, 68, 243, 0.32),
+    rgba(244, 112, 223, 0.42)
+  );
   --pico-primary-inverse: var(--ef-bg-main);
   --pico-secondary: var(--ef-yellow);
   --pico-secondary-hover: var(--ef-yellow-cooler);
-  --pico-secondary-focus: rgba(229, 183, 111, 0.42);
+  --pico-secondary-focus: light-dark(
+    rgba(164, 95, 34, 0.32),
+    rgba(229, 183, 111, 0.42)
+  );
   --pico-secondary-inverse: var(--ef-bg-main);
   --pico-card-background-color: var(--ef-bg-dim);
   --pico-card-sectioning-background-color: var(--ef-bg-alt);
@@ -91,6 +122,14 @@
   --pico-code-color: var(--ef-fg-main);
   --pico-table-border-color: var(--ef-border);
   --pico-blockquote-border-color: var(--ef-magenta);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 html {
@@ -103,7 +142,8 @@ body {
   font-weight: var(--md-body-font-weight);
   line-height: var(--md-body-line-height);
   background-color: var(--ef-bg-main);
-  background-image: linear-gradient(var(--md-page-pattern) 1px, transparent 1px),
+  background-image:
+    linear-gradient(var(--md-page-pattern) 1px, transparent 1px),
     linear-gradient(90deg, var(--md-page-pattern) 1px, transparent 1px);
   background-size: 3rem 3rem;
   color: var(--ef-fg-main);
@@ -134,7 +174,7 @@ main > article:not(.about, .not-found) {
   background: var(--md-card-background);
   border: 1px solid var(--ef-border);
   border-top: 0.25rem solid var(--ef-magenta);
-  box-shadow: 0 24px 60px -42px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 24px 60px -42px var(--md-shadow-color);
 }
 
 main > section,
@@ -206,7 +246,7 @@ main p {
   border: 4px solid var(--ef-magenta);
   box-shadow:
     0 0 0 7px var(--ef-bg-alt),
-    0 18px 32px -20px rgba(0, 0, 0, 0.9);
+    0 18px 32px -20px var(--md-avatar-shadow-color);
 }
 
 .about-content {
@@ -228,11 +268,8 @@ main p {
 .site-header {
   position: relative;
   background-color: var(--ef-bg-dim);
-  background-image: radial-gradient(
-      circle at 12% -80%,
-      rgba(244, 112, 223, 0.22),
-      transparent 42%
-    ),
+  background-image:
+    radial-gradient(circle at 12% -80%, var(--md-header-glow), transparent 42%),
     linear-gradient(
       120deg,
       var(--ef-bg-main),
@@ -242,7 +279,7 @@ main p {
   padding-block: clamp(1.6rem, 4vw, 2.4rem);
   color: var(--ef-fg-main);
   border-bottom: 1px solid var(--ef-border);
-  box-shadow: 0 18px 42px -24px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 18px 42px -24px var(--md-shadow-color);
 }
 
 .site-header::after {
@@ -292,7 +329,7 @@ main p {
 }
 
 .site-header .brand:hover {
-  color: var(--ef-magenta-warmer);
+  color: var(--md-interactive-hover-color);
 }
 
 .site-header .brand img {
@@ -302,7 +339,7 @@ main p {
   box-shadow:
     0 0 0 3px var(--ef-magenta),
     0 0 0 5px var(--ef-bg-alt),
-    0 10px 20px -10px rgba(0, 0, 0, 0.95);
+    0 10px 20px -10px var(--md-shadow-color);
 }
 
 .site-header .nav-links a {
@@ -399,7 +436,7 @@ h6:hover .heading-anchor {
   padding: clamp(1.25rem, 4vw, 1.75rem);
   border: 1px solid var(--ef-border);
   border-top: 0.25rem solid var(--card-accent);
-  box-shadow: 0 20px 45px -34px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 20px 45px -34px var(--md-shadow-color);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
@@ -448,7 +485,7 @@ h6:hover .heading-anchor {
 
 .post-card .meta {
   font-size: 0.95rem;
-  color: var(--ef-yellow-faint);
+  color: var(--md-card-meta-color);
   font-weight: var(--md-meta-font-weight);
 }
 
@@ -468,7 +505,7 @@ h6:hover .heading-anchor {
   padding: 0.25rem 0.65rem;
   border-radius: var(--md-pill-radius);
   background: var(--md-chip-background);
-  color: var(--pico-primary);
+  color: var(--md-chip-color);
   border: 1px solid var(--pico-muted-border-color);
   font-size: var(--md-chip-font-size);
   letter-spacing: 0.01em;
@@ -492,7 +529,7 @@ a.chip:focus-visible {
 
 .post-card a.chip {
   text-decoration: none;
-  color: var(--ef-magenta-faint);
+  color: var(--md-chip-color);
 }
 
 article header {
@@ -505,7 +542,7 @@ article > header > h1 {
 }
 
 article header .meta {
-  color: var(--pico-muted-color);
+  color: var(--md-meta-color);
   font-size: var(--md-meta-font-size);
   display: flex;
   align-items: center;
@@ -558,7 +595,7 @@ article pre {
   padding: 1.25rem 1.5rem;
   overflow-x: auto;
   border: 1px solid var(--ef-border);
-  box-shadow: 0 18px 42px -30px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 18px 42px -30px var(--md-shadow-color);
   font-size: 0.95rem;
   line-height: 1.65;
 }
@@ -575,7 +612,7 @@ article blockquote {
 
 article img {
   border-radius: var(--pico-border-radius);
-  box-shadow: 0 20px 48px -34px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 20px 48px -34px var(--md-shadow-color);
 }
 
 article table {
@@ -761,7 +798,7 @@ article table {
   margin: 0;
   text-align: center;
   font-size: var(--md-meta-font-size);
-  color: var(--pico-muted-color);
+  color: var(--md-meta-color);
   font-weight: var(--md-meta-font-weight);
 }
 
