@@ -1,13 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="190" height="32" viewBox="0 0 190 32">
   <defs>
     <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#eb6f92"/>
-      <stop offset="0.5" stop-color="#f6c177"/>
-      <stop offset="1" stop-color="#9ccfd8"/>
+      <stop offset="0" stop-color="#f470df"/>
+      <stop offset="0.5" stop-color="#e5b76f"/>
+      <stop offset="1" stop-color="#a897ef"/>
     </linearGradient>
     <style>
-      .wordmark { fill: #575279; }
-      @media (prefers-color-scheme: dark) { .wordmark { fill: #e0def4; } }
+      .wordmark { fill: #d3cfcf; }
     </style>
   </defs>
   <g fill="none" stroke="url(#gg)" stroke-width="2" stroke-linecap="round">

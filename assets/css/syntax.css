@@ -1,298 +1,224 @@
-/* Catppuccin Mocha-inspired syntax highlighting for Chroma output */
-.highlight pre {
-  background-color: #1e1e2e;
-  color: #cdd6f4;
-  border-color: #313244;
-}
-.highlight pre code {
-  background: transparent;
-  color: inherit;
-}
-.bg {
-  color: #cdd6f4;
-  background-color: #1e1e2e;
-}
+/* ef-cherie syntax highlighting for Chroma output */
+.highlight pre,
+.bg,
 .chroma {
-  color: #cdd6f4;
-  background-color: #1e1e2e;
+  color: var(--ef-fg-main);
+  background-color: var(--ef-bg-main);
 }
+
+.highlight pre {
+  border-color: var(--ef-border);
+}
+
+.highlight pre code,
 .chroma code {
   color: inherit;
   background: transparent;
 }
-.chroma .x {
+
+.chroma .err,
+.chroma .gr,
+.chroma .gt {
+  color: var(--ef-red-warmer);
 }
-.chroma .err {
-  color: #f38ba8;
-}
-.chroma .cl {
-}
+
 .chroma .lnlinks {
-  outline: none;
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
+  outline: none;
 }
+
 .chroma .lntd {
+  padding: 0;
+  margin: 0;
   vertical-align: top;
-  padding: 0;
-  margin: 0;
   border: 0;
 }
+
 .chroma .lntable {
-  border-spacing: 0;
   padding: 0;
   margin: 0;
   border: 0;
+  border-spacing: 0;
 }
+
 .chroma .hl {
-  background-color: #45475a;
+  background-color: var(--ef-bg-active);
 }
-.chroma .lnt {
-  white-space: pre;
-  -webkit-user-select: none;
-  user-select: none;
-  margin-right: 0.4em;
-  padding: 0 0.4em 0 0.4em;
-  color: #7f849c;
-}
+
+.chroma .lnt,
 .chroma .ln {
-  white-space: pre;
-  -webkit-user-select: none;
-  user-select: none;
+  padding: 0 0.4em;
   margin-right: 0.4em;
-  padding: 0 0.4em 0 0.4em;
-  color: #7f849c;
+  color: var(--ef-fg-dim);
+  white-space: pre;
+  user-select: none;
 }
+
 .chroma .line {
   display: flex;
 }
-.chroma .k {
-  color: #cba6f7;
-}
-.chroma .kc {
-  color: #fab387;
-}
-.chroma .kd {
-  color: #f38ba8;
-}
-.chroma .kn {
-  color: #94e2d5;
-}
-.chroma .kp {
-  color: #cba6f7;
-}
+
+.chroma .k,
+.chroma .kp,
 .chroma .kr {
-  color: #cba6f7;
+  color: var(--ef-magenta);
 }
+
+.chroma .kc {
+  color: var(--ef-red-cooler);
+}
+
+.chroma .kd,
 .chroma .kt {
-  color: #f38ba8;
+  color: var(--ef-magenta-warmer);
 }
-.chroma .n {
-  color: #cdd6f4;
+
+.chroma .kn {
+  color: var(--ef-cyan);
 }
-.chroma .na {
-  color: #89b4fa;
-}
-.chroma .nb {
-  color: #89dceb;
-}
-.chroma .bp {
-  color: #89dceb;
-}
-.chroma .nc {
-  color: #f9e2af;
-}
-.chroma .no {
-  color: #f9e2af;
-}
-.chroma .nd {
-  color: #89b4fa;
-  font-weight: bold;
-}
-.chroma .ni {
-  color: #94e2d5;
-}
-.chroma .ne {
-  color: #fab387;
-}
-.chroma .nf {
-  color: #89b4fa;
-}
-.chroma .fm {
-  color: #89b4fa;
-}
-.chroma .nl {
-  color: #89dceb;
-}
-.chroma .nn {
-  color: #fab387;
-}
+
+.chroma .n,
 .chroma .nx {
-  color: #cdd6f4;
+  color: var(--ef-fg-main);
 }
+
+.chroma .na,
+.chroma .nd {
+  color: var(--ef-cyan);
+}
+
+.chroma .nb,
+.chroma .bp {
+  color: var(--ef-blue-warmer);
+}
+
+.chroma .nc,
+.chroma .no,
+.chroma .nf,
+.chroma .fm {
+  color: var(--ef-yellow-cooler);
+}
+
+.chroma .ni,
+.chroma .nl {
+  color: var(--ef-cyan-cooler);
+}
+
+.chroma .ne {
+  color: var(--ef-red);
+}
+
+.chroma .nn,
 .chroma .py {
-  color: #fab387;
+  color: var(--ef-yellow-warmer);
 }
+
 .chroma .nt {
-  color: #cba6f7;
+  color: var(--ef-magenta);
 }
-.chroma .nv {
-  color: #f5e0dc;
-}
-.chroma .vc {
-  color: #f5e0dc;
-}
-.chroma .vg {
-  color: #f5e0dc;
-}
-.chroma .vi {
-  color: #f5e0dc;
-}
+
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
 .chroma .vm {
-  color: #f5e0dc;
+  color: var(--ef-magenta-cooler);
 }
-.chroma .l {
-}
-.chroma .ld {
-}
-.chroma .s {
-  color: #a6e3a1;
-}
-.chroma .sa {
-  color: #f38ba8;
-}
-.chroma .sb {
-  color: #a6e3a1;
-}
-.chroma .sc {
-  color: #a6e3a1;
-}
-.chroma .dl {
-  color: #89b4fa;
-}
-.chroma .sd {
-  color: #6c7086;
-}
-.chroma .s2 {
-  color: #a6e3a1;
-}
-.chroma .se {
-  color: #89b4fa;
-}
-.chroma .sh {
-  color: #6c7086;
-}
-.chroma .si {
-  color: #a6e3a1;
-}
-.chroma .sx {
-  color: #a6e3a1;
-}
-.chroma .sr {
-  color: #94e2d5;
-}
-.chroma .s1 {
-  color: #a6e3a1;
-}
+
+.chroma .s,
+.chroma .sb,
+.chroma .sc,
+.chroma .s2,
+.chroma .sh,
+.chroma .si,
+.chroma .sx,
+.chroma .s1,
 .chroma .ss {
-  color: #a6e3a1;
+  color: var(--ef-yellow);
 }
-.chroma .m {
-  color: #fab387;
+
+.chroma .sa {
+  color: var(--ef-red-cooler);
 }
-.chroma .mb {
-  color: #fab387;
+
+.chroma .dl {
+  color: var(--ef-magenta-faint);
 }
-.chroma .mf {
-  color: #fab387;
+
+.chroma .sd {
+  color: var(--ef-magenta-faint);
 }
-.chroma .mh {
-  color: #fab387;
+
+.chroma .se {
+  color: var(--ef-cyan-warmer);
 }
-.chroma .mi {
-  color: #fab387;
+
+.chroma .sr {
+  color: var(--ef-red);
 }
-.chroma .il {
-  color: #fab387;
-}
+
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .il,
 .chroma .mo {
-  color: #fab387;
+  color: var(--ef-red-cooler);
 }
-.chroma .o {
-  color: #89dceb;
-  font-weight: bold;
-}
+
+.chroma .o,
 .chroma .ow {
-  color: #89dceb;
-  font-weight: bold;
+  color: var(--ef-cyan);
+  font-weight: 700;
 }
-.chroma .p {
-}
-.chroma .c {
-  color: #6c7086;
-  font-style: italic;
-}
-.chroma .ch {
-  color: #6c7086;
-  font-style: italic;
-}
-.chroma .cm {
-  color: #6c7086;
-  font-style: italic;
-}
-.chroma .c1 {
-  color: #6c7086;
-  font-style: italic;
-}
-.chroma .cs {
-  color: #6c7086;
-  font-style: italic;
-}
+
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs,
 .chroma .cp {
-  color: #6c7086;
+  color: var(--ef-yellow-faint);
   font-style: italic;
 }
+
 .chroma .cpf {
-  color: #6c7086;
-  font-weight: bold;
+  color: var(--ef-yellow-faint);
+  font-weight: 700;
   font-style: italic;
 }
-.chroma .g {
-}
+
 .chroma .gd {
-  color: #f38ba8;
-  background-color: #313244;
+  color: var(--ef-red-warmer);
+  background-color: #340a14;
 }
+
 .chroma .ge {
   font-style: italic;
 }
-.chroma .gr {
-  color: #f38ba8;
-}
-.chroma .gh {
-  color: #fab387;
-  font-weight: bold;
-}
-.chroma .gi {
-  color: #a6e3a1;
-  background-color: #313244;
-}
-.chroma .go {
-}
-.chroma .gp {
-}
-.chroma .gs {
-  font-weight: bold;
-}
+
+.chroma .gh,
 .chroma .gu {
-  color: #fab387;
-  font-weight: bold;
+  color: var(--ef-yellow-warmer);
+  font-weight: 700;
 }
-.chroma .gt {
-  color: #f38ba8;
+
+.chroma .gi {
+  color: var(--ef-green-cooler);
+  background-color: #002410;
 }
+
+.chroma .go,
+.chroma .gp {
+  color: var(--ef-fg-dim);
+}
+
+.chroma .gs {
+  font-weight: 700;
+}
+
 .chroma .gl {
   text-decoration: underline;
-}
-.chroma .w {
 }
