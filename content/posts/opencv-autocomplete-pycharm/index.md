@@ -16,7 +16,7 @@ Por um bom tempo utilizei o módulo [virtualenv][virtual-env]. Mas desde que apr
 
 Pra começar ele já vem instalado com o python (se não veio, basta instalar o pacote `python3-venv`). Ele também é mais previsível do que o `virtualenv`, já que não é necessário mexer nos seus arquivos de login `.{bash/zsh/fish}rc` e o uso padrão é instalá-lo na raíz do seu projeto.
 
-Mas esse isolamento tem uma exceção, que são os módulos que precisam ser compilados na sua máquina. O `OpenCV` é um deles. Você pode usar o pacote pronto `opencv-contrib-python`, mas não vai tirar vantagem da sua GPU reluzente, por exemplo.
+Mas esse isolamento tem uma excessão, que são os módulos que precisam ser compilados na sua máquina. O `OpenCV` é um deles. Você pode usar o pacote pronto `opencv-python-contrib` mas não vai tirar vantagem da sua GPU reluzente, por exemplo.
 
 ## OpenCV
 
@@ -25,7 +25,7 @@ Compilar o `OpenCV` é um assunto para um post futuro, mas assumindo que você f
 Para usar localmente em um ambiente `venv` isolado você deve criar o ambiente com essa flag:
 
 ```shell
-python3 -m venv --system-site-packages venv
+python -mvenv --system-site-packages venv
 ```
 
 A flag `--system-site-packages` cria um ambiente local mas inclui todos os módulos instalados globalmente.

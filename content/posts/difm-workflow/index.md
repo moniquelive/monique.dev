@@ -33,7 +33,7 @@ Seria um artigo muito chato se terminasse aqui, certo? 😊
 
 Primeiro de tudo, a lista de estações de rádio é enorme! (99):
 
-![Duplo clique em List Filter](alfred-list-filter.png)
+![duplo clique em List Filter](alfred-list-filter.png)
 *duplo clique em List Filter*
 
 Eu nunca digitaria 99 vezes cada informação da estação... Não... Pedi ajuda ao nosso amigável soberano **GPT-4**.

@@ -1,5 +1,5 @@
 ---
-title: Versões pré-compiladas de PyTorch
+title: Versões pré-compiladas de Pytorch
 date: 2021-01-20T15:00:00-03:00
 description: >-
   Compartilho o truque de usar o índice torch_stable do PyTorch para instalar versões
@@ -28,8 +28,7 @@ https://download.pytorch.org/whl/torch_stable.html
 Mas não é necessário abrir esse link! Você pode pedir ao `pip` pra buscar pra você:
 
 ```shell
-python3 -m pip install "torch==1.6.0+cu101" \
-  --find-links https://download.pytorch.org/whl/torch_stable.html
+pip[3] install pytorch==1.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
 E voilá, seu pacote vai ser instalado automagicamente ;)
@@ -37,20 +36,18 @@ E voilá, seu pacote vai ser instalado automagicamente ;)
 ## Dicas extras
 Algumas dicas extras:
 
-1. Para instalar a variante CPU-only da mesma versão:
+1. Algumas versões de `cuda` são consideradas "default". Por exemplo, se você procurar por `1.6.0+cu102` não vai ter lá, porque `pip install cuda==1.6.0` vai buscar automaticamente a versão com cuda `10.2`.
+
+2. Se for masoquista e quiser instalar uma versão CPU-only: `pip install 1.6.0+cpu`
+
+3. Para salvar esse repositório no seu `requirements.txt`, basta adicionar como primeira linha:
 
 ```shell
-python3 -m pip install "torch==1.6.0+cpu" \
-  --find-links https://download.pytorch.org/whl/torch_stable.html
+-f https://download.pytorch.org/whl/torch_stable.html
+
+...
+torch==1.6.0+cu110
+...
 ```
-
-2. Para salvar esse repositório no seu `requirements.txt`, adicione:
-
-```text
---find-links https://download.pytorch.org/whl/torch_stable.html
-torch==1.6.0+cu101
-```
-
-Essas versões são históricas. O wheel precisa ser compatível com sua versão do Python, sistema operacional e arquitetura; instalações modernas podem não ter uma combinação compatível.
 
 Happy torching!
