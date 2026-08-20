@@ -5,7 +5,6 @@ description: >-
   Ensino a combinar um venv com --system-site-packages e apontar o PyCharm pro .so do
   OpenCV para ganhar autocomplete cheio.
 tags: [python, opencv, pycharm]
-images: [https://pyimagesearch.com/wp-content/uploads/2015/03/pycharm_opencv_logos.jpg]
 ---
 
 ## Resumo
@@ -17,7 +16,7 @@ Por um bom tempo utilizei o módulo [virtualenv][virtual-env]. Mas desde que apr
 
 Pra começar ele já vem instalado com o python (se não veio, basta instalar o pacote `python3-venv`). Ele também é mais previsível do que o `virtualenv`, já que não é necessário mexer nos seus arquivos de login `.{bash/zsh/fish}rc` e o uso padrão é instalá-lo na raíz do seu projeto.
 
-Mas esse isolamento tem uma excessão, que são os módulos que precisam ser compilados na sua máquina. O `OpenCV` é um deles. Você pode usar o pacote pronto `opencv-python-contrib` mas não vai tirar vantagem da sua GPU reluzente, por exemplo.
+Mas esse isolamento tem uma exceção, que são os módulos que precisam ser compilados na sua máquina. O `OpenCV` é um deles. Você pode usar o pacote pronto `opencv-contrib-python`, mas não vai tirar vantagem da sua GPU reluzente, por exemplo.
 
 ## OpenCV
 
@@ -26,7 +25,7 @@ Compilar o `OpenCV` é um assunto para um post futuro, mas assumindo que você f
 Para usar localmente em um ambiente `venv` isolado você deve criar o ambiente com essa flag:
 
 ```shell
-python -mvenv --system-site-packages venv
+python3 -m venv --system-site-packages venv
 ```
 
 A flag `--system-site-packages` cria um ambiente local mas inclui todos os módulos instalados globalmente.
@@ -57,7 +56,7 @@ O meu estava em `/usr/lib/python3/dist-packages/cv2/python-3.8/cv2.cpython-38-x8
 
 Agora volte nas configurações do PyCharm (`Settings -> Python Interpreter -> botão de engrenagem -> Show all`), selecione o interpretador do seu projeto, clica no último botão da barra de ferramentas (`Show paths for the selected interpreter`) e adiciona o diretório, removendo o nome do arquivo `*.so`:
 
-![Show paths for the selected interpreter](https://dev-to-uploads.s3.amazonaws.com/i/rkajktmxuejw9ur1hx0e.png)
+![Show paths for the selected interpreter](pycharm-interpreter-paths.png)
 
 Depois deste último passo, o autocomplete vai funcionar perfeito!
 

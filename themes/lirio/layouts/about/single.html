@@ -7,7 +7,7 @@
         <img
             class="about-avatar"
             src="{{ $avatar.RelPermalink }}"
-            alt="Foto de {{ .Site.Title }}"
+            alt="{{ .Params.avataralt | default (printf "Retrato de %s" .Site.Params.author) }}"
             width="{{ $avatar.Width }}"
             height="{{ $avatar.Height }}"
         />

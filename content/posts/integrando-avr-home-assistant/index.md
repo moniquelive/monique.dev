@@ -5,7 +5,6 @@ description: >-
   Mostro como criei uma CLI em Go para controlar a Zone 2 via WebSocket e integrar meu AVR
   ao Home Assistant com um switch command_line.
 tags: [homeassistant, go, websocket, smarthome]
-images: [https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ohklh9cd0rr9wea7v2z3.png]
 ---
 
 ## Resumo

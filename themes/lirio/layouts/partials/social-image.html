@@ -31,5 +31,7 @@
 {{- end -}}
 {{- if and (not $url) $page.Site.Params.defaultImage -}}
   {{- $url = $page.Site.Params.defaultImage | absURL -}}
+  {{- $width = $page.Site.Params.defaultImageWidth | default 0 -}}
+  {{- $height = $page.Site.Params.defaultImageHeight | default 0 -}}
 {{- end -}}
 {{- return (dict "URL" $url "Width" $width "Height" $height) -}}

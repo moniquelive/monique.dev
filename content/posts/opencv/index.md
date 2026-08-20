@@ -5,7 +5,6 @@ description: >-
   Detalho cada dependência e flag do meu cmake gigante para compilar o OpenCV com CUDA,
   CuDNN, Qt, OpenGL e companhia.
 tags: [opencv, python, cuda]
-images: [https://upload.wikimedia.org/wikipedia/commons/5/53/OpenCV_Logo_with_text.png]
 ---
 
 ## Resumo
@@ -25,7 +24,7 @@ Você pode tanto baixar as últimas versões como .zip ou .tar.gz ou clonar os r
 
 Independente da forma que você escolheu baixar, extraia os projetos um ao lado do outro na mesma pasta:
 
-![Pastas dos projetos OpenCV e OpenCV contrib lado a lado](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9j200ku8p9m40i4yci2p.png)
+![Pastas dos projetos OpenCV e OpenCV contrib lado a lado](opencv-project-folders.png)
 
 ## Dependências
 
@@ -42,25 +41,25 @@ Se você instalar todas as dependências que eu apresentarei, você terá:
 Instale:
 
 * `python3 + numpy` - Eu normalmente instalo o OpenCV globalmente, por fora de qualquer ambiente virtual (venv/virtualenv). Dessa forma é possível reutiliza-lo depois adicionando ele nos seus ambientes virtuais. Essa é a saída esperada do cmake:
-![Configuração do Python 3 e NumPy encontrada pelo CMake](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mkf4fj56cwg7joh5c0pj.png)
+![Configuração do Python 3 e NumPy encontrada pelo CMake](cmake-python-numpy.png)
 * `python3-pyqt5.qtopengl` - este pacote é o suficiente para instalar o Qt5 + OpenGL. Por que o OpenGL é tão importante? Pra ter um fps acelerado por hardware. Essa é a saída esperada do cmake:
-![Suporte a Qt 5 e OpenGL encontrado pelo CMake](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ri1jx1v2xq8c6aahwfw3.png)
+![Suporte a Qt 5 e OpenGL encontrado pelo CMake](cmake-qt-opengl.png)
 * `ffmpeg + gstreamer` - se precisa carregar videos em diferentes formatos (codecs):
-![Suporte a FFmpeg e GStreamer encontrado pelo CMake](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kv61j50z5xf9yp5zbuyy.png)
+![Suporte a FFmpeg e GStreamer encontrado pelo CMake](cmake-ffmpeg-gstreamer.png)
 * `libfreetype-dev + libharfbuzz-dev` - para usar fontes TrueType (.ttf)
 * `CUDA + CuDNN` - esses dois têm uma explicação a parte abaixo.
 
 ### CUDA + CuDNN
 
 CUDA (e CuDNN) são normalmente instalados na mesma hierarquia de pastas. E a pasta raíz é tipicamente a `/usr/local/cuda-<versao>`. Mas não é uma obrigatoriedade. Eu uso o PopOS e ele instala na pasta `/usr/lib/cuda-<versao>`. Também é possível ter várias versões instaladas ao mesmo tempo:
-![Versões do CUDA instaladas em paralelo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/61phl56afoj4ziabwrry.png)
+![Versões do CUDA instaladas em paralelo](cuda-versions.png)
 
 Como visto acima, apesar da versão CUDA-11.2 ter sido instalada automaticamente (essa é a versão atual hoje), o CuDNN só está disponível até a versão 11.1, então tive que instalar em paralelo a versão CUDA-11.1 para ter ambos na mesma hierarquia de pastas.
 
 Pra fazer o cmake encontrar eles, basta ter a pasta `<raiz do CUDA/bin` no seu `$PATH`.
 
 Verifique se está tudo ok:
-![Verificação da instalação do CUDA e do CuDNN no terminal](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tdsyvs01m2wx9ad387an.png)
+![Verificação da instalação do CUDA e do CuDNN no terminal](cuda-cudnn-check.png)
 
 Ufa! Moleza né?! 🤣
 
@@ -138,7 +137,7 @@ Se algo der errado e o processo parar antes dos 100%, role pra cima (ou procure 
 
 Se chegou até aqui:
 
-![Compilação do OpenCV concluída com sucesso](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8dmme6y95n7525ca9qf8.png)
+![Compilação do OpenCV concluída com sucesso](opencv-build-complete.png)
 
 💯% baby!
 
@@ -167,7 +166,7 @@ Compare essa saída com a do cmake. Verifique as dependencias e a data. Se nao b
 Para usar o OpenCV em um venv (leia mais sobre venv's [aqui](/posts/opencv-autocomplete-pycharm/)) use as flags:
 
 ```bash
-python -mvenv --system-site-packages venv
+python3 -m venv --system-site-packages venv
 ```
 
 Isso vai criar uma sub-pasta chamda `venv` com um ambiente virtual que inclui os pacotes globais do sistema, como o OpenCV.

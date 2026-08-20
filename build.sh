@@ -5,28 +5,46 @@
 # Builds a Hugo site hosted on a Cloudflare Worker.
 #------------------------------------------------------------------------------
 
-main() {
-  readonly HUGO_VERSION=0.162.1
-  readonly HUGO_ARCHIVE="hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
-  readonly HUGO_CHECKSUMS="hugo_${HUGO_VERSION}_checksums.txt"
-  export TZ=America/Sao_Paulo
+install_hugo() {
+  local -r hugo_version=0.165.0
+  local current_version=""
+
+  if command -v hugo >/dev/null 2>&1; then
+    current_version="$(hugo version)"
+  fi
+  if [[ "${current_version}" == *"hugo v${hugo_version}"* && "${current_version}" == *"+extended"* ]]; then
+    return
+  fi
+
+  if [[ "$(uname -s)" != "Linux" || "$(uname -m)" != "x86_64" ]]; then
+    echo "Hugo Extended ${hugo_version} is required; run 'mise install'." >&2
+    return 1
+  fi
+
+  local -r hugo_archive="hugo_extended_${hugo_version}_linux-amd64.tar.gz"
+  local -r hugo_checksums="hugo_${hugo_version}_checksums.txt"
   HUGO_TMP_DIR="$(mktemp -d)"
 
-  echo "Installing Hugo ${HUGO_VERSION}..."
+  echo "Installing Hugo ${hugo_version}..."
   curl --fail --location --silent --show-error \
-    --output "${HUGO_TMP_DIR}/${HUGO_ARCHIVE}" \
-    "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_ARCHIVE}"
+    --output "${HUGO_TMP_DIR}/${hugo_archive}" \
+    "https://github.com/gohugoio/hugo/releases/download/v${hugo_version}/${hugo_archive}"
   curl --fail --location --silent --show-error \
-    --output "${HUGO_TMP_DIR}/${HUGO_CHECKSUMS}" \
-    "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_CHECKSUMS}"
+    --output "${HUGO_TMP_DIR}/${hugo_checksums}" \
+    "https://github.com/gohugoio/hugo/releases/download/v${hugo_version}/${hugo_checksums}"
   (
     cd "${HUGO_TMP_DIR}"
-    grep " ${HUGO_ARCHIVE}$" "${HUGO_CHECKSUMS}" | sha256sum --check --strict
+    grep " ${hugo_archive}$" "${hugo_checksums}" | sha256sum --check --strict
   )
 
   mkdir -p "${HOME}/.local/bin"
-  tar -C "${HOME}/.local/bin" -xzf "${HUGO_TMP_DIR}/${HUGO_ARCHIVE}" hugo
+  tar -C "${HOME}/.local/bin" -xzf "${HUGO_TMP_DIR}/${hugo_archive}" hugo
   export PATH="${HOME}/.local/bin:${PATH}"
+}
+
+main() {
+  export TZ=America/Sao_Paulo
+  install_hugo
 
   echo "Using $(hugo version)"
 

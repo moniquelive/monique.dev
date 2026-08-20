@@ -1,5 +1,6 @@
 {{- $site := .Site -}}
-{{- $title := cond (eq .Kind "home") $site.Title (printf "%s · %s" .Title $site.Title) -}}
+{{- $meta := partial "page-meta.html" . -}}
+{{- $title := $meta.title -}}
 {{- $description := partial "description.html" . -}}
 {{- $mainSections := $site.Params.mainSections | default (slice "posts") -}}
 {{- $isArticle := and .IsPage (in $mainSections .Section) -}}
@@ -10,7 +11,7 @@
 <meta property="og:title" content="{{ $title }}" />
 {{ with $description }}<meta property="og:description" content="{{ . }}" />{{ end }}
 <meta property="og:type" content="{{ $type }}" />
-<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:url" content="{{ $meta.url }}" />
 <meta property="og:site_name" content="{{ $site.Title }}" />
 <meta property="og:locale" content="{{ $locale }}" />
 {{ with $image.URL }}<meta property="og:image" content="{{ . }}" />{{ end }}

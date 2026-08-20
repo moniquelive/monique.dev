@@ -7,7 +7,7 @@ timeZone: America/Sao_Paulo
 summaryLength: 10
 
 pagination:
-  pageSize: 20
+  pagerSize: 20
 
 enableRobotsTXT: true
 enableEmoji: true
@@ -32,10 +32,12 @@ markup:
       unsafe: true
 
 params:
-  author: moniquelive
+  author: Monique Oliveira
   title: monique.dev
   description: Artigos sobre desenvolvimento, ferramentas e tecnologia.
-  defaultImage: /android-chrome-512x512.png
+  defaultImage: /social-card.png
+  defaultImageWidth: 1200
+  defaultImageHeight: 630
   mainSections: [posts]
   singleDateFormat: "2/1/2006"
   indexDateFormat: "2/1/2006"

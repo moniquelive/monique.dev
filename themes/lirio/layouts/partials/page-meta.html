@@ -1,0 +1,13 @@
+{{- $title := cond (eq .Kind "home") .Site.Title (printf "%s · %s" .Title .Site.Title) -}}
+{{- $url := .Permalink -}}
+{{- $pager := false -}}
+{{- if or .IsSection (eq .Kind "term") -}}
+  {{- $pager = .Paginator -}}
+  {{- $url = $pager.URL | absURL -}}
+  {{- if gt $pager.PageNumber 1 -}}
+    {{- $title = printf "%s — Página %d · %s" .Title $pager.PageNumber .Site.Title -}}
+  {{- end -}}
+{{- else if eq .Kind "404" -}}
+  {{- $title = printf "Página não encontrada · %s" .Site.Title -}}
+{{- end -}}
+{{- return (dict "title" $title "url" $url "pager" $pager) -}}

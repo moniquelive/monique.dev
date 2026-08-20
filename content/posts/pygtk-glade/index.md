@@ -16,7 +16,7 @@ Neste artigo eu vou mostrar um exemplo mínimo para que você tenha um ponto de 
 
 ## Crie um layout básico usando o editor Glade
 
-![GtkApplicationWindow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/suzcky8ibzokyhfcqv2q.png)
+![GtkApplicationWindow](gtk-application-window.png)
 
 Coisas para prestar atenção:
 
@@ -27,7 +27,7 @@ Coisas para prestar atenção:
 
 Com o Botão selecionado, troque para a aba _Signals_:
 
-![Button Signals](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2p580mbgbc817xaaufe7.png)
+![Button Signals](button-signals.png)
 
 - Clique na coluna _Handler_ da linha _clicked_
 - Digite a primeira letra do nome do seu botão

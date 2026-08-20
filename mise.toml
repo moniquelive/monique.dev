@@ -1,6 +1,6 @@
 [tools]
-hugo-extended = "0.162.1"
-node = "26.3.0"
+hugo-extended = "0.165.0"
+node = "26.7.0"
 
 [env]
 TZ = "America/Sao_Paulo"
@@ -36,4 +36,4 @@ run = "npm run links"
 
 [tasks.ci]
 description = "Run validation and production build"
-run = "npm run format:check && hugo --cleanDestinationDir --gc --minify --printPathWarnings --panicOnWarning"
+run = "npm run format:check && npm audit --audit-level=high && hugo --cleanDestinationDir --gc --minify --printPathWarnings --panicOnWarning && npm run links"

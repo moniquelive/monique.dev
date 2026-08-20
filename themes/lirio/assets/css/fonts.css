@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/atkinson-hyperlegible-next/next-normal-latin.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/atkinson-hyperlegible-next/next-italic-latin.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/atkinson-hyperlegible-mono/mono-normal-latin.woff2")
+    format("woff2");
+}

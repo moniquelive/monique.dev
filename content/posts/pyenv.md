@@ -14,7 +14,7 @@ Quando aprendi sobre o python venv (`apt-get install python3-venv`) me
 converti na hora. É simples, padrão e explícito.
 
 Agora toda vez que crio um projeto automaticamente executo
-`python3 -mvenv venv && source ./venv/bin/activate`.
+`python3 -m venv venv && source ./venv/bin/activate`.
 
 Mas digitar `./venv/bin/activate` e depois `deactivate` é muito trabalho para
 meu cérebro preguiçoso de programadora.

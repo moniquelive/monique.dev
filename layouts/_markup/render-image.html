@@ -1,0 +1,20 @@
+{{- $src := .Destination -}}
+{{- $width := 0 -}}
+{{- $height := 0 -}}
+{{- with .Page.Resources.GetMatch .Destination -}}
+  {{- $image := . -}}
+  {{- if gt .Width 1600 -}}
+    {{- $image = .Resize "1600x" -}}
+  {{- end -}}
+  {{- $src = $image.RelPermalink -}}
+  {{- $width = $image.Width -}}
+  {{- $height = $image.Height -}}
+{{- end -}}
+<img
+  src="{{ $src | safeURL }}"
+  alt="{{ .Text }}"
+  loading="lazy"
+  decoding="async"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+  {{- if gt $width 0 }} width="{{ $width }}" height="{{ $height }}"{{ end -}}
+/>

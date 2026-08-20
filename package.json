@@ -1,17 +1,21 @@
 {
   "name": "monique.dev",
   "private": true,
-  "packageManager": "npm@11.16.0",
+  "packageManager": "npm@11.19.0",
   "engines": {
-    "node": ">=26.3.0"
+    "node": ">=26.7.0"
   },
   "scripts": {
+    "build": "./build.sh",
+    "deploy": "wrangler deploy",
+    "deploy:preview": "wrangler versions upload",
     "format": "prettier --write 'assets/css/*.css' 'themes/lirio/assets/css/*.css'",
     "format:check": "prettier --check 'assets/css/*.css' 'themes/lirio/assets/css/*.css'",
     "links": "linkinator public --recurse --check-fragments --check-css --skip '^https?://(?!localhost(?:[:/]|$)|127\\.0\\.0\\.1(?:[:/]|$))' --verbosity warning"
   },
   "devDependencies": {
-    "linkinator": "7.6.1",
-    "prettier": "3.9.5"
+    "linkinator": "8.0.4",
+    "prettier": "3.9.6",
+    "wrangler": "4.124.0"
   }
 }

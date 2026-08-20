@@ -1,4 +1,5 @@
 {{- $site := .Site -}}
+{{- $meta := partial "page-meta.html" . -}}
 {{- $description := partial "description.html" . -}}
 {{- $mainSections := $site.Params.mainSections | default (slice "posts") -}}
 {{- $isPost := and .IsPage (in $mainSections .Section) -}}
@@ -15,7 +16,7 @@
   {{- $person := dict
     "@type" "Person"
     "name" (.Params.author | default $site.Params.author | default $site.Title)
-    "url" .Permalink
+    "url" $meta.url
   -}}
   {{- with .Resources.GetMatch "avatar*" }}{{ $person = merge $person (dict "image" (.RelPermalink | absURL)) }}{{ end -}}
   {{- with .Params.roles }}{{ $person = merge $person (dict "jobTitle" (index . 0)) }}{{ end -}}
@@ -25,7 +26,7 @@
   {{- $schema = merge $schema (dict
     "@type" "WebSite"
     "name" $site.Title
-    "url" .Permalink
+    "url" $meta.url
   ) -}}
   {{- with $description }}{{ $schema = merge $schema (dict "description" .) }}{{ end -}}
 {{- else if $isPost -}}
@@ -40,10 +41,10 @@
   {{- $post := dict
     "@type" "BlogPosting"
     "headline" .Title
-    "url" .Permalink
+    "url" $meta.url
     "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
     "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
-    "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" $meta.url)
     "author" (dict "@type" "Person" "name" (.Params.author | default $site.Params.author | default $site.Title))
     "publisher" $publisher
   -}}
@@ -54,8 +55,8 @@
   {{- $pageType := cond (or .IsSection (in (slice "taxonomy" "term") .Kind)) "CollectionPage" "WebPage" -}}
   {{- $page := dict
     "@type" $pageType
-    "name" .Title
-    "url" .Permalink
+    "name" $meta.title
+    "url" $meta.url
     "isPartOf" (dict "@type" "WebSite" "name" $site.Title "url" $site.Home.Permalink)
   -}}
   {{- with $description }}{{ $page = merge $page (dict "description" .) }}{{ end -}}

@@ -5,13 +5,14 @@ description: >-
   Passo o passo a passo de ativar o v4l2loopback e o plugin v4l2sink para usar o OBS como
   webcam virtual no Linux.
 tags: [obs,virtual cam,linux]
-images: [https://obsproject.com/assets/images/new_icon_small-r.png]
 ---
 
 ## Resumo
 Passo o passo a passo de como ativar o v4l2loopback e o plugin v4l2sink para usar o OBS como webcam virtual no Linux.
 
 No ano de 2020 as video conferências explodiram pelo globo. Se tornaram uma necessidade para vários trabalhadores remotos.
+
+> **Atualização:** versões atuais do OBS Studio oferecem câmera virtual integrada. Os comandos abaixo são um registro histórico de 2020 e não devem compilar contra o OBS atual; use-os somente com versões compatíveis da época.
 
 Se você tiver a sorte de usar Linux (baseado em Debian), esse passo-a-passo vai te mostrar como usar o OBS Studio como uma fonte de vídeo em qualquer programa de conferência (Google Meet, Zoom, Discord, etc). Vamos lá:
 
@@ -24,9 +25,10 @@ sudo apt-get install obs-studio libobs-dev v4l2loopback-dkms qtbase5-dev
 ## Configurar o módulo de kernel `v4l2loopback`
 
 ```shell
-sudo touch /etc/modules-load.d/v4l2loopback.conf
-sudo echo v4l2loopback > /etc/modules-load.d/v4l2loopback.conf
-sudo echo 'options v4l2loopback card_label="OBS Video Source" video_nr=10 exclusive_caps=1' > /etc/modprobe.d/v4l2-obs-studio.conf
+printf '%s\n' v4l2loopback | \
+  sudo tee /etc/modules-load.d/v4l2loopback.conf >/dev/null
+printf '%s\n' 'options v4l2loopback card_label="OBS Video Source" video_nr=10 exclusive_caps=1' | \
+  sudo tee /etc/modprobe.d/v4l2-obs-studio.conf >/dev/null
 sudo depmod -a
 sudo modprobe v4l2loopback
 ```
@@ -41,7 +43,7 @@ Parâmetros:
 
 ```shell
 git clone --recursive https://github.com/obsproject/obs-studio.git # OBS
-git clone git@github.com:CatxFish/obs-v4l2sink.git # Plugin
+git clone https://github.com/CatxFish/obs-v4l2sink.git # Plugin
 
 cd obs-v4l2sink
 mkdir build ; cd build

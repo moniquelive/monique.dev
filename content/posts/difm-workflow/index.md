@@ -23,7 +23,7 @@ Como sou também usuária frequente do Alfred, procurei um workflow, mas não ti
 ## A solução
 O editor de workflows é bem legal. Você arrasta caixas e as conecta para que a saída de uma caixa se torne a entrada da outra:
 
-![Painel de Workflow do Meu Alfred](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4h6d9yvzfkbk3losdov9.png)
+![Painel de Workflow do Meu Alfred](alfred-workflow.png)
 *Painel de Workflow do Meu Alfred*
 
 E é isso. Apenas duas caixas conectadas para tocar um pouco de música eletrônica ❤️
@@ -33,7 +33,7 @@ Seria um artigo muito chato se terminasse aqui, certo? 😊
 
 Primeiro de tudo, a lista de estações de rádio é enorme! (99):
 
-![duplo clique em List Filter](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nb20ohcdidm57m9b5xzu.png)
+![Duplo clique em List Filter](alfred-list-filter.png)
 *duplo clique em List Filter*
 
 Eu nunca digitaria 99 vezes cada informação da estação... Não... Pedi ajuda ao nosso amigável soberano **GPT-4**.
@@ -81,7 +81,7 @@ Depois, arrastei o arquivo .csv gerado para a coluna esquerda do *List Filter* e
 
 O segundo nó é super simples. É um nó *Run Script* com o seguinte:
 
-![Abrindo o Apple Music com a seguinte URL](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mf69tbqw5z6ryuzqfnqf.png)
+![Abrindo o Apple Music com a seguinte URL](apple-music-stream-url.png)
 *Abrindo o Apple Music com a seguinte URL*
 
 Você pode usar o player de sua preferência aqui. Eu testei com VLC e Apple Music.
@@ -90,7 +90,7 @@ Você pode usar o player de sua preferência aqui. Eu testei com VLC e Apple Mus
 
 Agora você tem um seletor de estações personalizado:
 
-![Todas as estações vocais](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7pg24q1bwwiihjzbz0q0.png)
+![Todas as estações vocais](vocal-stations.png)
 *Todas as estações vocais*
 
 Espero que você tenha gostado de ler isso tanto quanto eu gostei de montar.

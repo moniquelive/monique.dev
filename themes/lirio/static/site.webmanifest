@@ -1,11 +1,13 @@
 {
-  "name": "Monique.dev",
-  "short_name": "Monique",
+  "name": "monique.dev",
+  "short_name": "monique.dev",
+  "description": "Artigos sobre desenvolvimento, ferramentas e tecnologia.",
+  "lang": "pt-BR",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#6d28d9",
+  "background_color": "#fff2f3",
+  "theme_color": "#fff2f3",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -20,8 +22,7 @@
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "/favicon-16.png",

@@ -1,15 +1,9 @@
 ---
 title: "Sobre"
 layout: "about"
-aliases: ["/sobre/"]
-roles: ["Engenheira de Computação", "Criadora de conteúdo", "Dev" ]
+avataralt: "Ilustração de Monique Oliveira sorrindo"
+roles: ["Engenheira de Computação", "Criadora de conteúdo", "Dev"]
 skills: ["Go", "Python", "Acessibilidade", "Sistemas", "Streaming", "Swift/SwiftUI"]
-now:
-  [
-    "Estudando Swift/SwiftUI",
-    "Refinando o tema do blog",
-    "Gravando vídeos curtos",
-  ]
 highlights:
   - title: "Picker com fzf"
     url: "/posts/fzf-simple-picker/"

@@ -423,6 +423,17 @@ h6:hover .heading-anchor {
   opacity: 1;
 }
 
+@media (hover: none), (pointer: coarse) {
+  .heading-anchor {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+    opacity: 0.85;
+  }
+}
+
 .post-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
@@ -679,11 +690,10 @@ article table {
 }
 
 .toc li {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
+  position: relative;
+  display: block;
   margin: 0;
-  padding: 0.12rem 0;
+  padding: 0.12rem 0 0.12rem 0.9rem;
 }
 
 .toc nav > ul,
@@ -704,8 +714,9 @@ article table {
 
 .toc li::before {
   content: "";
-  display: inline-flex;
-  flex: 0 0 auto;
+  position: absolute;
+  top: 0.82em;
+  left: 0;
   width: 0.38rem;
   height: 0.38rem;
   border-radius: 999px;
@@ -715,7 +726,6 @@ article table {
     opacity var(--pico-transition);
   opacity: 0.85;
   margin: 0;
-  align-self: center;
 }
 
 .toc ul ul li::before,
@@ -738,8 +748,6 @@ article table {
   text-decoration: none;
   font-size: 0.95rem;
   display: block;
-  flex: 1 1 auto;
-  min-width: 0;
   transition: color var(--pico-transition);
 }
 
