@@ -14,8 +14,8 @@
     "links": "linkinator public --recurse --check-fragments --check-css --skip '^https?://(?!localhost(?:[:/]|$)|127\\.0\\.0\\.1(?:[:/]|$))' --verbosity warning"
   },
   "devDependencies": {
-    "linkinator": "8.0.4",
+    "linkinator": "8.1.0",
     "prettier": "3.9.6",
-    "wrangler": "4.124.0"
+    "wrangler": "4.127.1"
   }
 }
